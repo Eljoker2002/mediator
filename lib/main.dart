@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mediator/features/welcome_screens/first_screen.dart';
 import 'package:mediator/features/welcome_screens/second_screen.dart';
 import 'features/logo_screen/screen.dart';
+import 'features/welcome_screens/third_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         return child!;
       },
       debugShowCheckedModeBanner: false,
-      home: SecondScreen(),
+      home: LogoScreen(),
     );
   }
 }

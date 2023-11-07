@@ -1,33 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mediator/core/app_colors.dart';
-import 'package:mediator/core/navigator.dart';
-import 'package:mediator/features/welcome_screens/second_screen.dart';
-import 'package:mediator/features/welcome_screens/widgets/welcome_text.dart';
-import 'package:mediator/widgets/app_button.dart';
-
+import 'package:mediator/features/logo_screen/screen.dart';
+import '../../core/app_colors.dart';
+import '../../core/navigator.dart';
+import '../../widgets/app_button.dart';
 import 'widgets/circle.dart';
+import 'widgets/welcome_text.dart';
 
-class FirstScreen extends StatelessWidget {
-  const FirstScreen({Key? key}) : super(key: key);
+class ThirdScreen extends StatelessWidget {
+  const ThirdScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image(
             fit: BoxFit.contain,
             height: 375.h,
             width: 360.w,
             image: AssetImage(
-              "assets/images/welcome_image.png",
+              "assets/images/welcome_image3.png",
             ),
           ),
           SizedBox(height: 10.h),
           WelcomeText(
-            title: "Welcome to Mediator",
-            height: 32.h,
+            title: '''Let’s start your career
+          with us now!''',
+            height: 69.h,
           ),
           SizedBox(height: 15.h),
           WelcomeText2(
@@ -38,25 +39,20 @@ class FirstScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               WelcomeCircle(
+                color: AppColors.lightGray,
+              ),
+              WelcomeCircle(
+                color: AppColors.lightGray,
+              ),
+              WelcomeCircle(
                 color: AppColors.darkBlue,
-              ),
-              WelcomeCircle(
-                color: AppColors.lightGray,
-              ),
-              WelcomeCircle(
-                color: AppColors.lightGray,
               ),
             ],
           ),
           SizedBox(height: 17.h),
           AppButton(
-            title: "Next",
-            onTap: () {
-              RouteUtils.push(
-                context: context,
-                screen: SecondScreen(),
-              );
-            },
+            title: "Get Started",
+            onTap: () {},
           ),
           SizedBox(height: 35.h),
         ],
