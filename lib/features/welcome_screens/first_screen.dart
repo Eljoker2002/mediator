@@ -27,7 +27,7 @@ class FirstScreen extends StatelessWidget {
           SizedBox(height: 10.h),
           WelcomeText(
             title: "Welcome to Mediator",
-            height: 32.h,
+            height: 32.h, width: 327.w, fontSize: 16,
           ),
           SizedBox(height: 15.h),
           WelcomeText2(

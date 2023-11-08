@@ -4,21 +4,23 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../core/app_colors.dart';
 
 class WelcomeText extends StatelessWidget {
-  WelcomeText({Key? key, required this.title, required this.height})
+  WelcomeText({Key? key, required this.title, required this.height,required this.width,required this.fontSize})
       : super(key: key);
   final String title;
   final double height;
+  final double width;
+  final double fontSize;
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 327.w,
+      width: width,
       height: height,
       child: Center(
         child: Text(
           title,
           style: GoogleFonts.inter(
             textStyle: TextStyle(
-              fontSize: 26.w,
+              fontSize: fontSize,
               fontWeight: FontWeight.w700,
             ),
           ),

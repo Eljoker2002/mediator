@@ -26,6 +26,7 @@ class ThirdScreen extends StatelessWidget {
           ),
           SizedBox(height: 10.h),
           WelcomeText(
+            width: 327.w, fontSize: 26,
             title: '''Let’s start your career
           with us now!''',
             height: 69.h,

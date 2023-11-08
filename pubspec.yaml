@@ -12,10 +12,9 @@ dependencies:
     sdk: flutter
 
 
-  cupertino_icons: ^1.0.6
   flutter_screenutil: ^5.9.0
-  font_awesome_flutter: ^10.6.0
   google_fonts: ^6.1.0
+  font_awesome_flutter: ^10.6.0
 
 
 
