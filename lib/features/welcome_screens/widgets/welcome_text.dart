@@ -32,20 +32,26 @@ class WelcomeText extends StatelessWidget {
 
 class WelcomeText2 extends StatelessWidget {
   final String title;
-  const WelcomeText2({super.key, required this.title});
+  final double width;
+  final double height;
+  final double fontSize;
+  final FontWeight fontWeight;
+
+
+  const WelcomeText2({super.key, required this.title,required this.width,required this.height,required this.fontSize,required this.fontWeight});
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 296.w,
-      height: 22.h,
+      width: width,
+      height:height,
       child: Center(
         child: Text(
           title,
           style: GoogleFonts.poppins(
             textStyle: TextStyle(
               color: AppColors.gray,
-              fontSize: 12.w,
-              fontWeight: FontWeight.w500,
+              fontSize: fontSize,
+              fontWeight: fontWeight,
             ),
           ),
         ),

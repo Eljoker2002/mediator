@@ -14,6 +14,7 @@ class ThirdScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -36,6 +37,10 @@ class ThirdScreen extends StatelessWidget {
           SizedBox(height: 15.h),
           WelcomeText2(
             title: "We’re excited to meet you! To get started . ",
+            width: 296.w,
+            height: 22.h,
+            fontSize: 12.w,
+            fontWeight: FontWeight.w500,
           ),
           Spacer(),
           Row(

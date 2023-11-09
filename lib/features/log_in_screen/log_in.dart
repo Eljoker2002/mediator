@@ -22,6 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 44.h),
         child: Column(
@@ -66,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SizedBox(height: 30.h),
             WelcomeText(
-              title: "Create New Account",
+              title: "Login to Your Account",
               height: 29.h,
               width: 242.w,
               fontSize: 24,
@@ -174,7 +175,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 24,
             ),
             AppButton(
-              title: "Sign up",
+              title: "Log in",
               onTap: () {},
             ),
             Row(
@@ -299,7 +300,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: 3.w,
                 ),
                 Text(
-                  "Log in",
+                  "Sign up",
                   style: GoogleFonts.inter(
                     textStyle: TextStyle(
                         fontSize: 12,
