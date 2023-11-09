@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mediator/features/character_screen/character.dart';
-import 'package:mediator/features/log_in_screen/log_in.dart';
-import 'package:mediator/features/verification_code_screen/verification_code.dart';
 import 'package:mediator/features/welcome_screens/first_screen.dart';
 import 'package:mediator/features/welcome_screens/second_screen.dart';
 import 'features/logo_screen/screen.dart';
@@ -26,7 +23,7 @@ class MyApp extends StatelessWidget {
         return child!;
       },
       debugShowCheckedModeBanner: false,
-      home: VerificationScreen(),
+      home: LogoScreen(),
     );
   }
 }
