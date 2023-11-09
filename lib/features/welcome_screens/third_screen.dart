@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mediator/features/logo_screen/screen.dart';
+import 'package:mediator/features/sign_up_screen/sign_up.dart';
 import '../../core/app_colors.dart';
 import '../../core/navigator.dart';
 import '../../widgets/app_button.dart';
@@ -26,7 +27,8 @@ class ThirdScreen extends StatelessWidget {
           ),
           SizedBox(height: 10.h),
           WelcomeText(
-            width: 327.w, fontSize: 26,
+            width: 327.w,
+            fontSize: 24.w,
             title: '''Let’s start your career
           with us now!''',
             height: 69.h,
@@ -53,7 +55,10 @@ class ThirdScreen extends StatelessWidget {
           SizedBox(height: 17.h),
           AppButton(
             title: "Get Started",
-            onTap: () {},
+            onTap: () {
+              RouteUtils.pushAndRemoveAll(
+                  context: context, screen: SignupScreen());
+            },
           ),
           SizedBox(height: 35.h),
         ],

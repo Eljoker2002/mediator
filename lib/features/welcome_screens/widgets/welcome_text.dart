@@ -44,7 +44,7 @@ class WelcomeText2 extends StatelessWidget {
           style: GoogleFonts.poppins(
             textStyle: TextStyle(
               color: AppColors.gray,
-              fontSize: 13.w,
+              fontSize: 12.w,
               fontWeight: FontWeight.w500,
             ),
           ),

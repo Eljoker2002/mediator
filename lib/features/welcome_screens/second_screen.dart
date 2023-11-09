@@ -25,7 +25,9 @@ class SecondScreen extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10.h),
-          WelcomeText(width: 327.w, fontSize: 26,
+          WelcomeText(
+            width: 327.w,
+            fontSize: 24.w,
             title: '''We are the best job 
             platform''',
             height: 70.h,

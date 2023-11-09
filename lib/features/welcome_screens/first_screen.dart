@@ -5,7 +5,6 @@ import 'package:mediator/core/navigator.dart';
 import 'package:mediator/features/welcome_screens/second_screen.dart';
 import 'package:mediator/features/welcome_screens/widgets/welcome_text.dart';
 import 'package:mediator/widgets/app_button.dart';
-
 import 'widgets/circle.dart';
 
 class FirstScreen extends StatelessWidget {
@@ -27,7 +26,9 @@ class FirstScreen extends StatelessWidget {
           SizedBox(height: 10.h),
           WelcomeText(
             title: "Welcome to Mediator",
-            height: 32.h, width: 327.w, fontSize: 16,
+            height: 32.h,
+            width: 327.w,
+            fontSize: 24.w,
           ),
           SizedBox(height: 15.h),
           WelcomeText2(
