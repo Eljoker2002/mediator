@@ -98,7 +98,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     labelText: 'Email',
                     labelStyle: GoogleFonts.poppins(
                       textStyle:
-                          TextStyle(color: Color(0xFFA8A8A8), fontSize: 15),
+                          TextStyle(color: Color(0xFFA8A8A8), fontSize: 15,fontWeight: FontWeight.w400),
                     ),
                     prefixIcon: Icon(Icons.email, color: Color(0xFFA8A8A8)),
                   ),
@@ -128,7 +128,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     labelText: 'Password',
                     labelStyle: GoogleFonts.poppins(
                       textStyle:
-                          TextStyle(color: Color(0xFFA8A8A8), fontSize: 15),
+                          TextStyle(color: Color(0xFFA8A8A8), fontSize: 15,fontWeight: FontWeight.w400),
                     ),
                     prefixIcon: Icon(
                       Icons.lock,

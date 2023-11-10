@@ -94,9 +94,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   labelText: 'Email',
-                  labelStyle: GoogleFonts.poppins(
+                  labelStyle: GoogleFonts.inter(
                     textStyle:
-                        TextStyle(color: Color(0xFFA8A8A8), fontSize: 15),
+                        TextStyle(color: Color(0xFFA8A8A8), fontSize: 15,fontWeight: FontWeight.w400),
                   ),
                   prefixIcon: Icon(Icons.email, color: Color(0xFFA8A8A8)),
                 ),
@@ -124,9 +124,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(8),
                         borderSide: BorderSide(color: AppColors.lGray)),
                     labelText: 'Password',
-                    labelStyle: GoogleFonts.poppins(
+                    labelStyle: GoogleFonts.inter(
                       textStyle:
-                          TextStyle(color: Color(0xFFA8A8A8), fontSize: 15),
+                          TextStyle(color: Color(0xFFA8A8A8), fontSize: 15,fontWeight: FontWeight.w400),
                     ),
                     prefixIcon: Icon(
                       Icons.lock,

@@ -79,29 +79,12 @@ class CharacterScreeen extends StatelessWidget {
                       color: AppColors.gray),
                 ),
               ),
-            ),SizedBox(height: 40,),
+            ),
+            SizedBox(
+              height: 40,
+            ),
             Row(
               children: [
-                Container(
-                  width: 156.w,
-                  height: 160.h,
-                  decoration: BoxDecoration(
-                    color: AppColors.white,
-                    borderRadius: BorderRadius.circular(40),
-                      boxShadow: [
-                        BoxShadow(color: Color(0xFFD6D6D6), spreadRadius: 1.2),
-                      ],
-                  ),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 29.h,),
-                      Image(image: AssetImage("assets/images/graduation_image.png")),
-                     SizedBox(height: 10.h,),
-                     WelcomeText(title: "Graduate / Student", height: 18.h, width: 140.w, fontSize: 15.w),
-                    ],
-                  ),
-                ),
-                SizedBox(width: 9.w,),
                 Container(
                   width: 156.w,
                   height: 160.h,
@@ -114,17 +97,60 @@ class CharacterScreeen extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      SizedBox(height: 29.h,),
-                      Image(image: AssetImage("assets/images/company_image.png")),
-                      SizedBox(height: 10.h,),
-                      WelcomeText(title: "Company", height: 18.h, width: 140.w, fontSize: 15.w),
+                      SizedBox(
+                        height: 29.h,
+                      ),
+                      Image(
+                          image:
+                              AssetImage("assets/images/graduation_image.png")),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      WelcomeText(
+                          title: "Graduate / Student",
+                          height: 18.h,
+                          width: 140.w,
+                          fontSize: 15.w),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 9.w,
+                ),
+                Container(
+                  width: 156.w,
+                  height: 160.h,
+                  decoration: BoxDecoration(
+                    color: AppColors.white,
+                    borderRadius: BorderRadius.circular(40),
+                    boxShadow: [
+                      BoxShadow(color: Color(0xFFD6D6D6), spreadRadius: 1.2),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 29.h,
+                      ),
+                      Image(
+                          image: AssetImage("assets/images/company_image.png")),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      WelcomeText(
+                          title: "Company",
+                          height: 18.h,
+                          width: 140.w,
+                          fontSize: 15.w),
                     ],
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 56.h,),
-            AppButton(title: "Continue", onTap: (){}),
+            SizedBox(
+              height: 56.h,
+            ),
+            AppButton(title: "Continue", onTap: () {}),
           ],
         ),
       ),

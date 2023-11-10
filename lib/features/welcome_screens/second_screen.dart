@@ -22,7 +22,7 @@ class SecondScreen extends StatelessWidget {
             height: 375.h,
             width: 360.w,
             image: AssetImage(
-              "assets/images/welcome_image2.jpg",
+              "assets/images/welcom_image2.png",
             ),
           ),
           SizedBox(height: 10.h),

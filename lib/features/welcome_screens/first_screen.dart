@@ -21,7 +21,7 @@ class FirstScreen extends StatelessWidget {
             height: 375.h,
             width: 360.w,
             image: AssetImage(
-              "assets/images/welcome_image.png",
+              "assets/images/welcom_image1.png",
             ),
           ),
           SizedBox(height: 10.h),

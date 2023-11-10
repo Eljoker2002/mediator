@@ -23,7 +23,7 @@ class ThirdScreen extends StatelessWidget {
             height: 375.h,
             width: 360.w,
             image: AssetImage(
-              "assets/images/welcome_image3.png",
+              "assets/images/welcom_image3.png",
             ),
           ),
           SizedBox(height: 10.h),
