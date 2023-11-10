@@ -105,7 +105,7 @@ backgroundColor: AppColors.white,
                   textStyle: TextStyle(
                     fontSize: 12.w,
                     fontWeight: FontWeight.w600,
-                    color: AppColors.red,
+                    color: Colors.red,
                   ),
                 ),
               ),
