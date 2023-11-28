@@ -38,7 +38,7 @@ class OrganizationPorfile extends StatelessWidget {
                 title: "Company Profile",
                 height: 24.h,
                 width: 162.w,
-                fontSize: 20.w,
+                fontSize: 19.w,
               ),
               SizedBox(
                 height: 71.h,

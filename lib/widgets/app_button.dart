@@ -21,7 +21,7 @@ class AppButton extends StatelessWidget {
               title,
               style: GoogleFonts.poppins(
                 textStyle: TextStyle(
-                  fontSize: 16.w,
+                  fontSize: 16.sp,
                   color: Colors.white,
                   fontWeight: FontWeight.w600,
                 ),

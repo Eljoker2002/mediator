@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediator/features/welcome_screens/widgets/welcome_text.dart';
 import 'package:mediator/widgets/app_button.dart';
-
 import '../../core/app_colors.dart';
 
 class ChooseScreen extends StatelessWidget {
@@ -173,7 +171,7 @@ class ChooseScreen extends StatelessWidget {
                         height: 58.h,
                         child: Center(
                           child: Text(
-                            '''Find someone to 
+                            '''Find someone to
             hire.''',
                             style: GoogleFonts.poppins(
                               textStyle: TextStyle(

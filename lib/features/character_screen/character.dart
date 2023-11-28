@@ -6,8 +6,8 @@ import 'package:mediator/widgets/app_button.dart';
 import '../../core/app_colors.dart';
 import '../welcome_screens/widgets/welcome_text.dart';
 
-class CharacterScreeen extends StatelessWidget {
-  const CharacterScreeen({super.key});
+class CharacterScreen extends StatelessWidget {
+  const CharacterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
