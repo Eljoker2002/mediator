@@ -3,17 +3,30 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RefactorTextFormField extends StatelessWidget {
- RefactorTextFormField({super.key, required this.text,this.icon});
- String? text;
- IconData? icon;
+  RefactorTextFormField({
+    super.key,
+    required this.text,
+    this.icon,
+    this.height,
+    this.changeHeight = false,
+    this.maxLines = 1,
+  });
+  final String? text;
+  final IconData? icon;
+  final double? height;
+  final bool changeHeight;
+  final int maxLines;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body:  SizedBox(
-        height: 40.h,
-        width: 324.w,
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 8.h),
+      child: SizedBox(
+        width: double.infinity,
+        height: changeHeight ? height : 40.h,
         child: TextFormField(
+          maxLines: maxLines,
           decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(vertical: 1.h ,horizontal: 15.w ),
             filled: true,
             fillColor: Color(0xFFF5F5F5),
             enabledBorder: OutlineInputBorder(
@@ -23,15 +36,17 @@ class RefactorTextFormField extends StatelessWidget {
               ),
             ),
             suffixIcon: Icon(
-              icon,size: 50,
+              icon,
+              size: 50,
               color: Color(0xFFA8A8A8),
             ),
-            labelText: text!,
+            labelText: text,
             labelStyle: GoogleFonts.poppins(
               textStyle: TextStyle(
-                  color: Color(0xFFA8A8A8),
-                  fontSize: 15.w,
-                  fontWeight: FontWeight.w400),
+                color: Color(0xFFA8A8A8),
+                fontSize: 15.sp,
+                fontWeight: FontWeight.w400,
+              ),
             ),
           ),
         ),
