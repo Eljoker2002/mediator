@@ -49,28 +49,33 @@ class OrganizationProfile extends StatelessWidget {
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: [
-                  RefactorTextFormField(text: "Company Name"),
+                  RefactorTextFormField(text: "Company Name",color: Color(0xFFF5F5F5),),
                   RefactorTextFormField(
                     text: "Field",
                     icon: Icons.arrow_drop_down,
+                    color: Color(0xFFF5F5F5),
                   ),
                   RefactorTextFormField(
                     text: "Address",
+                      color: Color(0xFFF5F5F5)
                   ),
                   RefactorTextFormField(
                     text: "Field",
+                      color: Color(0xFFF5F5F5)
                   ),
-                  RefactorTextFormField(text: "Website"),
-                  RefactorTextFormField(text: "Socials (Optional)"),
+                  RefactorTextFormField(text: "Website",color: Color(0xFFF5F5F5)),
+                  RefactorTextFormField(text: "Socials (Optional)",color: Color(0xFFF5F5F5)),
                   RefactorTextFormField(
                     text: "Which service is provided?",
                     icon: Icons.arrow_drop_down,
+                      color: Color(0xFFF5F5F5)
                   ),
                   RefactorTextFormField(
                     text: "About Company",
                     maxLines: 5,
                     changeHeight: true,
                     height: 88.h,
+                      color: Color(0xFFF5F5F5)
                   ),
                   SizedBox(height: 24.h),
                   AppButton(

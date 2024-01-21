@@ -5,17 +5,19 @@ import 'package:google_fonts/google_fonts.dart';
 class RefactorTextFormField extends StatelessWidget {
   RefactorTextFormField({
     super.key,
-    required this.text,
+    this.text,
     this.icon,
     this.height,
     this.changeHeight = false,
     this.maxLines = 1,
+    this.color,
   });
   final String? text;
   final IconData? icon;
   final double? height;
   final bool changeHeight;
   final int maxLines;
+  final color;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,7 +30,7 @@ class RefactorTextFormField extends StatelessWidget {
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(vertical: 1.h ,horizontal: 15.w ),
             filled: true,
-            fillColor: Color(0xFFF5F5F5),
+            fillColor: color,
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(
