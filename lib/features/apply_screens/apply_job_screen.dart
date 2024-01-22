@@ -60,6 +60,7 @@ class ApplyJobScreen extends StatelessWidget {
                     ),
                   ),
                   RefactorTextFormField(
+                    changeHeight: true,
                     height: 38.h,
                   ),
                   SizedBox(height: 24.h),
@@ -74,6 +75,7 @@ class ApplyJobScreen extends StatelessWidget {
                     ),
                   ),
                   RefactorTextFormField(
+                    changeHeight: true,
                     height: 38.h,
                   ),
                   SizedBox(height: 24.h),
@@ -88,6 +90,7 @@ class ApplyJobScreen extends StatelessWidget {
                     ),
                   ),
                   RefactorTextFormField(
+                    changeHeight: true,
                     height: 38.h,
                   ),
                   SizedBox(height: 24.h),
@@ -102,6 +105,7 @@ class ApplyJobScreen extends StatelessWidget {
                     ),
                   ),
                   RefactorTextFormField(
+                    changeHeight: true,
                     height: 38.h,
                   ),
                   SizedBox(height: 22.h),
@@ -117,15 +121,16 @@ class ApplyJobScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 4.h),
                   InkWell(
-                    onTap: (){
-
-                    },
+                    onTap: () {},
                     child: Container(
                       child: Padding(
-                        padding:  EdgeInsets.symmetric(horizontal:20.h ),
+                        padding: EdgeInsets.symmetric(horizontal: 20.h),
                         child: Row(children: [
-                          Icon(Icons.file_upload_outlined,size: 24.sp,color: Color(0xFF3D7DFF)),
-                          SizedBox(width:9.w ,),
+                          Icon(Icons.file_upload_outlined,
+                              size: 24.sp, color: Color(0xFF3D7DFF)),
+                          SizedBox(
+                            width: 9.w,
+                          ),
                           Text(
                             "Add File",
                             style: GoogleFonts.poppins(
@@ -154,10 +159,9 @@ class ApplyJobScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 220.h),
-            AppButton(title:"Apply" , onTap: (){}),
-            SizedBox(height: 76.h),
-
+            SizedBox(height: 22.h),
+            AppButton(title: "Apply", onTap: () {}),
+            SizedBox(height: 30.h),
           ],
         ),
       ),

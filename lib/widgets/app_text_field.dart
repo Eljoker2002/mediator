@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../core/app_colors.dart';
 
 class AppTextField extends StatelessWidget {
-  const AppTextField({
+  const   AppTextField({
     Key? key,
     required this.labelText,
     this.validator,
