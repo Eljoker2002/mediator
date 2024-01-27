@@ -3,14 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomClick extends StatelessWidget {
-  final bool enableClick;
+  final bool isSelected;
   final String text;
   final void Function()? onTap;
   final double width;
 
   CustomClick({
     super.key,
-    this.enableClick = false,
+    this.isSelected = false,
     this.onTap,
     required this.text,
     required this.width,
@@ -24,7 +24,7 @@ class CustomClick extends StatelessWidget {
         onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
-            color: enableClick ? Color(0xFF0B1075) : Colors.white,
+            color: isSelected ? Color(0xFF0B1075) : Colors.white,
             borderRadius: BorderRadius.circular(
               24.sp,
             ),
@@ -36,7 +36,7 @@ class CustomClick extends StatelessWidget {
               text,
               style: GoogleFonts.inter(
                 textStyle: TextStyle(
-                  color: enableClick ? Colors.white : Color(0xFF0B1075),
+                  color: isSelected ? Colors.white : Color(0xFF0B1075),
                   fontSize: 13.sp,
                 ),
               ),

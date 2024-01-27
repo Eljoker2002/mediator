@@ -4,10 +4,21 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mediator/features/home_screen/controller.dart';
 import '../../widgets/custom_click.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   HomeController controller = HomeController();
 
-  HomeScreen({Key? key}) : super(key: key);
+  @override
+  void initState() {
+    controller.selectedCategory = controller.home.first;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,18 +119,21 @@ class HomeScreen extends StatelessWidget {
               ),
               SizedBox(height: 16.h),
               Container(
-                height: 40.h,
-                child: Expanded(
-                  child: ListView.builder(
-                    itemCount: controller.home.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return CustomClick(
-                        text: controller.home[index].title,
-                        width: controller.home[index].width,
-                      );
-                    },
-                  ),
+                height: 32.h,
+                child: ListView.builder(
+                  itemCount: controller.home.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    final home = controller.home[index];
+                    return CustomClick(
+                      text: controller.home[index].title,
+                      width: controller.home[index].width,
+                      isSelected: controller.selectedCategory == home,
+                      onTap: () =>setState(() {
+                        controller.selectedCategory = home;
+                      }),
+                    );
+                  },
                 ),
               ),
             ],

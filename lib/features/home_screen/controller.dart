@@ -1,6 +1,8 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeController {
+  late Category selectedCategory;
+
   final List<Category> home = [
     Category(title: "All", width: 45.w),
     Category(title: "Jobs", width: 45.w),
