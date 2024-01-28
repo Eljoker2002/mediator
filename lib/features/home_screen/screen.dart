@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mediator/core/app_colors.dart';
 import 'package:mediator/features/home_screen/controller.dart';
 import '../../widgets/custom_click.dart';
 
@@ -32,8 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                        color: Colors.blueGrey,
-                        borderRadius: BorderRadius.circular(20.sp)),
+                      color: Colors.blueGrey,
+                      borderRadius: BorderRadius.circular(20.sp),
+                    ),
                     width: 39.sp,
                     height: 39.sp,
                   ),
@@ -45,15 +47,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         "Good Morning",
                         style: GoogleFonts.poppins(
                           textStyle: TextStyle(
-                              color: Color(0xFFA8A8A8),
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w600),
+                            color: AppColors.gray85,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                       Text(
                         "Name",
                         style: GoogleFonts.poppins(
                           textStyle: TextStyle(
+                            color: AppColors.black,
                             fontWeight: FontWeight.w600,
                             fontSize: 14.sp,
                           ),
@@ -129,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       text: controller.home[index].title,
                       width: controller.home[index].width,
                       isSelected: controller.selectedCategory == home,
-                      onTap: () =>setState(() {
+                      onTap: () => setState(() {
                         controller.selectedCategory = home;
                       }),
                     );

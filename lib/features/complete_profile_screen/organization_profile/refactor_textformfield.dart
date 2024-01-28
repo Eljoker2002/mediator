@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mediator/core/app_colors.dart';
 
 class RefactorTextFormField extends StatelessWidget {
   RefactorTextFormField({
@@ -10,14 +11,12 @@ class RefactorTextFormField extends StatelessWidget {
     this.height,
     this.changeHeight = false,
     this.maxLines = 1,
-    this.color,
   });
   final String? text;
   final IconData? icon;
   final double? height;
   final bool changeHeight;
   final int maxLines;
-  final color;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,7 +29,7 @@ class RefactorTextFormField extends StatelessWidget {
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(vertical: 1.h ,horizontal: 15.w ),
             filled: true,
-            fillColor: color,
+            fillColor: AppColors.white,
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(
@@ -45,7 +44,7 @@ class RefactorTextFormField extends StatelessWidget {
             labelText: text,
             labelStyle: GoogleFonts.poppins(
               textStyle: TextStyle(
-                color: Color(0xFFA8A8A8),
+                color: AppColors.grayB7,
                 fontSize: 15.sp,
                 fontWeight: FontWeight.w400,
               ),

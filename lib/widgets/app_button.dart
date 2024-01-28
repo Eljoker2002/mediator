@@ -4,8 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 import '../core/app_colors.dart';
 
 class AppButton extends StatelessWidget {
-  AppButton({Key? key, required this.title, required this.onTap}) : super(key: key);
+  AppButton({
+    Key? key,
+    required this.title,
+    required this.onTap,
+    this.color = AppColors.black,
+  }) : super(key: key);
   final String title;
+  final Color color;
   final Function() onTap;
   @override
   Widget build(BuildContext context) {
@@ -29,7 +35,7 @@ class AppButton extends StatelessWidget {
             ),
           ),
           decoration: BoxDecoration(
-            color: AppColors.darkBlue,
+            color: color,
             borderRadius: BorderRadius.all(
               Radius.circular(48),
             ),

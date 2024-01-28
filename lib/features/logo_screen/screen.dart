@@ -44,7 +44,7 @@ class _LogoScreenState extends State<LogoScreen> {
               style: GoogleFonts.calistoga(
                 textStyle: TextStyle(
                   fontSize: 36,
-                  color: AppColors.darkBlue,
+                  color: AppColors.black,
                 ),
               ),
             ),

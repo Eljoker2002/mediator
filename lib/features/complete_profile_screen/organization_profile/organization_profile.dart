@@ -11,6 +11,7 @@ class OrganizationProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.whiteF6  ,
       body: Padding(
         padding: EdgeInsets.only(left: 18.w, right: 18.w, top: 44.h),
         child: Column(
@@ -21,18 +22,18 @@ class OrganizationProfile extends StatelessWidget {
                 width: 24.sp,
                 height: 24.sp,
                 decoration: BoxDecoration(
-                    color: AppColors.white,
-                    borderRadius: BorderRadius.circular(15),
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppColors.smoothGray,
-                        spreadRadius: 1.sp,
-                      ),
-                    ]),
+                  color: AppColors.white,
+                  borderRadius: BorderRadius.circular(15),
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //     color: AppColors.smoothGray,
+                  //     spreadRadius: 1.sp,
+                  //   ),],
+                ),
                 child: Icon(
                   Icons.arrow_back_rounded,
                   size: 20.sp,
-                  color: AppColors.darkBlue,
+                  color: AppColors.black,
                 ),
               ),
             ),
@@ -49,40 +50,41 @@ class OrganizationProfile extends StatelessWidget {
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: [
-                  RefactorTextFormField(text: "Company Name",color: Color(0xFFF5F5F5),),
+                  RefactorTextFormField(
+                    text: "Company Name",
+                  ),
                   RefactorTextFormField(
                     text: "Field",
                     icon: Icons.arrow_drop_down,
-                    color: Color(0xFFF5F5F5),
                   ),
                   RefactorTextFormField(
                     text: "Address",
-                      color: Color(0xFFF5F5F5)
                   ),
                   RefactorTextFormField(
                     text: "Field",
-                      color: Color(0xFFF5F5F5)
                   ),
-                  RefactorTextFormField(text: "Website",color: Color(0xFFF5F5F5)),
-                  RefactorTextFormField(text: "Socials (Optional)",color: Color(0xFFF5F5F5)),
+                  RefactorTextFormField(
+                    text: "Website",
+                  ),
+                  RefactorTextFormField(
+                    text: "Socials (Optional)",
+                  ),
                   RefactorTextFormField(
                     text: "Which service is provided?",
                     icon: Icons.arrow_drop_down,
-                      color: Color(0xFFF5F5F5)
                   ),
                   RefactorTextFormField(
                     text: "About Company",
                     maxLines: 5,
                     changeHeight: true,
                     height: 88.h,
-                      color: Color(0xFFF5F5F5)
                   ),
-                  SizedBox(height: 24.h),
+                  SizedBox(height: 10.h),
                   AppButton(
                     title: "Continue",
                     onTap: () {},
                   ),
-                  SizedBox(height: 32.h),
+                  SizedBox(height: 25.h),
                 ],
               ),
             ),

@@ -24,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.whiteF6,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 44.h),
@@ -38,18 +38,19 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: 22.w,
                       height: 22.w,
                       decoration: BoxDecoration(
-                          color: AppColors.white,
-                          borderRadius: BorderRadius.circular(15.w),
-                          boxShadow: [
-                            BoxShadow(
-                              color: AppColors.smoothGray,
-                              spreadRadius: 2,
-                            )
-                          ]),
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.circular(15.w),
+                        // boxShadow: [
+                        //   BoxShadow(
+                        //     color: AppColors.smoothGray,
+                        //     spreadRadius: 2,
+                        //   )
+                        // ],
+                      ),
                       child: Icon(
                         Icons.arrow_back_rounded,
                         size: 21.sp,
-                        color: AppColors.darkBlue,
+                        color: AppColors.black,
                       )),
                 ),
               ),
@@ -69,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: GoogleFonts.calistoga(
                       textStyle: TextStyle(
                         fontSize: 20.sp,
-                        color: AppColors.darkBlue,
+                        color: AppColors.black,
                       ),
                     ),
                   ),
@@ -97,20 +98,26 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
+                    fillColor: AppColors.white,
+                    filled: true,
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                       borderSide: BorderSide(
-                        color: AppColors.lGray,
+                        color: AppColors.white,
                       ),
                     ),
                     labelText: 'Email',
                     labelStyle: GoogleFonts.inter(
                       textStyle: TextStyle(
-                          color: Color(0xFFA8A8A8),
-                          fontSize: 15,
-                          fontWeight: FontWeight.w400),
+                        color: AppColors.grayB7,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
-                    prefixIcon: Icon(Icons.email, color: Color(0xFFA8A8A8)),
+                    prefixIcon: Icon(
+                      Icons.email,
+                      color: AppColors.grayCB,
+                    ),
                   ),
                 ),
               ),
@@ -132,36 +139,42 @@ class _LoginScreenState extends State<LoginScreen> {
                   obscureText: visible,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          borderSide: BorderSide(color: AppColors.lGray)),
-                      labelText: 'Password',
-                      labelStyle: GoogleFonts.inter(
-                        textStyle: TextStyle(
-                            color: Color(0xFFA8A8A8),
-                            fontSize: 15,
-                            fontWeight: FontWeight.w400),
+                    fillColor: AppColors.white,
+                    filled: true,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(
+                        color: AppColors.white,
                       ),
-                      prefixIcon: Icon(
-                        Icons.lock,
-                        color: Color(0xFFA8A8A8),
-                      ),
-                      suffixIcon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            visible = !visible;
-                          });
-                        },
-                        icon: visible
-                            ? const Icon(
-                                Icons.visibility_off,
-                                color: Color(0xFFA8A8A8),
-                              )
-                            : const Icon(
-                                Icons.remove_red_eye,
-                                color: AppColors.darkBlue,
-                              ),
-                      )),
+                    ),
+                    labelText: 'Password',
+                    labelStyle: GoogleFonts.inter(
+                      textStyle: TextStyle(
+                          color: AppColors.grayB7,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400),
+                    ),
+                    prefixIcon: Icon(
+                      Icons.lock,
+                      color: AppColors.grayCB,
+                    ),
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          visible = !visible;
+                        });
+                      },
+                      icon: visible
+                          ? const Icon(
+                              Icons.visibility_off,
+                              color: AppColors.grayCB,
+                            )
+                          : const Icon(
+                              Icons.remove_red_eye,
+                              color: AppColors.black,
+                            ),
+                    ),
+                  ),
                 ),
               ),
               SizedBox(
@@ -190,8 +203,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     "Remember me",
                     style: GoogleFonts.inter(
                       textStyle: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xFF0C002E)),
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.blue0C,
+                      ),
                     ),
                   ),
                 ],
@@ -212,9 +226,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       "Forgotten password?",
                       style: GoogleFonts.inter(
                         textStyle: TextStyle(
-                            fontSize: 12.w,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFFF10E00)),
+                          fontSize: 12.w,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFFF10E00),
+                        ),
                       ),
                     ),
                   ),
@@ -265,7 +280,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(8),
                         boxShadow: [
                           BoxShadow(
-                              color: AppColors.smoothGray, spreadRadius: 1)
+                            color: AppColors.black,
+                            spreadRadius: 1,
+                          ),
                         ]),
                     child: Icon(
                       FontAwesomeIcons.facebook,
@@ -284,7 +301,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(8),
                       boxShadow: [
                         BoxShadow(
-                          color: AppColors.smoothGray,
+                          color: AppColors.black,
                           spreadRadius: 1,
                         ),
                       ],
@@ -307,7 +324,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(8),
                         boxShadow: [
                           BoxShadow(
-                            color: AppColors.smoothGray,
+                            color: AppColors.black,
                             spreadRadius: 1,
                           )
                         ]),
@@ -344,7 +361,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         textStyle: TextStyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w600,
-                          color: AppColors.darkBlue,
+                          color: AppColors.black,
                         ),
                       ),
                     ),

@@ -25,7 +25,8 @@ class ApplyJobScreen extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.arrow_back_ios_new_rounded,
-                    size: 23.sp,
+                    size: 20.sp,
+                    color: AppColors.black,
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 80.h),
@@ -33,6 +34,7 @@ class ApplyJobScreen extends StatelessWidget {
                       "Apply Job",
                       style: GoogleFonts.inter(
                         textStyle: TextStyle(
+                          color: AppColors.blue0C,
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w700,
                         ),
@@ -53,7 +55,7 @@ class ApplyJobScreen extends StatelessWidget {
                     "First Name",
                     style: GoogleFonts.poppins(
                       textStyle: TextStyle(
-                        color: AppColors.gray,
+                        color: AppColors.gray83,
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w500,
                       ),
@@ -68,7 +70,7 @@ class ApplyJobScreen extends StatelessWidget {
                     "Last Name",
                     style: GoogleFonts.poppins(
                       textStyle: TextStyle(
-                        color: AppColors.gray,
+                        color: AppColors.gray83,
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w500,
                       ),
@@ -83,7 +85,7 @@ class ApplyJobScreen extends StatelessWidget {
                     "Email",
                     style: GoogleFonts.poppins(
                       textStyle: TextStyle(
-                        color: AppColors.gray,
+                        color: AppColors.gray83,
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w500,
                       ),
@@ -98,7 +100,7 @@ class ApplyJobScreen extends StatelessWidget {
                     "Phone Number",
                     style: GoogleFonts.poppins(
                       textStyle: TextStyle(
-                        color: AppColors.gray,
+                        color: AppColors.gray83,
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w500,
                       ),
@@ -113,7 +115,7 @@ class ApplyJobScreen extends StatelessWidget {
                     "Upload your CV",
                     style: GoogleFonts.poppins(
                       textStyle: TextStyle(
-                        color: AppColors.gray,
+                        color: AppColors.gray83,
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w500,
                       ),
@@ -150,7 +152,7 @@ class ApplyJobScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(5),
                           boxShadow: [
                             BoxShadow(
-                              color: Color(0xFFA6A6A6),
+                              color: AppColors.grayA6,
                               spreadRadius: 1.sp,
                             ),
                           ]),
@@ -160,7 +162,11 @@ class ApplyJobScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 22.h),
-            AppButton(title: "Apply", onTap: () {}),
+            AppButton(
+              title: "Apply",
+              onTap: () {},
+              color: AppColors.pink,
+            ),
             SizedBox(height: 30.h),
           ],
         ),

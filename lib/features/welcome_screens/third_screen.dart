@@ -47,13 +47,13 @@ class ThirdScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               WelcomeCircle(
-                color: AppColors.lightGray,
+                color: AppColors.grayCC,
               ),
               WelcomeCircle(
-                color: AppColors.lightGray,
+                color: AppColors.grayCC,
               ),
               WelcomeCircle(
-                color: AppColors.darkBlue,
+                color: AppColors.black,
               ),
             ],
           ),

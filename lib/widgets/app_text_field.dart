@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../core/app_colors.dart';
 
 class AppTextField extends StatelessWidget {
-  const   AppTextField({
+  const AppTextField({
     Key? key,
     required this.labelText,
     this.validator,
@@ -34,23 +34,25 @@ class AppTextField extends StatelessWidget {
         obscureText: obscureText,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
+          fillColor: AppColors.white,
+          filled: true,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.h),
             borderSide: BorderSide(
-              color: AppColors.lGray,
+              color: AppColors.white,
             ),
           ),
           labelText: labelText,
           labelStyle: GoogleFonts.poppins(
             textStyle: TextStyle(
-              color: Color(0xFFA8A8A8),
+              color:AppColors.grayB7,
               fontSize: 14.sp,
               fontWeight: FontWeight.w400,
             ),
           ),
           prefixIcon: Icon(
             icon,
-            color: Color(0xFFA8A8A8),
+            color: AppColors.grayCB,
             size: 18.sp,
           ),
           suffixIcon: suffixIcon,

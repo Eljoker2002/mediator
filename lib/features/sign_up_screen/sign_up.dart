@@ -28,7 +28,7 @@ class _SignupScreenState extends State<SignupScreen> {
     return Form(
       key: controller.formKey,
       child: Scaffold(
-        backgroundColor: AppColors.white,
+        backgroundColor: AppColors.whiteF6,
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(
@@ -75,7 +75,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       style: GoogleFonts.calistoga(
                         textStyle: TextStyle(
                           fontSize: 20.sp,
-                          color: AppColors.darkBlue,
+                          color: AppColors.black,
                         ),
                       ),
                     ),
@@ -111,11 +111,11 @@ class _SignupScreenState extends State<SignupScreen> {
                     icon: visible
                         ? Icon(
                             Icons.visibility_off,
-                            color: Color(0xFFA8A8A8),
+                            color: AppColors.grayCB,
                           )
                         : Icon(
                             Icons.remove_red_eye,
-                            color: AppColors.darkBlue,
+                            color: AppColors.red,
                           ),
                   ),
                 ),
@@ -210,7 +210,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           borderRadius: BorderRadius.circular(8),
                           boxShadow: [
                             BoxShadow(
-                              color: AppColors.smoothGray,
+                              color: AppColors.white,
                               spreadRadius: 1,
                             ),
                           ]),
@@ -231,7 +231,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         borderRadius: BorderRadius.circular(8),
                         boxShadow: [
                           BoxShadow(
-                            color: AppColors.smoothGray,
+                            color: AppColors.white,
                             spreadRadius: 1,
                           ),
                         ],
@@ -256,7 +256,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           borderRadius: BorderRadius.circular(8),
                           boxShadow: [
                             BoxShadow(
-                              color: AppColors.smoothGray,
+                              color: AppColors.white,
                               spreadRadius: 1,
                             )
                           ]),
@@ -298,7 +298,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           textStyle: TextStyle(
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w600,
-                            color: AppColors.darkBlue,
+                            color: AppColors.black,
                           ),
                         ),
                       ),

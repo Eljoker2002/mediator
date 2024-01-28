@@ -12,7 +12,7 @@ class CharacterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.whiteF6,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 44.h),
         child: Column(
@@ -23,15 +23,19 @@ class CharacterScreen extends StatelessWidget {
                   width: 24,
                   height: 24,
                   decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(color: AppColors.smoothGray, spreadRadius: 2)
-                      ]),
+                    color: AppColors.white,
+                    borderRadius: BorderRadius.circular(15.sp),
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //     color: AppColors.smoothGray,
+                    //     spreadRadius: 2,
+                    //   ),
+                    // ],
+                  ),
                   child: Icon(
                     Icons.arrow_back_rounded,
                     size: 23,
-                    color: AppColors.darkBlue,
+                    color: AppColors.black,
                   )),
             ),
             Row(
@@ -49,7 +53,7 @@ class CharacterScreen extends StatelessWidget {
                   style: GoogleFonts.calistoga(
                     textStyle: TextStyle(
                       fontSize: 20.h,
-                      color: AppColors.darkBlue,
+                      color: AppColors.black,
                     ),
                   ),
                 ),
@@ -61,7 +65,7 @@ class CharacterScreen extends StatelessWidget {
             WelcomeText(
               title: "Choose Your Character",
               height: 29.h,
-              width: 274.w,
+              width: double.infinity,
               fontSize: 24.w,
             ),
             SizedBox(
@@ -74,9 +78,10 @@ class CharacterScreen extends StatelessWidget {
                 "",
                 style: GoogleFonts.inter(
                   textStyle: TextStyle(
-                      fontSize: 13.h,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.gray),
+                    fontSize: 13.h,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.green,
+                  ),
                 ),
               ),
             ),
@@ -91,9 +96,9 @@ class CharacterScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: AppColors.white,
                     borderRadius: BorderRadius.circular(40),
-                    boxShadow: [
-                      BoxShadow(color: Color(0xFFD6D6D6), spreadRadius: 1.2),
-                    ],
+                    // boxShadow: [
+                    //   BoxShadow(color: Color(0xFFD6D6D6), spreadRadius: 1.2),
+                    // ],
                   ),
                   child: Column(
                     children: [
@@ -109,7 +114,7 @@ class CharacterScreen extends StatelessWidget {
                       WelcomeText(
                           title: "Graduate / Student",
                           height: 18.h,
-                          width: 140.w,
+                          width: double.infinity,
                           fontSize: 15.w),
                     ],
                   ),
@@ -123,9 +128,6 @@ class CharacterScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: AppColors.white,
                     borderRadius: BorderRadius.circular(40),
-                    boxShadow: [
-                      BoxShadow(color: Color(0xFFD6D6D6), spreadRadius: 1.2),
-                    ],
                   ),
                   child: Column(
                     children: [
@@ -138,10 +140,11 @@ class CharacterScreen extends StatelessWidget {
                         height: 10.h,
                       ),
                       WelcomeText(
-                          title: "Company",
-                          height: 18.h,
-                          width: 140.w,
-                          fontSize: 15.w),
+                        title: "Organization / Company",
+                        height: 18.h,
+                        width: 155.w,
+                        fontSize: 13.sp,
+                      ),
                     ],
                   ),
                 ),
