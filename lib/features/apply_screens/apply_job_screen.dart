@@ -1,6 +1,8 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:mediator/core/app_colors.dart';
 import 'package:mediator/features/complete_profile_screen/organization_profile/refactor_textformfield.dart';
 import 'package:mediator/widgets/app_button.dart';
@@ -106,9 +108,30 @@ class ApplyJobScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  RefactorTextFormField(
-                    changeHeight: true,
-                    height: 38.h,
+                  IntlPhoneField(
+                    flagsButtonPadding: EdgeInsets.symmetric(horizontal: 15),
+                    showDropdownIcon:false,
+                    disableLengthCheck: true,
+                    style: GoogleFonts.poppins(
+                      textStyle: TextStyle(
+                        color: AppColors.grayB7,
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    decoration: InputDecoration(
+                     enabledBorder: OutlineInputBorder(
+                       borderRadius: BorderRadius.circular(8),
+                       borderSide: BorderSide(
+                          color: Color(0xFFF5F5F5),
+                        ),
+                      ),
+                    ),
+                    initialCountryCode: 'EG',
+                    
+                    onChanged: (phone) {
+                      print(phone.completeNumber);
+                    },
                   ),
                   SizedBox(height: 22.h),
                   Text(

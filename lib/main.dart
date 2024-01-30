@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'features/apply_screens/apply_job_screen.dart';
 import 'features/character_screen/character.dart';
+import 'features/chats screen/screen1.dart';
 import 'features/complete_profile_screen/organization_profile/organization_profile.dart';
 import 'features/complete_profile_screen/user_profile/screen.dart';
 import 'features/home_screen/screen.dart';
 import 'features/log_in_screen/log_in.dart';
-import 'features/notification_screen/screen.dart';
 import 'features/sign_up_screen/sign_up.dart';
 import 'features/verification_code_screen/verification_code.dart';
 import 'features/welcome_screens/first_screen.dart';
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         return child!;
       },
       debugShowCheckedModeBanner: false,
-      home: NotificationScreen(),
+      home:Screen1(),
     );
   }
 }
