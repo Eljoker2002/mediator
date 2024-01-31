@@ -75,7 +75,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     final notification = controller.notification[index];
-                    return GorA(
+                    return ChooseFromTop(
                       onTap: () {
                         setState(() {
                           controller.selectedNotification = notification;
@@ -84,6 +84,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       text: controller.notification[index].text,
                       isSelected:
                           controller.selectedNotification == notification,
+                      width: 186.w,
+                      fontSize: 15.sp,
                     );
                   },
                 ),

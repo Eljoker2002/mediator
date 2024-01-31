@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'features/apply_screens/apply_job_screen.dart';
 import 'features/character_screen/character.dart';
-import 'features/chats screen/screen1.dart';
+import 'features/chats_screen/screen1.dart';
 import 'features/complete_profile_screen/organization_profile/organization_profile.dart';
 import 'features/complete_profile_screen/user_profile/screen.dart';
 import 'features/home_screen/screen.dart';

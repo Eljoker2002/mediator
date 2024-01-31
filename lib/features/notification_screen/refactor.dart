@@ -4,16 +4,20 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/app_colors.dart';
 
-class GorA extends StatelessWidget {
+class ChooseFromTop extends StatelessWidget {
   final String text;
   final bool isSelected;
   final Function()? onTap;
+  final double width;
+  final double fontSize;
 
-  const GorA({
+  const ChooseFromTop({
     super.key,
     required this.text,
     this.isSelected = false,
     this.onTap,
+    required this.width,
+    required this.fontSize,
   });
 
   @override
@@ -26,7 +30,7 @@ class GorA extends StatelessWidget {
             text,
             style: GoogleFonts.poppins(
               textStyle: TextStyle(
-                fontSize: 15.sp,
+                fontSize: fontSize,
                 fontWeight: FontWeight.w600,
                 color: isSelected ? AppColors.blue3D : AppColors.grayA8,
               ),
@@ -34,8 +38,8 @@ class GorA extends StatelessWidget {
           ),
           SizedBox(height: 12.h),
           Container(
-            height: 4.h,
-            width: 160.w,
+            height: 2.h,
+            width: width,
             color: isSelected ? AppColors.blue3D : AppColors.grayA8,
           ),
         ],
