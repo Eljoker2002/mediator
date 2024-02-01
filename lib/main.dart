@@ -7,6 +7,7 @@ import 'features/complete_profile_screen/organization_profile/organization_profi
 import 'features/complete_profile_screen/user_profile/screen.dart';
 import 'features/home_screen/screen.dart';
 import 'features/log_in_screen/log_in.dart';
+import 'features/notification_screen/screen.dart';
 import 'features/sign_up_screen/sign_up.dart';
 import 'features/verification_code_screen/verification_code.dart';
 import 'features/welcome_screens/first_screen.dart';

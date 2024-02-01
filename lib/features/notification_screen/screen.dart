@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediator/features/notification_screen/controller.dart';
 import 'package:mediator/features/notification_screen/refactor.dart';
+import 'package:mediator/features/notification_screen/refactor_app.dart';
 
 import '../../core/app_colors.dart';
 
@@ -24,82 +25,91 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Padding(
-          padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 18.w),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      width: 24.sp,
-                      height: 24.sp,
-                      decoration: BoxDecoration(
-                        color: AppColors.white,
-                        borderRadius: BorderRadius.circular(15.sp),
-                        boxShadow: [
-                          BoxShadow(
-                            color: AppColors.grayB8,
-                            spreadRadius: 1.sp,
-                          ),
-                        ],
-                      ),
-                      child: Icon(
-                        Icons.arrow_back_rounded,
-                        size: 22.sp,
-                        color: AppColors.blue0C,
-                      ),
+    return Scaffold(
+      backgroundColor: AppColors.whiteF6,
+      body: Padding(
+        padding: EdgeInsets.only(top: 45.h, left: 18.w, right: 18.w),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                    width: 24.sp,
+                    height: 24.sp,
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                      borderRadius: BorderRadius.circular(15.sp),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.grayB8,
+                          spreadRadius: 1.sp,
+                        ),
+                      ],
+                    ),
+                    child: Icon(
+                      Icons.arrow_back_rounded,
+                      size: 22.sp,
+                      color: AppColors.blue0C,
                     ),
                   ),
-                  SizedBox(width: 23.w),
-                  Text(
-                    "Notification",
-                    style: GoogleFonts.inter(
-                      textStyle: TextStyle(
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.blue0C,
-                      ),
+                ),
+                SizedBox(width: 23.w),
+                Text(
+                  "Notification",
+                  style: GoogleFonts.inter(
+                    textStyle: TextStyle(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.blue0C,
                     ),
                   ),
-                ],
+                ),
+              ],
+            ),
+            SizedBox(height: 18.h),
+            SizedBox(
+              height: 34.h,
+              child: ListView.builder(
+                itemCount: controller.notification.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  final notification = controller.notification[index];
+                  return ChooseFromTop(
+                    onTap: () {
+                      setState(() {
+                        controller.selectedNotification = notification;
+                      });
+                    },
+                    text: controller.notification[index].text,
+                    isSelected: controller.selectedNotification == notification,
+                    width: 162.w,
+                    fontSize: 15.sp,
+                  );
+                },
               ),
-              SizedBox(height: 18.h),
-              SizedBox(
-                height: 38.h,
+            ),
+            SizedBox(height: 10.h),
+            if (controller.selectedNotification == controller.notification[0])
+              Expanded(
                 child: ListView.builder(
-                  itemCount: controller.notification.length,
-                  scrollDirection: Axis.horizontal,
+                  padding: EdgeInsets.zero,
+                  itemCount: 10,
+                  itemBuilder: (context, index) => GeneralNotification(),
+                ),
+              ),
+            if (controller.selectedNotification == controller.notification[1])
+              Expanded(
+                child: ListView.builder(
+                  padding: EdgeInsets.zero,
+                  itemCount: 10,
                   itemBuilder: (context, index) {
-                    final notification = controller.notification[index];
-                    return ChooseFromTop(
-                      onTap: () {
-                        setState(() {
-                          controller.selectedNotification = notification;
-                        });
-                      },
-                      text: controller.notification[index].text,
-                      isSelected:
-                          controller.selectedNotification == notification,
-                      width: 186.w,
-                      fontSize: 15.sp,
-                    );
+                    return RefactorApp();
                   },
                 ),
               ),
-              SizedBox(height: 16.h),
-              if (controller.selectedNotification == controller.notification[0])
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: 10,
-                    itemBuilder: (context, index) => GeneralNotification(),
-                  ),
-                )
-            ],
-          ),
+          ],
         ),
       ),
     );
