@@ -1,9 +1,12 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediator/features/chats_screen/controller.dart';
 import 'package:mediator/features/home_screen/screen.dart';
 import 'package:mediator/features/notification_screen/refactor.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../core/app_colors.dart';
 
@@ -16,7 +19,9 @@ class Screen1 extends StatefulWidget {
 
 class _Screen1State extends State<Screen1> {
   int currentIndex = 0;
-  final List<Widget> screens = [];
+  final List<Widget> screens = [
+
+  ];
   final ChatsController controller = ChatsController();
 
   @override
@@ -28,7 +33,7 @@ class _Screen1State extends State<Screen1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.grayDE,
+     // backgroundColor: AppColors.grayDE,
       body: Stack(
         children: [
           Image(
@@ -103,19 +108,67 @@ class _Screen1State extends State<Screen1> {
                     ),
                   ),
                 if (controller.selectedChats == controller.chats[1])
-                  Expanded(
-                    child: ListView.separated(
-                      padding: EdgeInsets.zero,
-                      itemBuilder: (context, index) => chatItem(),
-                      separatorBuilder: (context, index) => SizedBox(
-                        height: 12.h,
-                      ),
-                      itemCount: 1,
-                    ),
-                  ),
+               Column(
+                 children: [
+                   SizedBox(height: 20.h),
+                   Padding(
+                     padding: EdgeInsets.only(right: 18.w,left: 10.w),
+                     child: Container(
+                       child: Padding(
+                         padding:EdgeInsets.only(top: 12.h,left:45.w),
+                         child: Text("New Community",style: GoogleFonts.poppins(
+                           textStyle: TextStyle(
+                             color: AppColors.black,
+                             fontSize: 14.sp,
+                             fontWeight: FontWeight.w600,
+                           ),
+                         ),),
+                       ),
+                       width: 315.w,
+                       height: 46.h,
+                       decoration: BoxDecoration(
+                         borderRadius: BorderRadius.circular(8),
+                         border: Border.all(color: AppColors.grayD6),
+                       ),
+                     ),
+                   ),
+                   SizedBox(height: 16.h),
+                   Padding(
+                     padding: EdgeInsets.only(right: 18.w,left: 7.w),
+                     child: Container(
+                       width: 310.w,
+                       height: 320.h,
+                       decoration: BoxDecoration(
+                         borderRadius: BorderRadius.circular(8),
+                         border: Border.all(color: AppColors.grayD6),
+                       ),
+                     ),
+                   )
+                 ],
+               ),
               ],
             ),
           ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: AppColors.grayDE,
+        unselectedItemColor: AppColors.grayB8,
+        selectedItemColor: AppColors.black,
+        currentIndex: currentIndex,
+        onTap: (index){
+          print(index);
+          setState(() {
+            currentIndex=index;
+          });
+        },
+        items: const[
+          BottomNavigationBarItem(icon: Icon(CupertinoIcons.house_fill),label:"Home" ),
+          BottomNavigationBarItem(icon: Icon(CupertinoIcons.multiply_square_fill),label: "saved"),
+          BottomNavigationBarItem(icon:Icon(CupertinoIcons.bag_fill),label: "Application"),
+          BottomNavigationBarItem(icon: Icon(CupertinoIcons.chat_bubble_text_fill),label: "Message"),
+          BottomNavigationBarItem(icon: Icon(CupertinoIcons.person_solid),label: "Profile"),
+
         ],
       ),
     );
