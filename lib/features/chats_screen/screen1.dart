@@ -100,13 +100,14 @@ class _Screen1State extends State<Screen1> {
                   Expanded(
                     child: ListView.separated(
                       padding: EdgeInsets.zero,
-                      itemBuilder: (context, index) => chatItem(),
+                      itemBuilder: (context, index) => chatItem1(),
                       separatorBuilder: (context, index) => SizedBox(
                         height: 12.h,
                       ),
                       itemCount: 10,
                     ),
                   ),
+
                 if (controller.selectedChats == controller.chats[1])
                Column(
                  children: [
@@ -146,6 +147,18 @@ class _Screen1State extends State<Screen1> {
                    )
                  ],
                ),
+                if (controller.selectedChats == controller.chats[2])
+                  Expanded(
+                    child: ListView.separated(
+                      padding: EdgeInsets.zero,
+                      itemBuilder: (context, index) => chatItem2(),
+                      separatorBuilder: (context, index) => SizedBox(
+                        height: 12.h,
+                      ),
+                      itemCount: 10,
+                    ),
+                  ),
+
               ],
             ),
           ),
@@ -175,10 +188,44 @@ class _Screen1State extends State<Screen1> {
   }
 }
 
-Widget chatItem() {
+Widget chatItem1() {
   return Column(
     children: [
-      Row(
+      RefactorChatItem(text2: "okay, Do you have a deal?"),
+      SizedBox(height: 10.h),
+      Divider(
+        height: 1.h,
+        color: AppColors.grayA8,
+        thickness: .5.h,
+      ),
+    ],
+  );
+}
+Widget chatItem2() {
+  return Column(
+    children: [
+      RefactorChatItem(text2: "Incoming"),
+      SizedBox(height: 10.h),
+      Divider(
+        height: 1.h,
+        color: AppColors.grayA8,
+        thickness: .5.h,
+      ),
+    ],
+  );
+}
+
+class RefactorChatItem extends StatelessWidget {
+  RefactorChatItem({
+    super.key,
+    this.text2,
+    this.icon,
+});
+  final String? text2;
+  final IconData? icon;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
         children: [
           Stack(
             alignment: AlignmentDirectional.bottomEnd,
@@ -251,8 +298,9 @@ Widget chatItem() {
               ),
               Row(
                 children: [
+                  //Icon(icon),
                   Text(
-                    "okay, Do you have a deal?",
+                    text2!,
                     style: GoogleFonts.poppins(
                       textStyle: TextStyle(
                         color: AppColors.gray83,
@@ -266,13 +314,7 @@ Widget chatItem() {
             ],
           ),
         ],
-      ),
-      SizedBox(height: 10.h),
-      Divider(
-        height: 1.h,
-        color: AppColors.grayA8,
-        thickness: .5.h,
-      ),
-    ],
-  );
+
+    );
+  }
 }
