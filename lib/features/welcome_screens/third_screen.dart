@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mediator/features/logo_screen/screen.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:mediator/features/sign_up_screen/sign_up.dart';
 import '../../core/app_colors.dart';
 import '../../core/navigator.dart';
@@ -16,15 +16,11 @@ class ThirdScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image(
-            fit: BoxFit.contain,
-            height: 375.h,
-            width: 360.w,
-            image: AssetImage(
-              "assets/images/welcom_image3.png",
-            ),
+          SvgPicture.asset(
+            "assets/images/welcome3.svg",
+            width: double.infinity,
+            height: 400.h,
           ),
           SizedBox(height: 10.h),
           WelcomeText(
