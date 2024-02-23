@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:mediator/features/welcome_screens/third_screen.dart';
 import '../../core/app_colors.dart';
 import '../../core/navigator.dart';
@@ -15,15 +16,11 @@ class SecondScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image(
-            fit: BoxFit.contain,
-            height: 375.h,
-            width: 360.w,
-            image: AssetImage(
-              "assets/images/welcom_image2.png",
-            ),
+          SvgPicture.asset(
+            "assets/images/welcome2.svg",
+            width: double.infinity,
+            height: 400.h,
           ),
           SizedBox(height: 10.h),
           WelcomeText(
@@ -40,7 +37,6 @@ class SecondScreen extends StatelessWidget {
             height: 22.h,
             fontSize: 12.w,
             fontWeight: FontWeight.w500,
-
           ),
           Spacer(),
           Row(

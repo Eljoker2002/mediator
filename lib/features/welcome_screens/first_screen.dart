@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mediator/core/app_colors.dart';
 import 'package:mediator/core/navigator.dart';
 import 'package:mediator/features/welcome_screens/second_screen.dart';
@@ -16,13 +17,10 @@ class FirstScreen extends StatelessWidget {
       backgroundColor: AppColors.white,
       body: Column(
         children: [
-          Image(
-            fit: BoxFit.contain,
-            height: 375.h,
-            width: 360.w,
-            image: AssetImage(
-              "assets/images/welcom_image1.png",
-            ),
+          SvgPicture.asset(
+            "assets/images/welcome1.svg",
+            width: double.infinity,
+            height: 400.h,
           ),
           SizedBox(height: 10.h),
           WelcomeText(

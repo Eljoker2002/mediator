@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mediator/features/complete_profile_screen/user_profile/controller.dart';
-import 'package:mediator/features/complete_profile_screen/user_profile/screen3.dart';
 import 'features/apply_screens/apply_job_screen.dart';
 import 'features/character_screen/character.dart';
 import 'features/chats_screen/screen1.dart';
@@ -34,7 +33,7 @@ class MyApp extends StatelessWidget {
         return child!;
       },
       debugShowCheckedModeBanner: false,
-      home:ProfileScreen1(),
+      home:UsreProfile(),
     );
   }
 }
