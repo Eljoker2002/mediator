@@ -32,161 +32,161 @@ class ProfileScreen1 extends StatelessWidget {
   }
 }
 
-class ProfileScreen2 extends StatelessWidget {
-  const ProfileScreen2({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.yellowFF,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            RefactoviewProfile(
-                text1: "Web developer",
-                text2: "Salah Ahmed",
-                text3: "Senior Web developer",
-                text4:"25",
-                text5: "11",
-                text6: "2",
-                text7: "Salah did a great job when meeting newcomers in the office yesterday . I’m proud of him.",
-                text8:"Sam took the extra effort to help me with my project last week. He’s a five-star team-lead !")
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class ProfileScreen3 extends StatelessWidget {
-  const ProfileScreen3({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.pinkFF,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            RefactoviewProfile(
-                text1: "Flutter developer",
-                text2: "Omar Mohamed",
-                text3: "Senior Flutter developer",
-                text4:"32",
-                text5: "18",
-                text6: "3",
-                text7: "Omar did a great job when meeting newcomers in the office yesterday . I’m proud of him.",
-                text8:"Sam took the extra effort to help me with my project last week. He’s a five-star team-lead !")
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class ProfileScreen4 extends StatelessWidget {
-  const ProfileScreen4({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.orangeFD,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            RefactoviewProfile(
-                text1: "Android developer",
-                text2: "Ali Rashed",
-                text3: "Junior Android developer",
-                text4:"47",
-                text5: "27",
-                text6: "6",
-                text7: "Ali did a great job when meeting newcomers in the office yesterday . I’m proud of him.",
-                text8:"Sam took the extra effort to help me with my project last week. He’s a five-star team-lead !")
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class ProfileScreen5 extends StatelessWidget {
-  const ProfileScreen5({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.greenEA,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            RefactoviewProfile(
-                text1: "IOS developer",
-                text2: "Mohamed Sherif",
-                text3: "Intermediate IOS developer",
-                text4:"33",
-                text5: "17",
-                text6: "3",
-                text7: "Mohamed did a great job when meeting newcomers in the office yesterday . I’m proud of him.",
-                text8:"Sam took the extra effort to help me with my project last week. He’s a five-star team-lead !")
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class ProfileScreen6 extends StatelessWidget {
-  const ProfileScreen6({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.blueBC,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            RefactoviewProfile(
-                text1: "Data Scientist",
-                text2: "Abdelrahman Kareem",
-                text3: "Junior Data Scientist",
-                text4:"44",
-                text5: "21",
-                text6: "4",
-                text7: "Abdelrahman did a great job when meeting newcomers in the office yesterday . I’m proud of him.",
-                text8:"Sam took the extra effort to help me with my project last week. He’s a five-star team-lead !")
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class ProfileScreen7 extends StatelessWidget {
-  const ProfileScreen7({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.pinkDF,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            RefactoviewProfile(
-                text1: "             AI",
-                text2: "Adel Ahmed",
-                text3: "Intermediate AI",
-                text4:"52",
-                text5: "24",
-                text6: "8",
-                text7: "Adel did a great job when meeting newcomers in the office yesterday . I’m proud of him.",
-                text8:"Sam took the extra effort to help me with my project last week. He’s a five-star team-lead !")
-          ],
-        ),
-      ),
-    );
-  }
-}
+// class ProfileScreen2 extends StatelessWidget {
+//   const ProfileScreen2({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: AppColors.yellowFF,
+//       body: SingleChildScrollView(
+//         child: Column(
+//           children: [
+//             RefactoviewProfile(
+//                 text1: "Web developer",
+//                 text2: "Salah Ahmed",
+//                 text3: "Senior Web developer",
+//                 text4:"25",
+//                 text5: "11",
+//                 text6: "2",
+//                 text7: "Salah did a great job when meeting newcomers in the office yesterday . I’m proud of him.",
+//                 text8:"Sam took the extra effort to help me with my project last week. He’s a five-star team-lead !")
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+//
+// class ProfileScreen3 extends StatelessWidget {
+//   const ProfileScreen3({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: AppColors.pinkFF,
+//       body: SingleChildScrollView(
+//         child: Column(
+//           children: [
+//             RefactoviewProfile(
+//                 text1: "Flutter developer",
+//                 text2: "Omar Mohamed",
+//                 text3: "Senior Flutter developer",
+//                 text4:"32",
+//                 text5: "18",
+//                 text6: "3",
+//                 text7: "Omar did a great job when meeting newcomers in the office yesterday . I’m proud of him.",
+//                 text8:"Sam took the extra effort to help me with my project last week. He’s a five-star team-lead !")
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+//
+// class ProfileScreen4 extends StatelessWidget {
+//   const ProfileScreen4({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: AppColors.orangeFD,
+//       body: SingleChildScrollView(
+//         child: Column(
+//           children: [
+//             RefactoviewProfile(
+//                 text1: "Android developer",
+//                 text2: "Ali Rashed",
+//                 text3: "Junior Android developer",
+//                 text4:"47",
+//                 text5: "27",
+//                 text6: "6",
+//                 text7: "Ali did a great job when meeting newcomers in the office yesterday . I’m proud of him.",
+//                 text8:"Sam took the extra effort to help me with my project last week. He’s a five-star team-lead !")
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+//
+// class ProfileScreen5 extends StatelessWidget {
+//   const ProfileScreen5({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: AppColors.greenEA,
+//       body: SingleChildScrollView(
+//         child: Column(
+//           children: [
+//             RefactoviewProfile(
+//                 text1: "IOS developer",
+//                 text2: "Mohamed Sherif",
+//                 text3: "Intermediate IOS developer",
+//                 text4:"33",
+//                 text5: "17",
+//                 text6: "3",
+//                 text7: "Mohamed did a great job when meeting newcomers in the office yesterday . I’m proud of him.",
+//                 text8:"Sam took the extra effort to help me with my project last week. He’s a five-star team-lead !")
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+//
+// class ProfileScreen6 extends StatelessWidget {
+//   const ProfileScreen6({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: AppColors.blueBC,
+//       body: SingleChildScrollView(
+//         child: Column(
+//           children: [
+//             RefactoviewProfile(
+//                 text1: "Data Scientist",
+//                 text2: "Abdelrahman Kareem",
+//                 text3: "Junior Data Scientist",
+//                 text4:"44",
+//                 text5: "21",
+//                 text6: "4",
+//                 text7: "Abdelrahman did a great job when meeting newcomers in the office yesterday . I’m proud of him.",
+//                 text8:"Sam took the extra effort to help me with my project last week. He’s a five-star team-lead !")
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+//
+// class ProfileScreen7 extends StatelessWidget {
+//   const ProfileScreen7({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: AppColors.pinkDF,
+//       body: SingleChildScrollView(
+//         child: Column(
+//           children: [
+//             RefactoviewProfile(
+//                 text1: "             AI",
+//                 text2: "Adel Ahmed",
+//                 text3: "Intermediate AI",
+//                 text4:"52",
+//                 text5: "24",
+//                 text6: "8",
+//                 text7: "Adel did a great job when meeting newcomers in the office yesterday . I’m proud of him.",
+//                 text8:"Sam took the extra effort to help me with my project last week. He’s a five-star team-lead !")
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class RefactoviewProfile extends StatelessWidget {
   final String text1;
