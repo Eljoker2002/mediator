@@ -41,7 +41,7 @@ class CompleteUserProfileScreen extends StatelessWidget {
               child: Image(
                 color: AppColors.grayA6,
                 image: AssetImage(
-                  "assets/images/profile_image.png",
+                  "assets/images/profile_image2.png",
                 ),
               ),
             ),
