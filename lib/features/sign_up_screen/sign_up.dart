@@ -115,7 +115,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           )
                         : Icon(
                             Icons.remove_red_eye,
-                            color: AppColors.gray3F,
+                            color: AppColors.gray8F,
                           ),
                   ),
                 ),

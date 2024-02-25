@@ -9,10 +9,12 @@ class AppButton extends StatelessWidget {
     required this.title,
     required this.onTap,
     this.color = AppColors.black,
+    this.radius = 48,
   }) : super(key: key);
   final String title;
   final Color color;
   final Function() onTap;
+  final double radius;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,7 +39,7 @@ class AppButton extends StatelessWidget {
           decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.all(
-              Radius.circular(48.sp),
+              Radius.circular(radius.sp),
             ),
           ),
         ),
