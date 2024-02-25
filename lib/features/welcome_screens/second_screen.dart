@@ -17,25 +17,23 @@ class SecondScreen extends StatelessWidget {
       backgroundColor: AppColors.white,
       body: Column(
         children: [
-          SvgPicture.asset(
-            "assets/images/welcome2.svg",
-            width: double.infinity,
+          Image(
             height: 400.h,
+            image: AssetImage("assets/images/welcome2.png"),
           ),
           SizedBox(height: 10.h),
           WelcomeText(
             width: 327.w,
             fontSize: 24.w,
-            title: '''We are the best job 
-            platform''',
-            height: 70.h,
+            title: "We are the best mediator platform",
+            height: 56.h,
           ),
           SizedBox(height: 15.h),
           WelcomeText2(
-            title: "We’re excited to meet you! To get started . ",
+            title: "Join Us & Explore Thousand of opportunities.",
             width: 296.w,
-            height: 22.h,
-            fontSize: 12.w,
+            height: 24.h,
+            fontSize: 12.sp,
             fontWeight: FontWeight.w500,
           ),
           Spacer(),

@@ -17,20 +17,16 @@ class ThirdScreen extends StatelessWidget {
       backgroundColor: AppColors.white,
       body: Column(
         children: [
-          SvgPicture.asset(
-            "assets/images/welcome3.svg",
-            width: double.infinity,
+          Image(
             height: 400.h,
+            image: AssetImage("assets/images/welcome3.png"),
           ),
-          SizedBox(height: 10.h),
           WelcomeText(
             width: 327.w,
             fontSize: 24.w,
-            title: '''Let’s start your career
-          with us now!''',
+            title: "Let’s start with us now!",
             height: 69.h,
           ),
-          SizedBox(height: 15.h),
           WelcomeText2(
             title: "We’re excited to meet you! To get started . ",
             width: 296.w,

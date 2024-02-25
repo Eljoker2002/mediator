@@ -23,6 +23,7 @@ class WelcomeText extends StatelessWidget {
       child: Center(
         child: Text(
           title,
+          textAlign: TextAlign.center,
           style: GoogleFonts.inter(
             textStyle: TextStyle(
               fontSize: fontSize,
@@ -58,6 +59,7 @@ class WelcomeText2 extends StatelessWidget {
       child: Center(
         child: Text(
           title,
+          textAlign: TextAlign.center,
           style: GoogleFonts.poppins(
             textStyle: TextStyle(
               color: AppColors.gray83,

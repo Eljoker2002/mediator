@@ -20,7 +20,7 @@ class AppButton extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Container(
-          height: 40.h,
+          height: 35.h,
           width: 296.w,
           child: Center(
             child: Text(

@@ -123,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(height: 16.h),
               Container(
-                height: 32.h,
+                height: 28.h,
                 child: ListView.builder(
                   itemCount: controller.home.length,
                   scrollDirection: Axis.horizontal,

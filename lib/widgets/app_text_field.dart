@@ -24,10 +24,11 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40.h,
+      height: 48.h,
       child: TextFormField(
+        maxLines: 1,
         style: TextStyle(
-          fontSize: 14.sp,
+          fontSize: 15.sp,
         ),
         onSaved: onSaved,
         validator: validator,
@@ -46,14 +47,14 @@ class AppTextField extends StatelessWidget {
           labelStyle: GoogleFonts.poppins(
             textStyle: TextStyle(
               color:AppColors.grayB7,
-              fontSize: 14.sp,
+              fontSize: 16.sp,
               fontWeight: FontWeight.w400,
             ),
           ),
           prefixIcon: Icon(
             icon,
             color: AppColors.grayCB,
-            size: 18.sp,
+            size: 20.sp,
           ),
           suffixIcon: suffixIcon,
         ),

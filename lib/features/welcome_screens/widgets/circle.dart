@@ -16,8 +16,8 @@ class WelcomeCircle extends StatelessWidget {
           Radius.circular(10),
         ),
       ),
-      width: color == AppColors.black ? 12.w : 8.w,
-      height: color == AppColors.black ? 12.h : 8.h,
+      width: color == AppColors.black ? 10.sp : 7.sp,
+      height: color == AppColors.black ? 10.sp : 7.sp,
     );
   }
 }

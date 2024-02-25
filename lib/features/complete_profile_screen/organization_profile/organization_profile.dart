@@ -38,13 +38,13 @@ class OrganizationProfile extends StatelessWidget {
               ),
             ),
             WelcomeText(
-              title: "Fill Your Profile",
+              title: "Company Profile",
               height: 24.h,
               width: 162.w,
               fontSize: 18.sp,
             ),
             SizedBox(
-              height: 40.h,
+              height: 5.h,
             ),
             Expanded(
               child: ListView(
