@@ -272,7 +272,7 @@ class RefactoviewProfile extends StatelessWidget {
         ),
         Container(
           width: double.infinity,
-          height: 450.h,
+
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
                 topRight: Radius.circular(45.sp),
@@ -557,6 +557,9 @@ class RefactoviewProfile extends StatelessWidget {
                 title: "View Profile",
                 onTap: () {},
                 color: AppColors.pink,
+              ),
+              SizedBox(
+                height: 20.h,
               ),
             ],
           ),
