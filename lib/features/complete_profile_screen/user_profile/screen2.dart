@@ -23,7 +23,7 @@ class UserProfile extends StatelessWidget {
                     borderRadius: BorderRadius.only(
                         bottomRight: Radius.circular(35.sp),
                         bottomLeft: Radius.circular(35.sp)),
-                    color: Color(0xFF919FC2),
+                    color:AppColors.blueF9,
                   ),
                 ),
                 Padding(
@@ -41,7 +41,7 @@ class UserProfile extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         radius: 50.sp,
-                        backgroundColor: Colors.white,
+                        backgroundColor: AppColors.whiteF6,
                       ),
                       Image(
                         image: AssetImage(
@@ -388,151 +388,92 @@ class UserProfile extends StatelessWidget {
                                 SizedBox(
                                   height: 6.h,
                                 ),
-                                Container(
-                                  width: 296.w,
-                                  height: 61.h,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: AppColors.grayC6),
-                                    borderRadius: BorderRadius.circular(8.sp),
-                                    color: AppColors.white,
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(12.0.sp),
-                                    child: Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Image(
-                                            image: AssetImage(
-                                          "assets/images/smarttech.png",
-                                        )),
-                                        SizedBox(
-                                          width: 11.w,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
+                                Expanded(
+                                  child: ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    itemCount: 2,
+                                    itemBuilder: (context, index){
+                                      return Padding(
+                                        padding:  EdgeInsets.only(bottom: 8.h),
+                                        child: Container(
+                                          width: 296.w,
+                                          height: 61.h,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: AppColors.grayC6),
+                                            borderRadius: BorderRadius.circular(8.sp),
+                                            color: AppColors.white,
+                                          ),
+                                          child: Padding(
+                                            padding: EdgeInsets.all(12.0.sp),
+                                            child: Row(
+                                              crossAxisAlignment:
                                               CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Android Job",
-                                              style: GoogleFonts.poppins(
-                                                textStyle: TextStyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: AppColors.black,
+                                              children: [
+                                                Image(
+                                                    image: AssetImage(
+                                                      "assets/images/smarttech.png",
+                                                    )),
+                                                SizedBox(
+                                                  width: 11.w,
                                                 ),
-                                              ),
-                                            ),
-                                            Text(
-                                              "SmartTech",
-                                              style: GoogleFonts.poppins(
-                                                textStyle: TextStyle(
-                                                  fontSize: 10.sp,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: AppColors.gray8F,
+                                                Column(
+                                                  crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      "Android Job",
+                                                      style: GoogleFonts.poppins(
+                                                        textStyle: TextStyle(
+                                                          fontSize: 11.sp,
+                                                          fontWeight: FontWeight.w600,
+                                                          color: AppColors.black,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      "SmartTech",
+                                                      style: GoogleFonts.poppins(
+                                                        textStyle: TextStyle(
+                                                          fontSize: 10.sp,
+                                                          fontWeight: FontWeight.w600,
+                                                          color: AppColors.gray8F,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      "Part Time",
+                                                      style: GoogleFonts.poppins(
+                                                        textStyle: TextStyle(
+                                                          fontSize: 10.sp,
+                                                          fontWeight: FontWeight.w600,
+                                                          color: AppColors.gray8F,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ),
-                                            ),
-                                            Text(
-                                              "Part Time",
-                                              style: GoogleFonts.poppins(
-                                                textStyle: TextStyle(
-                                                  fontSize: 10.sp,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: AppColors.gray8F,
+                                                SizedBox(width: 75.w),
+                                                Text(
+                                                  "2018 - Present",
+                                                  style: GoogleFonts.poppins(
+                                                    textStyle: TextStyle(
+                                                      fontSize: 9.sp,
+                                                      fontWeight: FontWeight.w600,
+                                                      color: AppColors.gray8F,
+                                                    ),
+                                                  ),
                                                 ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(width: 75.w),
-                                        Text(
-                                          "2018 - Present",
-                                          style: GoogleFonts.poppins(
-                                            textStyle: TextStyle(
-                                              fontSize: 9.sp,
-                                              fontWeight: FontWeight.w600,
-                                              color: AppColors.gray8F,
+                                              ],
                                             ),
                                           ),
                                         ),
-                                      ],
-                                    ),
+                                      );
+                                    }
+                                  
                                   ),
                                 ),
                                 SizedBox(height: 8.h),
-                                Container(
-                                  width: 296.w,
-                                  height: 61.h,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: AppColors.grayC6),
-                                    borderRadius: BorderRadius.circular(8.sp),
-                                    color: AppColors.white,
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(12.0.sp),
-                                    child: Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Image(
-                                            image: AssetImage(
-                                          "assets/images/track2.png",
-                                        )),
-                                        SizedBox(
-                                          width: 11.w,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Android Job",
-                                              style: GoogleFonts.poppins(
-                                                textStyle: TextStyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: AppColors.black,
-                                                ),
-                                              ),
-                                            ),
-                                            Text(
-                                              "Code Soft",
-                                              style: GoogleFonts.poppins(
-                                                textStyle: TextStyle(
-                                                  fontSize: 10.sp,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: AppColors.gray8F,
-                                                ),
-                                              ),
-                                            ),
-                                            Text(
-                                              "Full Time",
-                                              style: GoogleFonts.poppins(
-                                                textStyle: TextStyle(
-                                                  fontSize: 10.sp,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: AppColors.gray8F,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(width: 75.w),
-                                        Text(
-                                          "2015 -2018",
-                                          style: GoogleFonts.poppins(
-                                            textStyle: TextStyle(
-                                              fontSize: 9.sp,
-                                              fontWeight: FontWeight.w600,
-                                              color: AppColors.gray8F,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
+
                               ],
                             ),
                           ),
@@ -568,79 +509,91 @@ class UserProfile extends StatelessWidget {
                                 SizedBox(
                                   height: 6.h,
                                 ),
-                                Container(
-                                  width: 296.w,
-                                  height: 61.h,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: AppColors.grayC6),
-                                    borderRadius: BorderRadius.circular(8.sp),
-                                    color: AppColors.white,
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(12.0.sp),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Image(
-                                              image: AssetImage(
-                                            "assets/images/fcis.png",
-                                          )),
-                                          SizedBox(
-                                            width: 11.w,
-                                          ),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "Mansoura University",
-                                                style: GoogleFonts.poppins(
-                                                  textStyle: TextStyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: AppColors.black,
+                                Expanded(
+                                  child: ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  itemCount: 2,
+                                  itemBuilder: (context, index){
+                                    return Padding(
+                                      padding:EdgeInsets.only(bottom: 8.h),
+                                      child: Container(
+                                        width: 296.w,
+                                        height: 61.h,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: AppColors.grayC6),
+                                          borderRadius: BorderRadius.circular(8.sp),
+                                          color: AppColors.white,
+                                        ),
+                                        child: Padding(
+                                          padding: EdgeInsets.all(12.0.sp),
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              children: [
+                                                Image(
+                                                    image: AssetImage(
+                                                      "assets/images/fcis.png",
+                                                    )),
+                                                SizedBox(
+                                                  width: 11.w,
+                                                ),
+                                                Column(
+                                                  crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      "Mansoura University",
+                                                      style: GoogleFonts.poppins(
+                                                        textStyle: TextStyle(
+                                                          fontSize: 11.sp,
+                                                          fontWeight: FontWeight.w600,
+                                                          color: AppColors.black,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      "Faculty of Computer and Information Science",
+                                                      style: GoogleFonts.poppins(
+                                                        textStyle: TextStyle(
+                                                          fontSize: 10.sp,
+                                                          fontWeight: FontWeight.w600,
+                                                          color: AppColors.gray8F,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    // Text(
+                                                    //   "Part Time",
+                                                    //   style: GoogleFonts.poppins(
+                                                    //     textStyle: TextStyle(
+                                                    //       fontSize: 10.sp,
+                                                    //       fontWeight: FontWeight.w600,
+                                                    //       color: AppColors.gray8F,
+                                                    //     ),
+                                                    //   ),
+                                                    // ),
+                                                  ],
+                                                ),
+                                                SizedBox(width: 75.w),
+                                                Text(
+                                                  "2011 - 2015",
+                                                  style: GoogleFonts.poppins(
+                                                    textStyle: TextStyle(
+                                                      fontSize: 9.sp,
+                                                      fontWeight: FontWeight.w600,
+                                                      color: AppColors.gray8F,
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                              Text(
-                                                "Faculty of Computer and Information Science",
-                                                style: GoogleFonts.poppins(
-                                                  textStyle: TextStyle(
-                                                    fontSize: 10.sp,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: AppColors.gray8F,
-                                                  ),
-                                                ),
-                                              ),
-                                              // Text(
-                                              //   "Part Time",
-                                              //   style: GoogleFonts.poppins(
-                                              //     textStyle: TextStyle(
-                                              //       fontSize: 10.sp,
-                                              //       fontWeight: FontWeight.w600,
-                                              //       color: AppColors.gray8F,
-                                              //     ),
-                                              //   ),
-                                              // ),
-                                            ],
-                                          ),
-                                          SizedBox(width: 75.w),
-                                          Text(
-                                            "2011 - 2015",
-                                            style: GoogleFonts.poppins(
-                                              textStyle: TextStyle(
-                                                fontSize: 9.sp,
-                                                fontWeight: FontWeight.w600,
-                                                color: AppColors.gray8F,
-                                              ),
+                                              ],
                                             ),
                                           ),
-                                        ],
+                                        ),
                                       ),
-                                    ),
+                                    );
+                                  }
+                                  
                                   ),
                                 ),
                                 SizedBox(height: 8.h),
