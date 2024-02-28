@@ -143,16 +143,13 @@ class OrganizationJob extends StatelessWidget {
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: 30.w),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'Job description',
-                              hintStyle: GoogleFonts.poppins(
-                                textStyle: TextStyle(
-                                  fontSize: 17.sp,
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.black,
-                                ),
+                          child:  Text(
+                            "Job description",
+                            style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                                color: AppColors.black,
+                                fontSize: 17.sp,
+                                fontWeight: FontWeight.w700,
                               ),
                             ),
                           ),
@@ -178,16 +175,13 @@ class OrganizationJob extends StatelessWidget {
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: 30.w),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'Requirement',
-                              hintStyle: GoogleFonts.poppins(
-                                textStyle: TextStyle(
-                                  fontSize: 17.sp,
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.black,
-                                ),
+                          child: Text(
+                            "Requirement",
+                            style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                                color: AppColors.black,
+                                fontSize: 17.sp,
+                                fontWeight: FontWeight.w700,
                               ),
                             ),
                           ),
@@ -197,7 +191,7 @@ class OrganizationJob extends StatelessWidget {
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: 30.w),
-                          child: TextFormField(
+                          child:TextFormField(
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText:'''-Lorem Ipsum is ....''',
