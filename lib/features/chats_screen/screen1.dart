@@ -2,19 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediator/features/chats_screen/controller.dart';
-import 'package:mediator/features/home_screen/screen.dart';
 import 'package:mediator/features/notification_screen/refactor.dart';
-
 import '../../core/app_colors.dart';
 
-class Screen1 extends StatefulWidget {
-  const Screen1({super.key});
+class ChatsScreen extends StatefulWidget {
+  const ChatsScreen({super.key});
 
   @override
-  State<Screen1> createState() => _Screen1State();
+  State<ChatsScreen> createState() => _ChatsScreenState();
 }
 
-class _Screen1State extends State<Screen1> {
+class _ChatsScreenState extends State<ChatsScreen> {
   int currentIndex = 0;
   final List<Widget> screens = [];
   final ChatsController controller = ChatsController();
@@ -28,7 +26,7 @@ class _Screen1State extends State<Screen1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.grayDE,
+      backgroundColor: AppColors.whiteF6,
       body: Stack(
         children: [
           Image(
@@ -64,12 +62,13 @@ class _Screen1State extends State<Screen1> {
                     ),
                   ],
                 ),
-                SizedBox(height: 14.h),
+                SizedBox(height: 15.h),
                 Center(
                   child: Container(
                     height: 34.h,
                     width: 318.w,
                     child: ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
                       padding: EdgeInsets.zero,
                       scrollDirection: Axis.horizontal,
                       itemCount: controller.chats.length,
@@ -164,7 +163,7 @@ Widget chatItem() {
               ),
             ],
           ),
-          SizedBox(width: 10.89.w),
+          SizedBox(width: 10.w),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -180,7 +179,7 @@ Widget chatItem() {
                       ),
                     ),
                   ),
-                  SizedBox(width: 170.29.w),
+                  SizedBox(width: 160.w),
                   Align(
                     alignment: Alignment.center,
                     child: Text(

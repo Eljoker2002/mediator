@@ -6,6 +6,7 @@ import '../core/app_colors.dart';
 class AppButton extends StatelessWidget {
   AppButton({
     Key? key,
+    this.textColor = AppColors.white,
     required this.title,
     required this.onTap,
     this.color = AppColors.black,
@@ -13,6 +14,7 @@ class AppButton extends StatelessWidget {
   }) : super(key: key);
   final String title;
   final Color color;
+  final Color textColor;
   final Function() onTap;
   final double radius;
   @override
@@ -30,7 +32,7 @@ class AppButton extends StatelessWidget {
               style: GoogleFonts.poppins(
                 textStyle: TextStyle(
                   fontSize: 16.sp,
-                  color: Colors.white,
+                  color: textColor,
                   fontWeight: FontWeight.w600,
                 ),
               ),

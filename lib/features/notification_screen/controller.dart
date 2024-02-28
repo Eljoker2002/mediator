@@ -1,11 +1,10 @@
 class NotificationController {
-
   late Notification selectedNotification;
 
   final List<Notification> notification = [
     Notification(text: "General"),
-    Notification(text: "Applications"),
     Notification(text: "Posts"),
+    Notification(text: "Applications"),
   ];
 }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mediator/features/notification_screen/comments.dart';
 import 'package:mediator/features/notification_screen/controller.dart';
 import 'package:mediator/features/notification_screen/refactor.dart';
 import 'package:mediator/features/notification_screen/refactor_app.dart';
@@ -55,6 +56,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
             SizedBox(
               height: 34.h,
               child: ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
                 itemCount: controller.notification.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
@@ -67,7 +69,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     },
                     text: controller.notification[index].text,
                     isSelected: controller.selectedNotification == notification,
-                    width: 162.w,
+                    width: 109.w,
                     fontSize: 15.sp,
                   );
                 },
@@ -83,6 +85,16 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 ),
               ),
             if (controller.selectedNotification == controller.notification[1])
+              Expanded(
+                child: ListView.builder(
+                  padding: EdgeInsets.zero,
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return CommentScreen();
+                  },
+                ),
+              ),
+            if (controller.selectedNotification == controller.notification[2])
               Expanded(
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
