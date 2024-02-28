@@ -33,29 +33,12 @@ class _NotificationScreenState extends State<NotificationScreen> {
           children: [
             Row(
               children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    width: 24.sp,
-                    height: 24.sp,
-                    decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(15.sp),
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppColors.grayB8,
-                          spreadRadius: 1.sp,
-                        ),
-                      ],
-                    ),
-                    child: Icon(
-                      Icons.arrow_back_rounded,
-                      size: 22.sp,
-                      color: AppColors.blue0C,
-                    ),
-                  ),
+                Icon(
+                  Icons.arrow_back_ios,
+                  size: 18.sp,
+                  color: AppColors.blue0C,
                 ),
-                SizedBox(width: 23.w),
+                SizedBox(width: 102.w),
                 Text(
                   "Notification",
                   style: GoogleFonts.inter(

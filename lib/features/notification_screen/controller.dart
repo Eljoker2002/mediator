@@ -5,6 +5,7 @@ class NotificationController {
   final List<Notification> notification = [
     Notification(text: "General"),
     Notification(text: "Applications"),
+    Notification(text: "Posts"),
   ];
 }
 

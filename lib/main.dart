@@ -13,7 +13,9 @@ import 'features/complete_profile_screen/user_profile/screen.dart';
 import 'features/complete_profile_screen/user_profile/screen2.dart';
 import 'features/enroll_courses/enroll_courses.dart';
 import 'features/home_screen/screen.dart';
+import 'features/job_view_screen/organization_screen.dart';
 import 'features/log_in_screen/log_in.dart';
+import 'features/notification_screen/comments.dart';
 import 'features/notification_screen/screen.dart';
 import 'features/pay_screen/card_screen.dart';
 import 'features/sign_up_screen/sign_up.dart';
@@ -38,7 +40,7 @@ class MyApp extends StatelessWidget {
         return child!;
       },
       debugShowCheckedModeBanner: false,
-      home:PostScreen(),
+      home:OrganizationJob(),
     );
   }
 }
