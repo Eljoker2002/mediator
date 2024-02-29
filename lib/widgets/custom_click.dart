@@ -8,6 +8,7 @@ class CustomClick extends StatelessWidget {
   final String text;
   final void Function()? onTap;
   final double width;
+  final Color color;
 
   CustomClick({
     super.key,
@@ -15,6 +16,7 @@ class CustomClick extends StatelessWidget {
     this.onTap,
     required this.text,
     required this.width,
+    required this.color,
   });
 
   @override
@@ -25,7 +27,7 @@ class CustomClick extends StatelessWidget {
         onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
-            color: isSelected ? AppColors.gray8F : Colors.white,
+            color: isSelected ? color : AppColors.grayE9,
             borderRadius: BorderRadius.circular(
               12.sp,
             ),
@@ -37,7 +39,7 @@ class CustomClick extends StatelessWidget {
               text,
               style: GoogleFonts.inter(
                 textStyle: TextStyle(
-                  color: isSelected ? Colors.white : AppColors.gray8F,
+                  color: isSelected ? Colors.black : AppColors.gray8F,
                   fontSize: 13.sp,
                   fontWeight: FontWeight.w700,
                 ),
