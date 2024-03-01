@@ -13,185 +13,189 @@ class ApplyJobScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-      ),
+      backgroundColor: AppColors.whiteF6,
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25.h),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.arrow_back_ios_new_rounded,
-                    size: 20.sp,
-                    color: AppColors.black,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 80.h),
-                    child: Text(
-                      "Apply Job",
-                      style: GoogleFonts.inter(
-                        textStyle: TextStyle(
-                          color: AppColors.blue0C,
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
+        child: Padding(
+          padding:EdgeInsets.only(top: 35.h),
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 25.h),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.arrow_back_ios_new_rounded,
+                      size: 20.sp,
+                      color: AppColors.black,
                     ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 53.h),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 35.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    "First Name",
-                    style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
-                        color: AppColors.gray83,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                  RefactorTextFormField(
-                    changeHeight: true,
-                    height: 38.h,
-                  ),
-                  SizedBox(height: 24.h),
-                  Text(
-                    "Last Name",
-                    style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
-                        color: AppColors.gray83,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                  RefactorTextFormField(
-                    changeHeight: true,
-                    height: 38.h,
-                  ),
-                  SizedBox(height: 24.h),
-                  Text(
-                    "Email",
-                    style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
-                        color: AppColors.gray83,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                  RefactorTextFormField(
-                    changeHeight: true,
-                    height: 38.h,
-                  ),
-                  SizedBox(height: 24.h),
-                  Text(
-                    "Phone Number",
-                    style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
-                        color: AppColors.gray83,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                  IntlPhoneField(
-                    flagsButtonPadding: EdgeInsets.symmetric(horizontal: 15),
-                    showDropdownIcon:false,
-                    disableLengthCheck: true,
-                    style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
-                        color: AppColors.grayB7,
-                        fontSize: 15.sp,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    decoration: InputDecoration(
-                     enabledBorder: OutlineInputBorder(
-                       borderRadius: BorderRadius.circular(8),
-                       borderSide: BorderSide(
-                          color: Color(0xFFF5F5F5),
-                        ),
-                      ),
-                    ),
-                    initialCountryCode: 'EG',
-                    
-                    onChanged: (phone) {
-                      print(phone.completeNumber);
-                    },
-                  ),
-                  SizedBox(height: 22.h),
-                  Text(
-                    "Upload your CV",
-                    style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
-                        color: AppColors.gray83,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 4.h),
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20.h),
-                        child: Row(children: [
-                          Icon(Icons.file_upload_outlined,
-                              size: 24.sp, color: Color(0xFF3D7DFF)),
-                          SizedBox(
-                            width: 9.w,
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 80.h),
+                      child: Text(
+                        "Apply Job",
+                        style: GoogleFonts.inter(
+                          textStyle: TextStyle(
+                            color: AppColors.blue0C,
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w700,
                           ),
-                          Text(
-                            "Add File",
-                            style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
-                                color: Color(0xFF3D7DFF),
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 53.h),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 35.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "First Name",
+                      style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                          color: AppColors.gray83,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    RefactorTextFormField(
+                      changeHeight: true,
+                      height: 38.h,
+                    ),
+                    SizedBox(height: 15.h),
+                    Text(
+                      "Last Name",
+                      style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                          color: AppColors.gray83,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    RefactorTextFormField(
+                      changeHeight: true,
+                      height: 38.h,
+                    ),
+                    SizedBox(height: 15.h),
+                    Text(
+                      "Email",
+                      style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                          color: AppColors.gray83,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    RefactorTextFormField(
+                      changeHeight: true,
+                      height: 38.h,
+                    ),
+                    SizedBox(height: 15.h),
+                    Text(
+                      "Phone Number",
+                      style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                          color: AppColors.gray83,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      color:AppColors.white ,
+                      child: IntlPhoneField(
+                        flagsButtonPadding: EdgeInsets.symmetric(horizontal: 15.w),
+                        showDropdownIcon:false,
+                        disableLengthCheck: true,
+
+                        style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                            color: AppColors.grayB7,
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        decoration: InputDecoration(
+                         enabledBorder: OutlineInputBorder(
+                           borderRadius: BorderRadius.circular(8.sp),
+                           borderSide: BorderSide(
+                              color: AppColors.white,
+                            ),
+                          ),
+                        ),
+                        initialCountryCode: 'EG',
+
+                        onChanged: (phone) {
+                          print(phone.completeNumber);
+                        },
+                      ),
+                    ),
+                    SizedBox(height: 22.h),
+                    Text(
+                      "Upload your CV",
+                      style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                          color: AppColors.gray83,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 4.h),
+                    InkWell(
+                      onTap: () {},
+                      child: Container(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20.h),
+                          child: Row(children: [
+                            Icon(Icons.file_upload_outlined,
+                                size: 24.sp,color:AppColors.blue3D,
+                            ),
+                            SizedBox(
+                              width: 9.w,
+                            ),
+                            Text(
+                              "Add File",
+                              style: GoogleFonts.poppins(
+                                textStyle: TextStyle(
+                                  color:AppColors.blue3D,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
-                          ),
-                        ]),
-                      ),
-                      width: 144.w,
-                      height: 35.h,
-                      decoration: BoxDecoration(
-                          color: AppColors.white,
-                          borderRadius: BorderRadius.circular(5),
-                          boxShadow: [
-                            BoxShadow(
-                              color: AppColors.grayA6,
-                              spreadRadius: 1.sp,
-                            ),
                           ]),
-                    ),
-                  )
-                ],
+                        ),
+                        width: 144.w,
+                        height: 35.h,
+                        decoration: BoxDecoration(
+                            color: AppColors.whiteF6,
+                            borderRadius: BorderRadius.circular(5),
+                            boxShadow: [
+                              BoxShadow(
+                                color: AppColors.grayA6,
+                                spreadRadius: 1.sp,
+                              ),
+                            ]),
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: 22.h),
-            AppButton(
-              title: "Apply",
-              onTap: () {},
-              color: AppColors.pink,
-            ),
-            SizedBox(height: 30.h),
-          ],
+              SizedBox(height: 22.h),
+              AppButton(
+                title: "Apply",
+                onTap: () {},
+                color: AppColors.pink,
+              ),
+              SizedBox(height: 30.h),
+            ],
+          ),
         ),
       ),
     );

@@ -9,12 +9,14 @@ class RefactorTextFormField extends StatelessWidget {
     this.text,
     this.icon,
     this.height,
+    this.width=double.infinity,
     this.changeHeight = false,
     this.maxLines = 1,
   });
   final String? text;
   final IconData? icon;
   final double? height;
+  final double? width;
   final bool changeHeight;
   final int maxLines;
   @override
@@ -22,7 +24,7 @@ class RefactorTextFormField extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8.h),
       child: SizedBox(
-        width: double.infinity,
+        width: width,
         height: changeHeight ? height : 40.h,
         child: TextFormField(
           maxLines: maxLines,
@@ -31,7 +33,7 @@ class RefactorTextFormField extends StatelessWidget {
             filled: true,
             fillColor: AppColors.white,
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(8.sp),
               borderSide: BorderSide(
                 color: Color(0xFFF5F5F5),
               ),
