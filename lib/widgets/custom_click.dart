@@ -22,7 +22,7 @@ class CustomClick extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 8.w),
+      padding: EdgeInsets.only(right: 7.w),
       child: InkWell(
         onTap: onTap,
         child: Container(
@@ -40,7 +40,7 @@ class CustomClick extends StatelessWidget {
               style: GoogleFonts.inter(
                 textStyle: TextStyle(
                   color: isSelected ? Colors.black : AppColors.gray8F,
-                  fontSize: 13.sp,
+                  fontSize: 11.sp,
                   fontWeight: FontWeight.w700,
                 ),
               ),

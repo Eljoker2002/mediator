@@ -61,7 +61,7 @@ class UserJob extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           textStyle: TextStyle(
                             color: AppColors.blue0C,
-                            fontSize: 22.sp,
+                            fontSize: 20.sp,
                             fontWeight: FontWeight.w700,
                           ),
                         ),

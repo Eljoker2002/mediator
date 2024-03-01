@@ -452,8 +452,8 @@ class NewCommunity extends StatelessWidget {
       backgroundColor: AppColors.whiteF6,
       body: Padding(
         padding: EdgeInsets.only(top: 45.h, right: 10.w, left: 10.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
+          padding: EdgeInsets.only(bottom: 20.h),
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -514,6 +514,17 @@ class NewCommunity extends StatelessWidget {
               padding: EdgeInsets.only(left: 10.w, top: 15.h, bottom: 10.h),
               child: LText(text: "All"),
             ),
+            Container(
+              height: 110.h,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return oneCommunity();
+                },
+              ),
+            ),
+            SizedBox(height: 10.h),
             Container(
               height: 110.h,
               child: ListView.builder(
