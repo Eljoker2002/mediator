@@ -21,6 +21,7 @@ dependencies:
   country_code_picker: ^3.0.0
   flutter_svg: ^2.0.10+1
   phosphor_flutter: ^2.0.1
+  dio: ^5.4.1
 
 
 dev_dependencies:
