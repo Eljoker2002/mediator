@@ -13,14 +13,13 @@ class DeactivateAccount extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.whiteF6,
       body: Padding(
-        padding:EdgeInsets.only(left: 25.w,top: 35.h),
+        padding:EdgeInsets.only(right: 10.w,left: 10.w,top: 35.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Icon(Icons.arrow_back_ios),
             SizedBox(height: 10.h,),
-            Padding(
-              padding:EdgeInsets.only(left: 50.w),
+            Center(
               child: Text(
                 "Deactivate Account?",
                 style: GoogleFonts.inter(
@@ -46,7 +45,7 @@ class DeactivateAccount extends StatelessWidget {
             ),
             SizedBox(height: 29.h,),
             Padding(
-        padding: EdgeInsets.only(bottom: 10.h,right: 20.w),
+        padding: EdgeInsets.only(bottom: 10.h,right: 10.w,left: 10.w),
         child: Container(
           height: 80.h,
           decoration: BoxDecoration(
