@@ -122,6 +122,103 @@ class ChatDetails extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20.h),
+                Row(
+                  children: [
+                    Container(
+                      color: AppColors.white,
+                      height: 45.h,
+                      width: 280.w,
+                      child: TextFormField(
+                        autofocus: true,
+                        maxLines: null,
+                        textAlign: TextAlign.start,
+                        decoration: InputDecoration(
+                          isDense: true,
+                          suffixIcon: Padding(
+                            padding: EdgeInsets.only(right: 10.w),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                SizedBox(width: 10.w),
+                                InkWell(
+                                  onTap: () {},
+                                  child: Image(
+                                    width: 20.w,
+                                    height: 20.w,
+                                    image: AssetImage(
+                                      "assets/images/Vector.png",
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(width: 10.w),
+                                InkWell(
+                                  onTap: () {},
+                                  child: Icon(
+                                    size: 22.sp,
+                                    Icons.camera_alt_outlined,
+                                    color: AppColors.grayA8,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          prefixIcon: InkWell(
+                            onTap: () {},
+                            child: Image(
+                              width: 20.w,
+                              height: 20.w,
+                              image: AssetImage(
+                                "assets/images/Emoji.png",
+                              ),
+                            ),
+                          ),
+                          fillColor: AppColors.white,
+                          filled: true,
+                          hintText: "Type a message ..",
+                          hintStyle: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                            fontSize: 14.sp,
+                            color: AppColors.grayA8,
+                          )),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: AppColors.white,
+                            ),
+                            borderRadius: BorderRadius.circular(
+                              8.sp,
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: AppColors.white,
+                            ),
+                            borderRadius: BorderRadius.circular(
+                              8.sp,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Spacer(),
+                    Container(
+                      child: Icon(
+                        Icons.mic,
+                        color: AppColors.white,
+                        size: 25.sp,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColors.blue3D,
+                        borderRadius: BorderRadius.circular(
+                          30.sp,
+                        ),
+                      ),
+                      width: 50.w,
+                      height: 50.w,
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20.h),
               ],
             ),
           )
