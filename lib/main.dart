@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mediator/features/notification_screen/screen2.dart';
+import 'features/chats_screen/screen1.dart';
 import 'features/notification_screen/screen3.dart';
 
 void main() {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         return child!;
       },
       debugShowCheckedModeBanner: false,
-      home:Notification2(),
+      home: ChatsScreen(),
     );
   }
 }
