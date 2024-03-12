@@ -1,9 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediator/core/navigator.dart';
-
+import 'package:mediator/features/log_in_screen/login_api.dart';
 import '../../core/app_colors.dart';
 import '../../core/validator_utils/validator_utils.dart';
 import '../../widgets/app_button.dart';
@@ -22,7 +23,15 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   bool visible = true;
   bool value = false;
+  // bool isLoading = true;
   SignUpController controller = SignUpController();
+
+  @override
+  void initState() {
+    LoginApi().getUsers();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -36,28 +45,6 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             child: Column(
               children: [
-                // Align(
-                //   alignment: Alignment.centerLeft,
-                //   child: Container(
-                //     width: 22.w,
-                //     height: 22.w,
-                //     decoration: BoxDecoration(
-                //       color: AppColors.white,
-                //       borderRadius: BorderRadius.circular(15.w),
-                //       boxShadow: [
-                //         BoxShadow(
-                //           color: AppColors.smoothGray,
-                //           spreadRadius: 2,
-                //         ),
-                //       ],
-                //     ),
-                //     child: Icon(
-                //       Icons.arrow_back_rounded,
-                //       size: 21.w,
-                //       color: AppColors.darkBlue,
-                //     ),
-                //   ),
-                // ),
                 SizedBox(height: 50.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -129,6 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Transform.scale(
                         scale: .8.sp,
                         child: Checkbox(
+                          activeColor: AppColors.blue0C,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(
                               Radius.circular(6.0),

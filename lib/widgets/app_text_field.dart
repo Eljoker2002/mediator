@@ -30,6 +30,7 @@ class AppTextField extends StatelessWidget {
         style: TextStyle(
           fontSize: 15.sp,
         ),
+        cursorHeight: 17.h,
         onSaved: onSaved,
         validator: validator,
         obscureText: obscureText,
@@ -43,10 +44,22 @@ class AppTextField extends StatelessWidget {
               color: AppColors.white,
             ),
           ),
+          focusedBorder: UnderlineInputBorder(
+            borderRadius: BorderRadius.circular(8.h),
+            borderSide: BorderSide(
+              color: AppColors.gray83,
+            ),
+          ),
+          errorBorder: UnderlineInputBorder(
+            borderRadius: BorderRadius.circular(8.h),
+            borderSide: BorderSide(
+              color: AppColors.red,
+            ),
+          ),
           labelText: labelText,
           labelStyle: GoogleFonts.poppins(
             textStyle: TextStyle(
-              color:AppColors.grayB7,
+              color: AppColors.grayB7,
               fontSize: 16.sp,
               fontWeight: FontWeight.w400,
             ),

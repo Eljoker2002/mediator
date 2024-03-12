@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mediator/core/navigator.dart';
 import 'package:mediator/features/complete_profile_screen/organization_profile/refactor_textformfield.dart';
 import 'package:mediator/features/complete_profile_screen/user_profile/controller.dart';
 import 'package:mediator/widgets/app_button.dart';
@@ -20,10 +21,13 @@ class CompleteUserProfileScreen extends StatelessWidget {
           children: [
             Row(
               children: [
-                Icon(
-                  Icons.arrow_back_rounded,
-                  size: 20.sp,
-                  color: AppColors.black,
+                InkWell(
+                  onTap: () => RouteUtils.pop(context: context),
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    size: 18.sp,
+                    color: AppColors.black,
+                  ),
                 ),
                 SizedBox(width: 65.w),
                 WelcomeText(
