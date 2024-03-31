@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mediator/features/log_in_screen/log_in.dart';
+import 'features/application_status/application_status.dart';
+import 'features/show_details/competition_details.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         return child!;
       },
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: ShowDetails(),
     );
   }
 }

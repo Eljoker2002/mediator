@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mediator/core/app_colors.dart';
@@ -60,68 +59,71 @@ class ChatDetails extends StatelessWidget {
                 SizedBox(height: 20.h),
                 Expanded(
                   child: ListView.builder(
+                    padding: EdgeInsets.zero,
                     reverse: true,
-                    itemCount: 30,
+                    itemCount: 50,
                     itemBuilder: (context, index) {
                       final isMe = index.isEven;
-                      return Column(
-                        crossAxisAlignment: isMe
-                            ? CrossAxisAlignment.end
-                            : CrossAxisAlignment.start,
-                        children: [
-                          UnconstrainedBox(
-                            child: ConstrainedBox(
-                              constraints: BoxConstraints(
-                                minWidth: 10,
-                                maxWidth: 300,
-                              ),
-                              child: Container(
-                                margin: EdgeInsets.only(top: 10.h),
-                                padding: EdgeInsets.all(10.sp),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      "Message" * (index + 1),
-                                      style: GoogleFonts.poppins(
-                                        textStyle: TextStyle(
-                                          fontSize: 12.sp,
-                                          color: isMe
-                                              ? AppColors.white
-                                              : AppColors.black,
-                                        ),
-                                      ),
-                                    ),
-                                    Align(
-                                      child: Text(
-                                        "10:00",
+                      return Padding(
+                        padding: EdgeInsets.only(bottom: 5.h),
+                        child: Column(
+                          crossAxisAlignment: isMe
+                              ? CrossAxisAlignment.end
+                              : CrossAxisAlignment.start,
+                          children: [
+                            UnconstrainedBox(
+                              child: ConstrainedBox(
+                                constraints: BoxConstraints(
+                                  minWidth: 10,
+                                  maxWidth: 300,
+                                ),
+                                child: Container(
+                                  margin: EdgeInsets.only(top: 8.h),
+                                  padding: EdgeInsets.all(10.sp),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        "Message" * (index + 1),
                                         style: GoogleFonts.poppins(
                                           textStyle: TextStyle(
-                                            fontSize: 8.sp,
+                                            fontSize: 12.sp,
                                             color: isMe
                                                 ? AppColors.white
-                                                : AppColors.grayB8,
+                                                : AppColors.black,
                                           ),
                                         ),
                                       ),
-                                      alignment: Alignment.centerRight,
-                                    ),
-                                  ],
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                ),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(6.sp),
-                                  color:
-                                      isMe ? AppColors.blue30 : AppColors.white,
+                                      Align(
+                                        child: Text(
+                                          "10:00",
+                                          style: GoogleFonts.poppins(
+                                            textStyle: TextStyle(
+                                              fontSize: 8.sp,
+                                              color: isMe
+                                                  ? AppColors.white
+                                                  : AppColors.grayB8,
+                                            ),
+                                          ),
+                                        ),
+                                        alignment: Alignment.centerRight,
+                                      ),
+                                    ],
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(6.sp),
+                                    color:
+                                        isMe ? AppColors.blue30 : AppColors.white,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       );
                     },
                   ),
                 ),
-                SizedBox(height: 20.h),
                 Row(
                   children: [
                     Container(
@@ -175,7 +177,7 @@ class ChatDetails extends StatelessWidget {
                           ),
                           fillColor: AppColors.white,
                           filled: true,
-                          hintText: "Type a message ..",
+                          hintText: "Type a message...",
                           hintStyle: GoogleFonts.poppins(
                               textStyle: TextStyle(
                             fontSize: 14.sp,
@@ -218,7 +220,7 @@ class ChatDetails extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 20.h),
+                SizedBox(height: 8.h),
               ],
             ),
           )

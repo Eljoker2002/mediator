@@ -30,6 +30,23 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: NavigationBar(
+          backgroundColor: AppColors.white,
+          indicatorColor: AppColors.white,
+          destinations: [
+            NavigationDestination(
+              icon: Icon(
+                Icons.home,
+                color: AppColors.grayB8,
+              ),
+              label: "Home",
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.abc_sharp),
+              label: "Applications",
+            ),
+          ],
+        ),
         body: Padding(
           padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 14.w),
           child: Column(

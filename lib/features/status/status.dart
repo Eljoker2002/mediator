@@ -43,7 +43,7 @@ class _StatusState extends State<Status> {
           ),
           SizedBox(height: 5.h),
           Padding(
-            padding: EdgeInsets.only(right: 55.w),
+            padding: EdgeInsets.only(right: 75.w),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [

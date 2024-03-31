@@ -31,7 +31,8 @@ class FirstScreen extends StatelessWidget {
           ),
           SizedBox(height: 15.h),
           WelcomeText2(
-            title: "We’re a professional network platform that focus on business and employment . ",
+            title:
+                "We’re a professional network platform that focus on business and employment . ",
             width: 296.w,
             height: 40.h,
             fontSize: 12.sp,

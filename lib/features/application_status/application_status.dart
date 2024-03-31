@@ -156,7 +156,7 @@ class ApplicationStatus extends StatelessWidget {
             ),
           ),
         ],
-      ) ,
+      ),
     );
   }
 }

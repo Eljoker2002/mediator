@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    LoginApi().getUsers();
+    // LoginApi().getUsers();
     super.initState();
   }
 
@@ -50,13 +50,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image(
-                      height: 48.w,
+                      height: 45.w,
                       width: 48.w,
                       fit: BoxFit.fill,
                       image: AssetImage(
                         "assets/images/logo.png",
                       ),
                     ),
+                    SizedBox(width: 10.w),
                     Text(
                       "Mediator",
                       style: GoogleFonts.calistoga(

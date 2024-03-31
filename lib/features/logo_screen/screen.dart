@@ -33,12 +33,14 @@ class _LogoScreenState extends State<LogoScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image(
-              height: 72.h,
-              width: 72.w,
+              height: 50.h,
+              width: 50.w,
+              fit: BoxFit.fill,
               image: AssetImage(
                 "assets/images/logo.png",
               ),
             ),
+            SizedBox(width: 10.w),
             Text(
               "Mediator",
               style: GoogleFonts.calistoga(
