@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'features/application_status/application_status.dart';
+import 'features/chats_screen/chat_details.dart';
 import 'features/show_details/competition_details.dart';
 
 void main() {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         return child!;
       },
       debugShowCheckedModeBanner: false,
-      home: ShowDetails(),
+      home: ChatDetails(),
     );
   }
 }
