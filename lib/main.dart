@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mediator/features/verification_code_screen/new_password.dart';
-import 'package:mediator/features/verification_code_screen/password1.dart';
 import 'features/application_status/application_status.dart';
 import 'features/show_details/competition_details.dart';
 
@@ -23,7 +21,7 @@ class MyApp extends StatelessWidget {
         return child!;
       },
       debugShowCheckedModeBanner: false,
-      home: NewPassword(),
+      home: ShowDetails(),
     );
   }
 }

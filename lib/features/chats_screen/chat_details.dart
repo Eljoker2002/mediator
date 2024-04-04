@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mediator/core/app_colors.dart';
 
 class ChatDetails extends StatelessWidget {
-  const ChatDetails({Key? key}) : super(key: key);
-
+  ChatDetails({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,12 +106,14 @@ class ChatDetails extends StatelessWidget {
                                         alignment: Alignment.centerRight,
                                       ),
                                     ],
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                   ),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(6.sp),
-                                    color:
-                                        isMe ? AppColors.blue30 : AppColors.white,
+                                    color: isMe
+                                        ? AppColors.blue30
+                                        : AppColors.white,
                                   ),
                                 ),
                               ),
