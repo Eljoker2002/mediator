@@ -9,7 +9,6 @@ import 'package:mediator/features/log_in_screen/log_in.dart';
 import 'package:mediator/features/sign_up_screen/controller.dart';
 import 'package:mediator/features/welcome_screens/widgets/welcome_text.dart';
 import 'package:mediator/widgets/app_button.dart';
-
 import '../../widgets/app_text_field.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -160,7 +159,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 AppButton(
                   title: "Sign up",
                   onTap: () {
-                    controller.signup();
+                    controller.signup(context);
                   },
                 ),
                 SizedBox(
