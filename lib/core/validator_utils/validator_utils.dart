@@ -27,25 +27,33 @@ class ValidatorUtils {
     }
   }
 
-  static String? emailForLogin(String? value) {
+  static String? required(String? value) {
     {
       if (value == null || value.trim().isEmpty) {
-        return "Email required";
-      } else if (!RegExp("Ahmed-Fahmy@admin.com").hasMatch(value)) {
-        return "Invalid Email";
+        return "Please fill out this field as it is required.";
+      } else {
+        return null;
       }
-      return null;
     }
   }
 
   static String? passwordForLogin(String? value) {
     {
       if (value == null || value.trim().isEmpty) {
-        return "Password required";
-      } else if (!RegExp("123456789").hasMatch(value)) {
-        return "Wrong Password";
+        return "Password is required";
+      } else {
+        return null;
       }
-      return null;
+    }
+  }
+
+  static String? emailForLogin(String? value) {
+    {
+      if (value == null || value.trim().isEmpty) {
+        return "Email is required";
+      } else {
+        return null;
+      }
     }
   }
 }

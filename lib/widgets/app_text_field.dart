@@ -12,8 +12,10 @@ class AppTextField extends StatelessWidget {
     this.suffixIcon,
     this.obscureText = false,
     this.onSaved,
+    this.controller,
   }) : super(key: key);
 
+  final TextEditingController? controller;
   final String? Function(String?)? validator;
   final String labelText;
   final IconData? icon;
@@ -26,6 +28,7 @@ class AppTextField extends StatelessWidget {
     return Container(
       height: 48.h,
       child: TextFormField(
+        controller: controller,
         maxLines: 1,
         style: TextStyle(
           fontSize: 15.sp,

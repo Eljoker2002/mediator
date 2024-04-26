@@ -10,7 +10,7 @@ import '../../core/validator_utils/validator_utils.dart';
 import '../../widgets/app_button.dart';
 import '../../widgets/app_text_field.dart';
 import '../character_screen/character.dart';
-import '../sign_up_screen/controller.dart';
+import '../sign_up_screen/SignUpController.dart';
 import '../welcome_screens/widgets/welcome_text.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -23,15 +23,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   bool visible = true;
   bool value = false;
-  // bool isLoading = true;
-  SignUpController controller = SignUpController();
-
-  // @override
-  // void initState() {
-  //   // LoginApi().getUsers();
-  //   super.initState();
-  // }
-
+  LoginApiController controller = LoginApiController();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -78,17 +70,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 SizedBox(height: 25.h),
                 AppTextField(
-                  onSaved: (v) => controller.email = v,
+                  controller: controller.email,
                   icon: Icons.email,
                   labelText: 'Email',
-                  validator: ValidatorUtils.emailForLogin,
+                  validator: ValidatorUtils.required,
                 ),
                 SizedBox(height: 24.h),
                 AppTextField(
-                  onSaved: (v) => controller.password = v,
+                  controller: controller.password,
                   obscureText: visible,
                   icon: Icons.lock,
-                  validator: ValidatorUtils.passwordForLogin,
+                  validator: ValidatorUtils.required,
                   labelText: 'Password',
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -149,7 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 AppButton(
                   title: "Log in",
                   onTap: () {
-                    logIn();
+                    controller.getUser(context);
                   },
                 ),
                 SizedBox(
@@ -356,17 +348,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-  }
-
-  Future<void> logIn() async {
-    controller.formKey.currentState!.save();
-    if (!controller.formKey.currentState!.validate()) {
-      return;
-    }
-    print({
-      "Email": controller.email,
-      "Password": controller.password,
-    });
-    RouteUtils.push(context: context, screen: CharacterScreen());
   }
 }

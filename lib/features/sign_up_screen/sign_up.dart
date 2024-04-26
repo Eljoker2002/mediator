@@ -6,7 +6,7 @@ import 'package:mediator/core/app_colors.dart';
 import 'package:mediator/core/navigator.dart';
 import 'package:mediator/core/validator_utils/validator_utils.dart';
 import 'package:mediator/features/log_in_screen/log_in.dart';
-import 'package:mediator/features/sign_up_screen/controller.dart';
+import 'package:mediator/features/sign_up_screen/SignUpController.dart';
 import 'package:mediator/features/welcome_screens/widgets/welcome_text.dart';
 import 'package:mediator/widgets/app_button.dart';
 import '../../widgets/app_text_field.dart';
@@ -89,14 +89,14 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 SizedBox(height: 25.h),
                 AppTextField(
-                  onSaved: (v) => controller.email = v,
+                  controller: controller.email,
                   icon: Icons.email,
                   labelText: 'Email',
                   validator: ValidatorUtils.email,
                 ),
                 SizedBox(height: 24.h),
                 AppTextField(
-                  onSaved: (v) => controller.password = v,
+                  controller: controller.password,
                   obscureText: visible,
                   icon: Icons.lock,
                   validator: ValidatorUtils.password,

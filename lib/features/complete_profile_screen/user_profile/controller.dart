@@ -10,6 +10,8 @@ class UserProfileController {
   final List<Category> categories = [
     Category(title: "First Name"),
     Category(title: "Last Name"),
+    Category(title: "Email"),
+    Category(title: "Password"),
     Category(title: "Date of birth"),
     Category(title: "Gender"),
     Category(title: "Character"),
