@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mediator/core/navigator.dart';
 import 'package:mediator/features/complete_profile_screen/organization_profile/refactor_textformfield.dart';
 import 'package:mediator/features/complete_profile_screen/user_profile/controller.dart';
-import 'package:mediator/features/sign_up_screen/SignUpController.dart';
+import 'package:mediator/features/complete_profile_screen/organization_profile/SignUpController.dart';
 import 'package:mediator/widgets/app_button.dart';
 import '../../../core/app_colors.dart';
 import '../../welcome_screens/widgets/welcome_text.dart';
@@ -67,7 +67,7 @@ class CompleteUserProfileScreen extends StatelessWidget {
             AppButton(
               title: "Continue",
               onTap: () {
-                signUpController.signup(context);
+                // signUpController.signup(context);
               },
             ),
             SizedBox(height: 15.h),

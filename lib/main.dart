@@ -4,6 +4,7 @@ import 'package:mediator/features/log_in_screen/log_in.dart';
 import 'package:mediator/features/sign_up_screen/sign_up.dart';
 import 'features/application_status/application_status.dart';
 import 'features/chats_screen/chat_details.dart';
+import 'features/complete_profile_screen/organization_profile/organization_profile.dart';
 import 'features/complete_profile_screen/user_profile/screen.dart';
 import 'features/show_details/competition_details.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         return child!;
       },
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: OrganizationProfile(),
     );
   }
 }

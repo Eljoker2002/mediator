@@ -9,9 +9,11 @@ class RefactorTextFormField extends StatelessWidget {
     this.text,
     this.icon,
     this.height,
-    this.width=double.infinity,
+    this.width = double.infinity,
     this.changeHeight = false,
     this.maxLines = 1,
+    this.controller,
+    this.validator,
   });
   final String? text;
   final IconData? icon;
@@ -19,6 +21,8 @@ class RefactorTextFormField extends StatelessWidget {
   final double? width;
   final bool changeHeight;
   final int maxLines;
+  final String? Function(String?)? validator;
+  TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,9 +31,12 @@ class RefactorTextFormField extends StatelessWidget {
         width: width,
         height: changeHeight ? height : 40.h,
         child: TextFormField(
+          validator: validator,
+          controller: controller,
           maxLines: maxLines,
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 1.h ,horizontal: 15.w ),
+            contentPadding:
+                EdgeInsets.symmetric(vertical: 1.h, horizontal: 15.w),
             filled: true,
             fillColor: AppColors.white,
             enabledBorder: OutlineInputBorder(

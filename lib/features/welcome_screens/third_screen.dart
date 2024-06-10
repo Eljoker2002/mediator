@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mediator/features/log_in_screen/log_in.dart';
 import 'package:mediator/features/sign_up_screen/sign_up.dart';
 import '../../core/app_colors.dart';
 import '../../core/navigator.dart';
@@ -54,7 +55,7 @@ class ThirdScreen extends StatelessWidget {
             title: "Get Started",
             onTap: () {
               RouteUtils.pushAndRemoveAll(
-                  context: context, screen: SignupScreen());
+                  context: context, screen: LoginScreen());
             },
           ),
           SizedBox(height: 35.h),
