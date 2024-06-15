@@ -6,6 +6,7 @@ import 'package:mediator/widgets/app_button.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../core/app_colors.dart';
+import '../../widgets/person_icon.dart';
 
 class PostScreen extends StatelessWidget {
   const PostScreen({super.key});
@@ -22,10 +23,7 @@ class PostScreen extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.only(top: 27.h),
-                  child: Image(
-                      image: AssetImage(
-                    "assets/images/person-circle.png",
-                  )),
+                  child: PersonIcon(),
                 ),
                 SizedBox(width: 14.w),
                 Column(
@@ -63,10 +61,10 @@ class PostScreen extends StatelessWidget {
                 ),
                 Image(
                     image: AssetImage(
-                  "assets/images/wave_hand.png",
+                  "assets/images/twemoji_waving-hand.png",
                 )),
                 SizedBox(
-                  width: 80.w,
+                  width: 120.w,
                 ),
                 Icon(
                   Icons.search,
@@ -153,12 +151,7 @@ class PostScreen extends StatelessWidget {
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Image(
-                                  image: AssetImage(
-                                    "assets/images/person-circle.png",
-                                  ),
-                                  width: 40.sp,
-                                ),
+                                PersonIcon(),
                                 SizedBox(
                                   width: 11.w,
                                 ),

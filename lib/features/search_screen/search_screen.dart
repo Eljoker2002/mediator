@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediator/core/app_colors.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -48,10 +49,7 @@ class SearchScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(width: 150.w,),
-                        Image(
-                            image: AssetImage(
-                              "assets/images/mi_filter.png",
-                            )),
+                        Icon(FontAwesomeIcons.sliders,size: 15.sp,)
                       ],
                     ),
                   ),
@@ -118,7 +116,7 @@ class RefactorSearch extends StatelessWidget {
           SizedBox(width: 20.w,),
           Image(
               image: AssetImage(
-                "assets/images/Rectangle 334.png",
+                "assets/images/person.png",
               )),
           SizedBox(width: 10.w,),
           Padding(

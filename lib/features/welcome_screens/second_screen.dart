@@ -19,7 +19,7 @@ class SecondScreen extends StatelessWidget {
         children: [
           Image(
             height: 400.h,
-            image: AssetImage("assets/images/welcome2.png"),
+            image: AssetImage("assets/images/welcomscreen2.png"),
           ),
           SizedBox(height: 10.h),
           WelcomeText(

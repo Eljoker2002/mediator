@@ -69,7 +69,7 @@ class ShowDetails extends StatelessWidget {
                           ),
                           Divider(height: 35.h),
                           TextPoppins(
-                            fontSize: 14.sp,
+                            fontSize: 13.sp,
                             text: "Competition description",
                             color: AppColors.black,
                           ),
@@ -82,7 +82,7 @@ class ShowDetails extends StatelessWidget {
                           ),
                           SizedBox(height: 15.h),
                           TextPoppins(
-                            fontSize: 14.sp,
+                            fontSize: 13.sp,
                             text: "Requirement",
                             color: AppColors.black,
                           ),
@@ -95,7 +95,7 @@ class ShowDetails extends StatelessWidget {
                           ),
                           SizedBox(height: 20.h),
                           TextPoppins(
-                            fontSize: 14.sp,
+                            fontSize: 13.sp,
                             text: "Who applied for this competition ?",
                             color: AppColors.black,
                           ),
@@ -117,9 +117,8 @@ class ShowDetails extends StatelessWidget {
                                 Container(
                                   width: 45.w,
                                   child: Image(
-                                    color: AppColors.grayA6,
                                     image: AssetImage(
-                                      "assets/images/profile_image2.png",
+                                      "assets/images/person.png",
                                     ),
                                   ),
                                 ),

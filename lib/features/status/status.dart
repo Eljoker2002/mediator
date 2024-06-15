@@ -78,8 +78,8 @@ class _StatusState extends State<Status> {
                 ),
                 RefactorCheckboxText(
                     text1: "Looking for a jobs",
-                    text2: '''I am looking for a job and i would like to 
-accept job invitations.'''),
+                    text2: '''I am looking for a job and i would 
+like to accept job invitations.'''),
               ],
             ),
           ),

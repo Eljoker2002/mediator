@@ -41,6 +41,34 @@ class ConfirmScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
+                      width: 348.w,
+                      height: 48.h,
+                      padding: EdgeInsets.symmetric(
+                        vertical: 15.h,
+                        horizontal: 20.w,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Add Card",
+                            style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                                color: AppColors.gray6E,
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColors.grayF0,
+                        borderRadius: BorderRadius.circular(15.sp),
+                      ),
+                    ),
+                    SizedBox(height: 25.h,),
+                    Container(
                       height: 120.h,
                       padding: EdgeInsets.symmetric(
                         vertical: 15.h,

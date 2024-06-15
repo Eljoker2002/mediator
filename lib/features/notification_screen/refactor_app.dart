@@ -21,7 +21,7 @@ class RefactorApp extends StatelessWidget {
           child: Row(
             children: [
               Image(
-                image: AssetImage("assets/images/person-circle.png"),
+                image: AssetImage("assets/images/InnovaDigits.png"),
                 width: 60.w,
                 height: 50.h,
               ),

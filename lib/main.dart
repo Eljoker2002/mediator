@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mediator/features/log_in_screen/log_in.dart';
-import 'package:mediator/features/sign_up_screen/sign_up.dart';
-import 'features/application_status/application_status.dart';
-import 'features/chats_screen/chat_details.dart';
-import 'features/complete_profile_screen/organization_profile/organization_profile.dart';
-import 'features/complete_profile_screen/user_profile/screen.dart';
+import 'features/saved_screen/screen1.dart';
+import 'features/saved_screen/screen2.dart';
+import 'features/saved_screen/screen3.dart';
+import 'features/saved_screen/screen4.dart';
+import 'features/saved_screen/screen5.dart';
+import 'features/saved_screen/screen6.dart';
+import 'features/saved_screen/screen7.dart';
+import 'features/search_screen/search_screen.dart';
+import 'features/settings/company/company_settings.dart';
 import 'features/show_details/competition_details.dart';
+import 'features/status/status.dart';
+import 'features/verification_code_screen/new_password.dart';
+import 'features/verification_code_screen/password1.dart';
+import 'features/verification_code_screen/verification_code.dart';
+import 'features/welcome_screens/first_screen.dart';
+import 'features/welcome_screens/second_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,7 +35,7 @@ class MyApp extends StatelessWidget {
         return child!;
       },
       debugShowCheckedModeBanner: false,
-      home: OrganizationProfile(),
+      home:SecondScreen(),
     );
   }
 }
