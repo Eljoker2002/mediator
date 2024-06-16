@@ -4,19 +4,28 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../core/app_colors.dart';
 
 class PersonIcon extends StatelessWidget {
-  const PersonIcon({super.key});
+  final double width;
+  final double height;
+  final double size;
+
+  const PersonIcon({
+    super.key,
+    this.width = 35,
+    this.height = 35,
+    this.size = 30,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       decoration: BoxDecoration(
-          color: AppColors.grayDE,
-          borderRadius: BorderRadius.circular(20.sp)
+        color: AppColors.grayDE,
+        borderRadius: BorderRadius.circular(40.sp),
       ),
-      width: 35.sp,
-      height: 35.sp,
+      width: width.sp,
+      height: height.sp,
       child: Icon(
-        size: 30.sp,
+        size: size.sp,
         Icons.person,
         color: AppColors.grayA6,
       ),

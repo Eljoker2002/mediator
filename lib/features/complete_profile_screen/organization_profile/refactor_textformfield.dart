@@ -14,6 +14,7 @@ class RefactorTextFormField extends StatelessWidget {
     this.maxLines = 1,
     this.controller,
     this.validator,
+    this.isIcon = false,
   });
   final String? text;
   final IconData? icon;
@@ -22,6 +23,7 @@ class RefactorTextFormField extends StatelessWidget {
   final bool changeHeight;
   final int maxLines;
   final String? Function(String?)? validator;
+  final bool isIcon;
   TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
@@ -31,12 +33,13 @@ class RefactorTextFormField extends StatelessWidget {
         width: width,
         height: changeHeight ? height : 40.h,
         child: TextFormField(
+          cursorHeight: 15.h,
           validator: validator,
           controller: controller,
           maxLines: maxLines,
           decoration: InputDecoration(
             contentPadding:
-                EdgeInsets.symmetric(vertical: 1.h, horizontal: 15.w),
+                EdgeInsets.symmetric(vertical: 4.h, horizontal: 12.w),
             filled: true,
             fillColor: AppColors.white,
             enabledBorder: OutlineInputBorder(
@@ -45,11 +48,13 @@ class RefactorTextFormField extends StatelessWidget {
                 color: Color(0xFFF5F5F5),
               ),
             ),
-            suffixIcon: Icon(
-              icon,
-              size: 50,
-              color: Color(0xFFA8A8A8),
-            ),
+            suffixIcon: isIcon
+                ? Icon(
+                    icon,
+                    size: 25.sp,
+                    color: Color(0xFFA8A8A8),
+                  )
+                : null,
             labelText: text,
             labelStyle: GoogleFonts.poppins(
               textStyle: TextStyle(

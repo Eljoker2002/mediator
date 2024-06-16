@@ -16,7 +16,7 @@ class ApplyJobScreen extends StatelessWidget {
       backgroundColor: AppColors.whiteF6,
       body: SingleChildScrollView(
         child: Padding(
-          padding:EdgeInsets.only(top: 35.h),
+          padding:EdgeInsets.only(top: 40.h),
           child: Column(
             children: [
               Padding(
@@ -46,7 +46,7 @@ class ApplyJobScreen extends StatelessWidget {
               ),
               SizedBox(height: 53.h),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 35.h),
+                padding: EdgeInsets.symmetric(horizontal: 35.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -62,6 +62,7 @@ class ApplyJobScreen extends StatelessWidget {
                       ),
                     ),
                     RefactorTextFormField(
+                      isIcon: false,
                       changeHeight: true,
                       height: 38.h,
                     ),
@@ -94,6 +95,8 @@ class ApplyJobScreen extends StatelessWidget {
                     RefactorTextFormField(
                       changeHeight: true,
                       height: 38.h,
+                      isIcon: true,
+                      icon: Icons.email,
                     ),
                     SizedBox(height: 15.h),
                     Text(

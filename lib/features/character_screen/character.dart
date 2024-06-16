@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediator/core/navigator.dart';
-import 'package:mediator/widgets/app_button.dart';
-
 import '../../core/app_colors.dart';
 import '../complete_profile_screen/organization_profile/organization_profile.dart';
 import '../complete_profile_screen/user_profile/screen.dart';

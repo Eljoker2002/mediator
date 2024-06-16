@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mediator/features/search_screen/search_screen.dart';
 
 import '../../core/app_colors.dart';
 import '../../widgets/app_button.dart';
@@ -26,7 +25,7 @@ class EnrollScreen extends StatelessWidget {
               size: 18.sp,
             ),
           ),
-          SizedBox(height: 100.h),
+          SizedBox(height: 50.h),
           Expanded(
             child: Container(
               decoration: BoxDecoration(
@@ -59,8 +58,7 @@ class EnrollScreen extends StatelessWidget {
                     child: ListView(
                       padding: EdgeInsets.only(),
                       children: [
-                    
-                        SizedBox(height: 28.h),
+                        SizedBox(height: 6.h),
                         Padding(
                           padding: EdgeInsets.only(left: 30.w),
                           child: Text(
