@@ -30,23 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: NavigationBar(
-          backgroundColor: AppColors.white,
-          indicatorColor: AppColors.white,
-          destinations: [
-            NavigationDestination(
-              icon: Icon(
-                Icons.home,
-                color: AppColors.grayB8,
-              ),
-              label: "Home",
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.abc_sharp),
-              label: "Applications",
-            ),
-          ],
-        ),
         body: Padding(
           padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 14.w),
           child: Column(
@@ -78,11 +61,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           SizedBox(width: 5.w),
-                          SvgPicture.asset(
-                            "assets/images/twemoji_waving-hand.svg",
-                            width: 15.sp,
-                            height: 15.sp,
-                          ),
+                          Image(
+                              image: AssetImage(
+                            "assets/images/wave_hand.png",
+                          )),
                         ],
                       ),
                       Text(
@@ -102,11 +84,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     Icons.search,
                   ),
                   SizedBox(
-                    width: 8.w,
+                    width: 2.w,
                   ),
                   Icon(PhosphorIcons.chatCircleDots(PhosphorIconsStyle.fill)),
                   SizedBox(
-                    width: 8.w,
+                    width: 2.w,
                   ),
                   Icon(Icons.notifications),
                 ],

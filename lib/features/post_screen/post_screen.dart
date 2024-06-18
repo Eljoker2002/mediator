@@ -64,7 +64,7 @@ class PostScreen extends StatelessWidget {
                   "assets/images/twemoji_waving-hand.png",
                 )),
                 SizedBox(
-                  width: 120.w,
+                  width: 110.w,
                 ),
                 Icon(
                   Icons.search,

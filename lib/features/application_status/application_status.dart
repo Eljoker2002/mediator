@@ -143,7 +143,7 @@ class ApplicationStatus extends StatelessWidget {
                       color: AppColors.yellowFF,
                       radius: 15.sp,
                     ),
-                    SizedBox(height: 105.h,),
+                    SizedBox(height: 50.h,),
                     AppButton(
                       title: "Waiting...",
                       onTap: () {},

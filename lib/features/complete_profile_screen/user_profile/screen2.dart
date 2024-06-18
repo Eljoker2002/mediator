@@ -411,7 +411,7 @@ class UserProfile extends StatelessWidget {
                                               children: [
                                                 Image(
                                                     image: AssetImage(
-                                                      "assets/images/smarttech.png",
+                                                      "assets/images/codesoft.png",
                                                     )),
                                                 SizedBox(
                                                   width: 11.w,
