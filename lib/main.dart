@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mediator/features/log_in_screen/log_in.dart';
 import 'package:mediator/features/sign_up_screen/sign_up.dart';
+import 'package:mediator/widgets/navigation_bar.dart';
 import 'features/application_status/application_status.dart';
 import 'features/apply_screens/apply_job_screen.dart';
 import 'features/character_screen/character.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         return child!;
       },
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: MyHomePage(),
     );
   }
 }
