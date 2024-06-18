@@ -6,7 +6,7 @@
 // import 'package:mediator/core/navigator.dart';
 // import 'package:mediator/core/validator_utils/validator_utils.dart';
 // import 'package:mediator/features/log_in_screen/log_in.dart';
-// import 'package:mediator/features/sign_up_screen/SignUpController.dart';
+// import 'package:mediator/features/sign_up_screen/OrganizationSignUpController.dart';
 // import 'package:mediator/features/welcome_screens/widgets/welcome_text.dart';
 // import 'package:mediator/widgets/app_button.dart';
 // import '../../widgets/app_text_field.dart';

@@ -25,7 +25,7 @@ class SignUpController {
     }
     try {
       final response = await Dio().post(
-        "https://ae28-197-121-198-5.ngrok-free.app/api/com/register",
+        "https://mediator.hostek.xyz/api/com/register",
         options: Options(
           headers: {"Accept": "application/json"},
         ),
@@ -44,9 +44,25 @@ class SignUpController {
       RouteUtils.pushAndRemoveAll(context: context, screen: HomeScreen());
     } on DioException catch (e) {
       showSnackBar(context,
-          title: e.response?.data["message"] != "" && e.response?.data["message"] != "The password field must be at least 8 characters."
+          title: e.response?.data["message"] != "" &&
+                  e.response?.data["message"] !=
+                      "The password field must be at least 8 characters."
               ? "Email not found"
               : 'Password invalid');
+    }
+  }
+
+  Future<void> getData() async {
+    final response = await Dio().get(
+      "https://mediator.hostek.xyz/api/com/register",
+    );
+    List<dynamic> services = response.data["data"]["service"];
+    for (int i = 0; i <= services.length - 1; i++) {
+      print(services[i]);
+    }
+    List<dynamic> fields = response.data["data"]["field"];
+    for (int i = 0; i <= fields.length - 1; i++) {
+      print(fields[i]);
     }
   }
 }

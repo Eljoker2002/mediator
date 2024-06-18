@@ -6,7 +6,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:mediator/core/navigator.dart';
 import 'package:mediator/features/complete_profile_screen/organization_profile/refactor_textformfield.dart';
 import 'package:mediator/features/complete_profile_screen/user_profile/controller.dart';
-import 'package:mediator/features/complete_profile_screen/organization_profile/SignUpController.dart';
+import 'package:mediator/features/complete_profile_screen/organization_profile/OrganizationSignUpController.dart';
 import 'package:mediator/widgets/app_button.dart';
 import 'package:mediator/widgets/person_icon.dart';
 import '../../../core/app_colors.dart';

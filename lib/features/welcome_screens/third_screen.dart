@@ -6,6 +6,7 @@ import 'package:mediator/features/sign_up_screen/sign_up.dart';
 import '../../core/app_colors.dart';
 import '../../core/navigator.dart';
 import '../../widgets/app_button.dart';
+import '../character_screen/character.dart';
 import 'widgets/circle.dart';
 import 'widgets/welcome_text.dart';
 
@@ -55,7 +56,9 @@ class ThirdScreen extends StatelessWidget {
             title: "Get Started",
             onTap: () {
               RouteUtils.pushAndRemoveAll(
-                  context: context, screen: LoginScreen());
+                context: context,
+                screen: LoginScreen(),
+              );
             },
           ),
           SizedBox(height: 35.h),

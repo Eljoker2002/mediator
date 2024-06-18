@@ -78,10 +78,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           SizedBox(width: 5.w),
-                          Image(
-                              image: AssetImage(
-                            "assets/images/wave_hand.png",
-                          )),
+                          SvgPicture.asset(
+                            "assets/images/twemoji_waving-hand.svg",
+                            width: 15.sp,
+                            height: 15.sp,
+                          ),
                         ],
                       ),
                       Text(
@@ -101,11 +102,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     Icons.search,
                   ),
                   SizedBox(
-                    width: 2.w,
+                    width: 8.w,
                   ),
                   Icon(PhosphorIcons.chatCircleDots(PhosphorIconsStyle.fill)),
                   SizedBox(
-                    width: 2.w,
+                    width: 8.w,
                   ),
                   Icon(Icons.notifications),
                 ],

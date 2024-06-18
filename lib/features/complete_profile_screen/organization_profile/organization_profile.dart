@@ -1,16 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mediator/core/validator_utils/validator_utils.dart';
-import 'package:mediator/features/complete_profile_screen/organization_profile/SignUpController.dart';
+import 'package:mediator/features/complete_profile_screen/organization_profile/OrganizationSignUpController.dart';
 import 'package:mediator/features/complete_profile_screen/organization_profile/refactor_textformfield.dart';
 import '../../../core/app_colors.dart';
 import '../../../core/navigator.dart';
 import '../../../widgets/app_button.dart';
 import '../../welcome_screens/widgets/welcome_text.dart';
 
-class OrganizationProfile extends StatelessWidget {
+class OrganizationProfile extends StatefulWidget {
   OrganizationProfile({super.key});
+
+  @override
+  State<OrganizationProfile> createState() => _OrganizationProfileState();
+}
+
+class _OrganizationProfileState extends State<OrganizationProfile> {
   SignUpController controller = SignUpController();
+
+  @override
+  void initState() {
+    controller.getData();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

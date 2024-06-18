@@ -16,7 +16,7 @@ class LoginApiController {
     }
     try {
       final response = await Dio().post(
-        "https://ae28-197-121-198-5.ngrok-free.app/api/com/login",
+        "https://mediator.hostek.xyz/api/com/login",
         options: Options(
           headers: {"Accept": "application/json"},
         ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-
 import '../../../core/app_colors.dart';
 import '../../search_screen/search_screen.dart';
 import '../../welcome_screens/widgets/welcome_text.dart';

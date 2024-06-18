@@ -10,7 +10,7 @@ import '../../core/validator_utils/validator_utils.dart';
 import '../../widgets/app_button.dart';
 import '../../widgets/app_text_field.dart';
 import '../character_screen/character.dart';
-import '../complete_profile_screen/organization_profile/SignUpController.dart';
+import '../complete_profile_screen/organization_profile/OrganizationSignUpController.dart';
 import '../welcome_screens/widgets/welcome_text.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -63,10 +63,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 SizedBox(height: 25.h),
                 WelcomeText(
-                  title: "Create New Account",
+                  title: "Login",
                   height: 29.h,
                   width: 242.w,
-                  fontSize: 22.sp,
+                  fontSize: 25.sp,
                 ),
                 SizedBox(height: 25.h),
                 AppTextField(
@@ -327,7 +327,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     InkWell(
                       onTap: () => RouteUtils.push(
                         context: context,
-                        screen: LoginScreen(),
+                        screen: CharacterScreen(),
                       ),
                       child: Text(
                         "Sign up",
