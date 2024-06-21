@@ -5,6 +5,16 @@ import '../../../core/navigator.dart';
 import '../../home_screen/screen.dart';
 
 class SignUpController {
+  String ser1 = "";
+  String ser2 = "";
+  String fi1 = "";
+  String fi2 = "";
+  String fi3 = "";
+  String fi4 = "";
+  String fi5 = "";
+  String fi6 = "";
+  String fi7 = "";
+
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
@@ -56,13 +66,35 @@ class SignUpController {
     final response = await Dio().get(
       "https://mediator.hostek.xyz/api/com/register",
     );
-    List<dynamic> services = response.data["data"]["service"];
-    for (int i = 0; i <= services.length - 1; i++) {
-      print(services[i]);
-    }
-    List<dynamic> fields = response.data["data"]["field"];
-    for (int i = 0; i <= fields.length - 1; i++) {
-      print(fields[i]);
-    }
+    String service1 = response.data["data"]["service"][0]["name"];
+    ser1 = service1;
+    String service2 = response.data["data"]["service"][1]["name"];
+    ser2 = service2;
+    //..........
+    String field1 = response.data["data"]["field"][0]["name"];
+    fi1 = field1;
+    String field2 = response.data["data"]["field"][1]["name"];
+    fi2 = field2;
+    String field3 = response.data["data"]["field"][2]["name"];
+    fi3 = field3;
+    String field4 = response.data["data"]["field"][3]["name"];
+    fi4 = field4;
+    String field5 = response.data["data"]["field"][4]["name"];
+    fi5 = field5;
+    String field6 = response.data["data"]["field"][5]["name"];
+    fi6 = field6;
+    String field7 = response.data["data"]["field"][6]["name"];
+    fi7 = field7;
+
+    // List<dynamic> services = response.data["data"]["service"];
+    // for (int i = 0; i <= services.length - 1; i++) {
+    //   // print(services[i]["id"]);
+    //   namE.add(services[i]["name"]);
+    //   print(namE);
+    // }
+    // List<dynamic> fields = response.data["data"]["field"];
+    // for (int i = 0; i <= fields.length - 1; i++) {
+    //   print(fields[i]);
+    // }
   }
 }

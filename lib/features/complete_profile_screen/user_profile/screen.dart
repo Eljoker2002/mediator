@@ -8,15 +8,26 @@ import 'package:mediator/features/complete_profile_screen/organization_profile/r
 import 'package:mediator/features/complete_profile_screen/user_profile/controller.dart';
 import 'package:mediator/features/complete_profile_screen/organization_profile/OrganizationSignUpController.dart';
 import 'package:mediator/widgets/app_button.dart';
+import 'package:mediator/widgets/dialog.dart';
 import 'package:mediator/widgets/person_icon.dart';
 import '../../../core/app_colors.dart';
 import '../../welcome_screens/widgets/welcome_text.dart';
 
-class CompleteUserProfileScreen extends StatelessWidget {
+class CompleteUserProfileScreen extends StatefulWidget {
   CompleteUserProfileScreen({Key? key}) : super(key: key);
 
+  @override
+  State<CompleteUserProfileScreen> createState() =>
+      _CompleteUserProfileScreenState();
+}
+
+class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
   final UserProfileController controller = UserProfileController();
+
   final SignUpController signUpController = SignUpController();
+
+  bool? _isChecked = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,8 +108,34 @@ class CompleteUserProfileScreen extends StatelessWidget {
                   RefactorTextFormField(
                     text: "Gender",
                   ),
-                  RefactorTextFormField(
-                    text: "Character",
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8.0.h),
+                    child: InkWell(
+                      onTap: () {
+                        showAlertDialog();
+                      },
+                      child: Container(
+                        color: AppColors.white,
+                        width: double.infinity,
+                        height: 35.h,
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 12.w),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              "Character",
+                              style: GoogleFonts.poppins(
+                                textStyle: TextStyle(
+                                  color: AppColors.grayB7,
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                   RefactorTextFormField(
                     text: "Education",
@@ -176,6 +213,65 @@ class CompleteUserProfileScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  void showAlertDialog() {
+    String skill1 = "Male";
+    String skill2 = "Female";
+    bool _isChecked1 = false;
+    bool _isChecked2 = false;
+    List<bool> selected = [false, false];
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Expanded(
+          child: AlertDialog(
+            content: StatefulBuilder(
+              builder: (BuildContext context,
+                  void Function(void Function()) setState) {
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    CheckboxListTile(
+                      title: Text(skill1),
+                      value: _isChecked1,
+                      onChanged: (bool? value) {
+                        setState(() {
+                          _isChecked1 = value!;
+                          var isChecked1 = "";
+                          if (_isChecked1 == true) {
+                            isChecked1 = "$skill1";
+                          } else {
+                            isChecked1 = "";
+                          }
+                          selected[0] = _isChecked1;
+                        });
+                      },
+                    ),
+                    CheckboxListTile(
+                      title: Text(skill2),
+                      value: _isChecked2,
+                      onChanged: (bool? value) {
+                        setState(() {
+                          _isChecked2 = value!;
+                          var isChecked2 = "";
+                          if (_isChecked2 == true) {
+                            isChecked2 = "$skill2";
+                          } else {
+                            isChecked2 = "";
+                          }
+                          selected[1] = _isChecked2;
+                        });
+                      },
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 }

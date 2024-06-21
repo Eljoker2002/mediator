@@ -23,6 +23,7 @@ class _OrganizationProfileState extends State<OrganizationProfile> {
     controller.getData();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
