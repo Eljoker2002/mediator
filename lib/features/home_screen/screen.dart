@@ -61,9 +61,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           SizedBox(width: 5.w),
-                          SvgPicture.asset(
-                            "assets/images/twemoji_waving-hand.svg",
-                          ),
+                          Image(
+                              image: AssetImage(
+                            "assets/images/wave_hand.png",
+                          )),
                         ],
                       ),
                       Text(
