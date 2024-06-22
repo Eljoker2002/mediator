@@ -7,8 +7,8 @@ import 'package:mediator/core/navigator.dart';
 import 'package:mediator/features/complete_profile_screen/organization_profile/refactor_textformfield.dart';
 import 'package:mediator/features/complete_profile_screen/user_profile/controller.dart';
 import 'package:mediator/features/complete_profile_screen/organization_profile/OrganizationSignUpController.dart';
+import 'package:mediator/features/complete_profile_screen/user_profile/skills_controller_api.dart';
 import 'package:mediator/widgets/app_button.dart';
-import 'package:mediator/widgets/dialog.dart';
 import 'package:mediator/widgets/person_icon.dart';
 import '../../../core/app_colors.dart';
 import '../../welcome_screens/widgets/welcome_text.dart';
@@ -25,8 +25,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
   final UserProfileController controller = UserProfileController();
 
   final SignUpController signUpController = SignUpController();
+  final SkillsControllerApi skillsControllerApi = SkillsControllerApi();
 
-  bool? _isChecked = false;
+  String character = "Character";
+  String skills = "Skills";
 
   @override
   Widget build(BuildContext context) {
@@ -78,15 +80,6 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
             ),
             SizedBox(height: 5.h),
             Expanded(
-              // child: ListView.builder(
-              //   padding: EdgeInsets.zero,
-              //   itemBuilder: (context, index) {
-              //     return RefactorTextFormField(
-              //       text: controller.categories[index].title,
-              //     );
-              //   },
-              //   itemCount: controller.categories.length,
-              // ),
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: [
@@ -119,18 +112,27 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                         width: double.infinity,
                         height: 35.h,
                         child: Padding(
-                          padding: EdgeInsets.only(left: 12.w),
+                          padding: EdgeInsets.only(left: 12.w, right: 12.w),
                           child: Align(
                             alignment: Alignment.centerLeft,
-                            child: Text(
-                              "Character",
-                              style: GoogleFonts.poppins(
-                                textStyle: TextStyle(
-                                  color: AppColors.grayB7,
-                                  fontSize: 15.sp,
-                                  fontWeight: FontWeight.w400,
+                            child: Row(
+                              children: [
+                                Text(
+                                  character,
+                                  style: GoogleFonts.poppins(
+                                    textStyle: TextStyle(
+                                      color: AppColors.grayB7,
+                                      fontSize: 15.sp,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                Spacer(),
+                                Icon(
+                                  size: 20.sp,
+                                  FontAwesomeIcons.caretDown,
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -150,6 +152,7 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                     padding: EdgeInsets.symmetric(vertical: 8.0.h),
                     child: InkWell(
                       onTap: () {
+                        skillsControllerApi.allSkills = [];
                         showAlertDialog2();
                       },
                       child: Container(
@@ -157,18 +160,27 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                         width: double.infinity,
                         height: 35.h,
                         child: Padding(
-                          padding: EdgeInsets.only(left: 12.w),
+                          padding: EdgeInsets.only(left: 12.w, right: 12.w),
                           child: Align(
                             alignment: Alignment.centerLeft,
-                            child: Text(
-                              "Skills",
-                              style: GoogleFonts.poppins(
-                                textStyle: TextStyle(
-                                  color: AppColors.grayB7,
-                                  fontSize: 15.sp,
-                                  fontWeight: FontWeight.w400,
+                            child: Row(
+                              children: [
+                                Text(
+                                  skills,
+                                  style: GoogleFonts.poppins(
+                                    textStyle: TextStyle(
+                                      color: AppColors.grayB7,
+                                      fontSize: 15.sp,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                Spacer(),
+                                Icon(
+                                  size: 20.sp,
+                                  FontAwesomeIcons.caretDown,
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -253,66 +265,69 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
         if (index == 1) {
           _isChecked1 = !_isChecked1;
           _isChecked2 = false;
+          character = skill1;
         } else if (index == 2) {
           _isChecked2 = !_isChecked2;
           _isChecked1 = false;
+          character = skill2;
         }
+        RouteUtils.pop(context: context);
       });
     }
+
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return Expanded(
-          child: AlertDialog(
-            content: StatefulBuilder(
-              builder: (BuildContext context,
-                  void Function(void Function()) setState) {
-                return Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    CheckboxListTile(
-                      title: Text(skill1),
-                      value: _isChecked1,
-                      onChanged: (bool? value) {
-                        _updateCheckboxes(1);
-                        setState(() {
-                          _isChecked1 = value!;
-                          var isChecked1 = "";
-                          if (_isChecked1 == true) {
-                            isChecked1 = "$skill1";
-                          } else {
-                            isChecked1 = "";
-                          }
-                          selected[0] = _isChecked1;
-                        });
-                      },
-                    ),
-                    CheckboxListTile(
-                      title: Text(skill2),
-                      value: _isChecked2,
-                      onChanged: (bool? value) {
-                        _updateCheckboxes(2);
-                        setState(() {
-                          _isChecked2 = value!;
-                          var isChecked2 = "";
-                          if (_isChecked2 == true) {
-                            isChecked2 = "$skill2";
-                          } else {
-                            isChecked2 = "";
-                          }
-                          selected[1] = _isChecked2;
-                        });
-                      },
-                    ),
-                  ],
-                );
-              },
-            ),
+        return AlertDialog(
+          content: StatefulBuilder(
+            builder: (BuildContext context,
+                void Function(void Function()) setState) {
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CheckboxListTile(
+                    title: Text(skill1),
+                    value: _isChecked1,
+                    onChanged: (bool? value) {
+                      _updateCheckboxes(1);
+                      setState(() {
+                        _isChecked1 = value!;
+                        var isChecked1 = "";
+                        if (_isChecked1 == true) {
+                          isChecked1 = "$skill1";
+                        } else {
+                          isChecked1 = "";
+                        }
+                        selected[0] = _isChecked1;
+                      });
+                    },
+                  ),
+                  CheckboxListTile(
+                    title: Text(skill2),
+                    value: _isChecked2,
+                    onChanged: (bool? value) {
+                      _updateCheckboxes(2);
+                      setState(() {
+                        _isChecked2 = value!;
+                        var isChecked2 = "";
+                        if (_isChecked2 == true) {
+                          isChecked2 = "$skill2";
+                        } else {
+                          isChecked2 = "";
+                        }
+                        selected[1] = _isChecked2;
+                      });
+                    },
+                  ),
+                ],
+              );
+            },
           ),
         );
       },
     );
   }
+
   void showAlertDialog2() {
     String ski1 = "Communication";
     String ski2 = "Leadership";
@@ -327,8 +342,8 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
     String ski11 = "Time Management";
     String ski12 = "Organization";
     String ski13 = "Adaptability";
-    String ski14= "Computer literacy";
-    String ski15= "Writing";
+    String ski14 = "Computer literacy";
+    String ski15 = "Writing";
     String ski16 = "Critical thinking";
     String ski17 = "Interpersonal communication";
     String ski18 = "Marketing";
@@ -362,17 +377,41 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
     bool _isChecked22 = false;
     bool _isChecked23 = false;
 
-
-    List<bool> selected = [false, false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
+    List<bool> selected = [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ];
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return Expanded(
-          child: AlertDialog(
-            content: StatefulBuilder(
-              builder: (BuildContext context,
-                  void Function(void Function()) setState) {
-                return Column(
+        return AlertDialog(
+          content: StatefulBuilder(
+            builder: (BuildContext context,
+                void Function(void Function()) setState) {
+              return SingleChildScrollView(
+                child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     CheckboxListTile(
@@ -384,8 +423,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked1 = "";
                           if (_isChecked1 == true) {
                             isChecked1 = "$ski1";
+                            skillsControllerApi.allSkills.add(isChecked1);
                           } else {
                             isChecked1 = "";
+                            skillsControllerApi.allSkills.remove(isChecked1);
                           }
                           selected[0] = _isChecked1;
                         });
@@ -400,8 +441,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked2 = "";
                           if (_isChecked2 == true) {
                             isChecked2 = "$ski2";
+                            skillsControllerApi.allSkills.add(isChecked2);
                           } else {
                             isChecked2 = "";
+                            skillsControllerApi.allSkills.remove(isChecked2);
                           }
                           selected[1] = _isChecked2;
                         });
@@ -416,8 +459,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked3 = "";
                           if (_isChecked3 == true) {
                             isChecked3 = "$ski3";
+                            skillsControllerApi.allSkills.add(isChecked3);
                           } else {
                             isChecked3 = "";
+                            skillsControllerApi.allSkills.remove(isChecked3);
                           }
                           selected[2] = _isChecked3;
                         });
@@ -432,8 +477,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked4 = "";
                           if (_isChecked4 == true) {
                             isChecked4 = "$ski4";
+                            skillsControllerApi.allSkills.add(isChecked4);
                           } else {
                             isChecked4 = "";
+                            skillsControllerApi.allSkills.remove(isChecked4);
                           }
                           selected[3] = _isChecked4;
                         });
@@ -448,8 +495,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked5 = "";
                           if (_isChecked5 == true) {
                             isChecked5 = "$ski5";
+                            skillsControllerApi.allSkills.add(isChecked5);
                           } else {
                             isChecked5 = "";
+                            skillsControllerApi.allSkills.remove(isChecked5);
                           }
                           selected[4] = _isChecked5;
                         });
@@ -464,8 +513,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked6 = "";
                           if (_isChecked6 == true) {
                             isChecked6 = "$ski6";
+                            skillsControllerApi.allSkills.add(isChecked6);
                           } else {
                             isChecked6 = "";
+                            skillsControllerApi.allSkills.remove(isChecked6);
                           }
                           selected[5] = _isChecked6;
                         });
@@ -480,8 +531,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked7 = "";
                           if (_isChecked7 == true) {
                             isChecked7 = "$ski7";
+                            skillsControllerApi.allSkills.add(isChecked7);
                           } else {
                             isChecked7 = "";
+                            skillsControllerApi.allSkills.remove(isChecked7);
                           }
                           selected[6] = _isChecked7;
                         });
@@ -496,8 +549,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked8 = "";
                           if (_isChecked8 == true) {
                             isChecked8 = "$ski8";
+                            skillsControllerApi.allSkills.add(isChecked8);
                           } else {
                             isChecked8 = "";
+                            skillsControllerApi.allSkills.remove(isChecked8);
                           }
                           selected[7] = _isChecked8;
                         });
@@ -512,8 +567,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked9 = "";
                           if (_isChecked9 == true) {
                             isChecked9 = "$ski9";
+                            skillsControllerApi.allSkills.add(isChecked9);
                           } else {
                             isChecked9 = "";
+                            skillsControllerApi.allSkills.remove(isChecked9);
                           }
                           selected[8] = _isChecked9;
                         });
@@ -528,8 +585,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked10 = "";
                           if (_isChecked10 == true) {
                             isChecked10 = "$ski6";
+                            skillsControllerApi.allSkills.add(isChecked10);
                           } else {
                             isChecked10 = "";
+                            skillsControllerApi.allSkills.remove(isChecked10);
                           }
                           selected[9] = _isChecked10;
                         });
@@ -544,8 +603,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked11 = "";
                           if (_isChecked11 == true) {
                             isChecked11 = "$ski11";
+                            skillsControllerApi.allSkills.add(isChecked11);
                           } else {
                             isChecked11 = "";
+                            skillsControllerApi.allSkills.remove(isChecked11);
                           }
                           selected[10] = _isChecked11;
                         });
@@ -560,8 +621,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked12 = "";
                           if (_isChecked12 == true) {
                             isChecked12 = "$ski12";
+                            skillsControllerApi.allSkills.add(isChecked12);
                           } else {
                             isChecked12 = "";
+                            skillsControllerApi.allSkills.remove(isChecked12);
                           }
                           selected[11] = _isChecked12;
                         });
@@ -576,8 +639,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked13 = "";
                           if (_isChecked13 == true) {
                             isChecked13 = "$ski13";
+                            skillsControllerApi.allSkills.add(isChecked13);
                           } else {
                             isChecked13 = "";
+                            skillsControllerApi.allSkills.remove(isChecked13);
                           }
                           selected[12] = _isChecked13;
                         });
@@ -592,8 +657,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked14 = "";
                           if (_isChecked14 == true) {
                             isChecked14 = "$ski14";
+                            skillsControllerApi.allSkills.add(isChecked14);
                           } else {
                             isChecked14 = "";
+                            skillsControllerApi.allSkills.remove(isChecked14);
                           }
                           selected[13] = _isChecked14;
                         });
@@ -608,8 +675,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked15 = "";
                           if (_isChecked15 == true) {
                             isChecked15 = "$ski6";
+                            skillsControllerApi.allSkills.add(isChecked15);
                           } else {
                             isChecked15 = "";
+                            skillsControllerApi.allSkills.remove(isChecked15);
                           }
                           selected[14] = _isChecked15;
                         });
@@ -624,8 +693,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked16 = "";
                           if (_isChecked16 == true) {
                             isChecked16 = "$ski6";
+                            skillsControllerApi.allSkills.add(isChecked16);
                           } else {
                             isChecked16 = "";
+                            skillsControllerApi.allSkills.remove(isChecked16);
                           }
                           selected[15] = _isChecked16;
                         });
@@ -640,8 +711,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked17 = "";
                           if (_isChecked17 == true) {
                             isChecked17 = "$ski17";
+                            skillsControllerApi.allSkills.add(isChecked17);
                           } else {
                             isChecked17 = "";
+                            skillsControllerApi.allSkills.remove(isChecked17);
                           }
                           selected[16] = _isChecked17;
                         });
@@ -656,8 +729,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked18 = "";
                           if (_isChecked18 == true) {
                             isChecked18 = "$ski18";
+                            skillsControllerApi.allSkills.add(isChecked18);
                           } else {
                             isChecked18 = "";
+                            skillsControllerApi.allSkills.remove(isChecked18);
                           }
                           selected[17] = _isChecked18;
                         });
@@ -672,8 +747,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked19 = "";
                           if (_isChecked19 == true) {
                             isChecked19 = "$ski19";
+                            skillsControllerApi.allSkills.add(isChecked19);
                           } else {
                             isChecked19 = "";
+                            skillsControllerApi.allSkills.remove(isChecked19);
                           }
                           selected[18] = _isChecked19;
                         });
@@ -688,8 +765,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked20 = "";
                           if (_isChecked20 == true) {
                             isChecked20 = "$ski20";
+                            skillsControllerApi.allSkills.add(isChecked20);
                           } else {
                             isChecked20 = "";
+                            skillsControllerApi.allSkills.remove(isChecked20);
                           }
                           selected[19] = _isChecked20;
                         });
@@ -704,8 +783,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked21 = "";
                           if (_isChecked21 == true) {
                             isChecked21 = "$ski21";
+                            skillsControllerApi.allSkills.add(isChecked21);
                           } else {
                             isChecked21 = "";
+                            skillsControllerApi.allSkills.remove(isChecked21);
                           }
                           selected[20] = _isChecked21;
                         });
@@ -720,8 +801,10 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           var isChecked22 = "";
                           if (_isChecked22 == true) {
                             isChecked22 = "$ski22";
+                            skillsControllerApi.allSkills.add(isChecked22);
                           } else {
                             isChecked22 = "";
+                            skillsControllerApi.allSkills.remove(isChecked22);
                           }
                           selected[21] = _isChecked22;
                         });
@@ -735,20 +818,69 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                           _isChecked23 = value!;
                           var isChecked23 = "";
                           if (_isChecked23 == true) {
-                            isChecked23 = "$ski19";
+                            isChecked23 = "$ski23";
+                            skillsControllerApi.allSkills.add(isChecked23);
                           } else {
                             isChecked23 = "";
+                            skillsControllerApi.allSkills.remove(isChecked23);
                           }
                           selected[22] = _isChecked23;
                         });
                       },
                     ),
-
-
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            skillsControllerApi.sendSkills(context);
+                            RouteUtils.pop(context: context);
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15.sp),
+                              color: AppColors.green,
+                            ),
+                            width: 50.w,
+                            height: 30.h,
+                            child: Center(
+                              child: Text(
+                                "Save",
+                                style: TextStyle(
+                                  fontSize: 14.sp,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 10.w),
+                        InkWell(
+                          onTap: () {
+                            RouteUtils.pop(context: context);
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15.sp),
+                              color: AppColors.red,
+                            ),
+                            width: 50.w,
+                            height: 30.h,
+                            child: Center(
+                              child: Text(
+                                "Cancel",
+                                style: TextStyle(
+                                  fontSize: 14.sp,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
                   ],
-                );
-              },
-            ),
+                ),
+              );
+            },
           ),
         );
       },
