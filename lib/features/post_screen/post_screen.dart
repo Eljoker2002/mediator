@@ -2,31 +2,42 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mediator/features/post_screen/post_details.dart';
 import 'package:mediator/widgets/app_button.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../core/app_colors.dart';
+import '../../core/navigator.dart';
 import '../../widgets/person_icon.dart';
+import '../complete_profile_screen/organization_profile/show_company_profile.dart';
 
 class PostScreen extends StatelessWidget {
-  const PostScreen({super.key});
-
+  PostScreen({super.key, required this.name,required this.website,required this.about,required this.email});
+  String name;
+  String website='';
+  String about='';
+  String email='';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whiteF6,
       body: Padding(
-        padding: EdgeInsets.only(top: 10.h, left: 15.w),
+        padding: EdgeInsets.only(top: 10.h, left: 15.w, right: 15.w),
         child: Column(
           children: [
             Row(
               children: [
                 Padding(
                   padding: EdgeInsets.only(top: 27.h),
-                  child: PersonIcon(),
+                  child: InkWell(
+                    onTap: (){
+                      RouteUtils.pushAndRemoveAll(context: context, screen:CompanyProfileScreen(name: name,website: website,about: about,email: email,));
+                    },
+                      child: PersonIcon()),
                 ),
                 SizedBox(width: 14.w),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
                       padding: EdgeInsets.only(bottom: 5.h, top: 25.h),
@@ -42,9 +53,9 @@ class PostScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(right: 45.w),
+                      padding: EdgeInsets.only(),
                       child: Text(
-                        "NAME",
+                        name,
                         style: GoogleFonts.poppins(
                           textStyle: TextStyle(
                             fontSize: 14.sp,
@@ -64,7 +75,7 @@ class PostScreen extends StatelessWidget {
                   "assets/images/twemoji_waving-hand.png",
                 )),
                 SizedBox(
-                  width: 110.w,
+                  width: 100.w,
                 ),
                 Icon(
                   Icons.search,
@@ -82,7 +93,12 @@ class PostScreen extends StatelessWidget {
             SizedBox(
               height: 28.h,
             ),
-            Container(
+            InkWell(
+              onTap: () {
+                RouteUtils.pushAndRemoveAll(
+                    context: context, screen: PostDetails());
+              },
+              child: Container(
                 width: 302.w,
                 height: 85.h,
                 decoration: BoxDecoration(
@@ -96,22 +112,17 @@ class PostScreen extends StatelessWidget {
                           spreadRadius: 0),
                     ]),
                 child: Padding(
-                  padding: EdgeInsets.only(left: 20.w, top: 10.h),
-                  child: TextFormField(
-                    maxLines: 3,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Add your own post.',
-                      hintStyle: GoogleFonts.poppins(
-                        textStyle: TextStyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.grayA8,
-                        ),
-                      ),
-                    ),
-                  ),
-                )),
+                    padding: EdgeInsets.only(left: 20.w, top: 20.h),
+                    child: Text("Add your own post",
+                        style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.grayA8,
+                          ),
+                        ))),
+              ),
+            ),
             SizedBox(
               height: 16.h,
             ),
@@ -227,7 +238,7 @@ class PostScreen extends StatelessWidget {
                                     color: Colors.white,
                                     child: Container(
                                       height: 24.h,
-                                      width: 104.w,
+                                      width: 97.w,
                                       child: Center(
                                         child: Text(
                                           "View Profile",
