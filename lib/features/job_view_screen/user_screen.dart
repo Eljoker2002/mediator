@@ -1,17 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mediator/core/navigator.dart';
+import 'package:mediator/features/complete_profile_screen/user_profile/skills_controller_api.dart';
+import 'package:mediator/widgets/snack_bar.dart';
 
 import '../../core/app_colors.dart';
 import '../../widgets/app_button.dart';
 
 class UserJob extends StatelessWidget {
-  const UserJob({super.key});
+  String jobTitle;
+  String companyList;
+  String jobDescription;
+  String jobAddress;
+  String jobStatus;
 
+  SkillsControllerApi skillsControllerApi = SkillsControllerApi();
+
+  UserJob(
+      {super.key,
+      required this.jobTitle,
+      required this.jobStatus,
+      required this.jobDescription,
+      required this.companyList,
+      required this.jobAddress});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:  Column(
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
@@ -25,7 +41,9 @@ class UserJob extends StatelessWidget {
                   Icons.arrow_back_ios,
                   size: 18.sp,
                 ),
-                SizedBox(width: 92.w,),
+                SizedBox(
+                  width: 92.w,
+                ),
                 Text(
                   "Job View",
                   style: GoogleFonts.poppins(
@@ -50,34 +68,31 @@ class UserJob extends StatelessWidget {
                 ),
               ),
               width: double.infinity,
-              height:double.infinity,
+              height: double.infinity,
               child: Column(
                 children: [
-                  Align(
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 30.h),
-                      child: Text(
-                        "UI/UX Designer Job",
-                        style: GoogleFonts.poppins(
-                          textStyle: TextStyle(
-                            color: AppColors.blue0C,
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.w700,
-                          ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 30.h),
+                    child: Text(
+                      jobTitle,
+                      style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                          color: AppColors.blue0C,
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
                     ),
                   ),
                   Expanded(
                     child: ListView(
-                      padding: EdgeInsets.only(),
+                      padding: EdgeInsets.zero,
                       children: [
-
-                        SizedBox(height: 28.h),
+                        SizedBox(height: 20.h),
                         Padding(
-                          padding: EdgeInsets.only(left: 30.w),
+                          padding: EdgeInsets.only(left: 20.w),
                           child: Text(
-                            "2SmartTech",
+                            companyList,
                             style: GoogleFonts.poppins(
                               textStyle: TextStyle(
                                 color: AppColors.gray8F,
@@ -88,9 +103,9 @@ class UserJob extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 30.w),
+                          padding: EdgeInsets.only(left: 20.w),
                           child: Text(
-                            "Cairo , Egypt",
+                            jobStatus,
                             style: GoogleFonts.poppins(
                               textStyle: TextStyle(
                                 color: AppColors.gray8F,
@@ -101,9 +116,9 @@ class UserJob extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 30.w),
+                          padding: EdgeInsets.only(left: 20.w),
                           child: Text(
-                            "7,000 - 10,000 LE",
+                            jobAddress,
                             style: GoogleFonts.poppins(
                               textStyle: TextStyle(
                                 color: AppColors.gray8F,
@@ -113,9 +128,7 @@ class UserJob extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: 24.h,
-                        ),
+                        SizedBox(height: 15.h),
                         Center(
                           child: Container(
                             height: 1.h,
@@ -124,16 +137,16 @@ class UserJob extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 24.h,
+                          height: 12.h,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 30.w),
+                          padding: EdgeInsets.symmetric(horizontal: 20.w),
                           child: Text(
-                            "Job description",
+                            jobDescription,
                             style: GoogleFonts.poppins(
                               textStyle: TextStyle(
                                 color: AppColors.black,
-                                fontSize: 17.sp,
+                                fontSize: 12.sp,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -142,66 +155,27 @@ class UserJob extends StatelessWidget {
                         SizedBox(
                           height: 8.h,
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 30.w),
-                          child: Text(
-                            '''-Lorem Ipsum is simply dummy text of the printing and typesetting industry.   
--Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-
-    ''',
-                            style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
-                                color: AppColors.gray8F,
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 30.w),
-                          child: Text(
-                            "Requirement",
-                            style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
-                                color: AppColors.black,
-                                fontSize: 17.sp,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                        ),
                         SizedBox(
-                          height: 8.h,
+                          height: 10.h,
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 30.w),
-                          child: Text(
-                            '''-Lorem Ipsum is simply dummy text of the printing and typesetting industry.   
--Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-
-    ''',
-                            style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
-                                color: AppColors.gray8F,
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ),
-                        //
-                        SizedBox(height: 10.h,),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 30.w),
                           child: AppButton(
                             title: "Apply",
-                            onTap: () {},
+                            onTap: () {
+                              RouteUtils.pop(context: context);
+                              showSnackBar(context,
+                                  title: "Applied Successfully",
+                                  error: true,
+                                  color: AppColors.black);
+                            },
                             color: AppColors.pink,
                             radius: 12.sp,
                           ),
                         ),
-                        SizedBox(height: 30.h,)
+                        SizedBox(
+                          height: 30.h,
+                        )
                       ],
                     ),
                   ),

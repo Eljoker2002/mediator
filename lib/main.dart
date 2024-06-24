@@ -11,6 +11,7 @@ import 'features/complete_profile_screen/user_profile/screen.dart';
 import 'features/deactive_account/deactive_account.dart';
 import 'features/enroll_courses/enroll_courses.dart';
 import 'features/home_screen/screen.dart';
+import 'features/job_view_screen/user_screen.dart';
 import 'features/show_details/competition_details.dart';
 
 void main() {
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         return child!;
       },
       debugShowCheckedModeBanner: false,
-      home: CompleteUserProfileScreen(),
+      home: OrganizationProfile(),
     );
   }
 }

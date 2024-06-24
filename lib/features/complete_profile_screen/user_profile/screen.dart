@@ -8,6 +8,7 @@ import 'package:mediator/features/complete_profile_screen/organization_profile/r
 import 'package:mediator/features/complete_profile_screen/user_profile/controller.dart';
 import 'package:mediator/features/complete_profile_screen/organization_profile/OrganizationSignUpController.dart';
 import 'package:mediator/features/complete_profile_screen/user_profile/skills_controller_api.dart';
+import 'package:mediator/features/home_screen/screen.dart';
 import 'package:mediator/widgets/app_button.dart';
 import 'package:mediator/widgets/person_icon.dart';
 import '../../../core/app_colors.dart';
@@ -241,6 +242,9 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                   AppButton(
                     title: "Continue",
                     onTap: () {
+                      skillsControllerApi.getSkills(context);
+                      RouteUtils.pushAndRemoveAll(
+                          context: context, screen: HomeScreen());
                       // signUpController.signup(context);
                     },
                   ),

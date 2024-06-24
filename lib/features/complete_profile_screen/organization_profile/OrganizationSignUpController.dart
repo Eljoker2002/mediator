@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:mediator/core/app_colors.dart';
 import 'package:mediator/widgets/snack_bar.dart';
 import '../../../core/navigator.dart';
 import '../../home_screen/screen.dart';
@@ -25,6 +26,9 @@ class SignUpController {
   TextEditingController social = TextEditingController();
   TextEditingController service = TextEditingController();
   TextEditingController about = TextEditingController();
+  String services = "";
+  String correctFields = "";
+  List<dynamic> allFields = [];
 
   final formKey = GlobalKey<FormState>();
 
@@ -34,6 +38,7 @@ class SignUpController {
       return;
     }
     try {
+      correctFields = allFields.join(",");
       final response = await Dio().post(
         "https://mediator.hostek.xyz/api/com/register",
         options: Options(
@@ -43,15 +48,16 @@ class SignUpController {
           "name": name.text,
           "email": email.text,
           "password": password.text,
-          "field_id": field.text,
+          "field_id": correctFields,
           "phone": phone.text,
           "website": website.text,
-          "service_id": service.text,
+          "service_id": services,
           "socials": social.text,
           "about": about.text,
         },
       );
       RouteUtils.pushAndRemoveAll(context: context, screen: HomeScreen());
+      showSnackBar(context, title: "Welcome ${name.text} to Mediator",error: true,color: AppColors.black);
     } on DioException catch (e) {
       showSnackBar(context,
           title: e.response?.data["message"] != "" &&

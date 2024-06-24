@@ -27,12 +27,16 @@ class LoginApiController {
       );
       RouteUtils.pushAndRemoveAll(context: context, screen: HomeScreen());
     } on DioException catch (e) {
-      showSnackBar(context,
-          title: e.response?.data["message"] != "" &&
-                  e.response?.data["message"] !=
-                      "The password field must be at least 8 characters."
-              ? "Email not found"
-              : 'Password invalid');
+      if (e.response?.data["message"] == "User Not Verified") {
+        RouteUtils.pushAndRemoveAll(context: context, screen: HomeScreen());
+      } else {
+        showSnackBar(context,
+            title: e.response?.data["message"] != "" &&
+                    e.response?.data["message"] !=
+                        "The password field must be at least 8 characters."
+                ? "Email not found"
+                : 'Password invalid');
+      }
     }
   }
 }

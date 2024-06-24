@@ -1,12 +1,10 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediator/features/welcome_screens/widgets/welcome_text.dart';
-
 import '../../core/app_colors.dart';
 import '../../widgets/app_button.dart';
 
