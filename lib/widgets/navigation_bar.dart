@@ -20,7 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Widget> screen=[
     HomeScreen(),
     SavedScreen(),
-    PostScreen(name: '', website: '', about: '', email: '',),
+    PostScreen(name: '', website: '', about: '',),
     ApplicationScreen2(),
     UserProfile(),
   ];

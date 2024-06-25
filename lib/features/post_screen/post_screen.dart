@@ -12,11 +12,10 @@ import '../../widgets/person_icon.dart';
 import '../complete_profile_screen/organization_profile/show_company_profile.dart';
 
 class PostScreen extends StatelessWidget {
-  PostScreen({super.key, required this.name,required this.website,required this.about,required this.email});
+  PostScreen({super.key, required this.name,required this.website,required this.about});
   String name;
-  String website='';
-  String about='';
-  String email='';
+  String website;
+  String about;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +30,7 @@ class PostScreen extends StatelessWidget {
                   padding: EdgeInsets.only(top: 27.h),
                   child: InkWell(
                     onTap: (){
-                      RouteUtils.pushAndRemoveAll(context: context, screen:CompanyProfileScreen(name: name,website: website,about: about,email: email,));
+                      RouteUtils.pushAndRemoveAll(context: context, screen:CompanyProfileScreen(name: name,website: website,about: about,));
                     },
                       child: PersonIcon()),
                 ),

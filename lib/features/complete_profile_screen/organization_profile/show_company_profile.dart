@@ -6,11 +6,10 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../core/app_colors.dart';
 
 class CompanyProfileScreen extends StatelessWidget {
-   CompanyProfileScreen({super.key,required this.name,required this.website,required this.about,required this.email});
+   CompanyProfileScreen({super.key,required this.name,required this.website,required this.about});
   String name;
-  String website='';
-  String about='';
-  String email='';
+  String website;
+  String about;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,12 +118,16 @@ class CompanyProfileScreen extends StatelessWidget {
                       SizedBox(
                         width: 4.w,
                       ),
-                      Icon(Icons.email_outlined,size: 17.sp,color: AppColors.gray8F,),
+                      Image(
+                        image: AssetImage(
+                          "assets/images/ball.png",
+                        ),
+                      ),
                       SizedBox(
                         width: 3.5.w,
                       ),
                       Text(
-                        email,
+                        "Arabic, English",
                         style: GoogleFonts.poppins(
                           textStyle: TextStyle(
                             fontSize: 10.sp,

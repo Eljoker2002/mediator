@@ -41,7 +41,7 @@ class LoginApiController {
         photo=companyDetails["company"]["photo"];
         token=companyDetails["company"]["token"];
         about=companyDetails["company"]["about"];
-        RouteUtils.pushAndRemoveAll(context: context, screen: PostScreen(name: name, website: '', about: '', email: '',));
+        RouteUtils.pushAndRemoveAll(context: context, screen: PostScreen(name: name, website: website, about: about,));
       } else {
         showSnackBar(context,
             title: e.response?.data["message"] != "" &&
