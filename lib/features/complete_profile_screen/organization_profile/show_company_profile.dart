@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/app_colors.dart';
 
 class CompanyProfileScreen extends StatelessWidget {
-  const CompanyProfileScreen({super.key});
-
+   CompanyProfileScreen({super.key,required this.name,required this.website,required this.about});
+  String name;
+  String website;
+  String about;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +67,7 @@ class CompanyProfileScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Company Name",
+                    name,
                     style: GoogleFonts.poppins(
                       textStyle: TextStyle(
                         fontSize: 20.sp,
@@ -77,7 +80,7 @@ class CompanyProfileScreen extends StatelessWidget {
                     height: 3.h,
                   ),
                   Text(
-                    "Software Development - 200 Employees",
+                    website,
                     style: GoogleFonts.poppins(
                       textStyle: TextStyle(
                         fontSize: 14.sp,
@@ -116,9 +119,10 @@ class CompanyProfileScreen extends StatelessWidget {
                         width: 4.w,
                       ),
                       Image(
-                          image: AssetImage(
-                            "assets/images/ball.png",
-                          )),
+                        image: AssetImage(
+                          "assets/images/ball.png",
+                        ),
+                      ),
                       SizedBox(
                         width: 3.5.w,
                       ),
@@ -168,7 +172,7 @@ class CompanyProfileScreen extends StatelessWidget {
                                     height: 3.h,
                                   ),
                                   Text(
-                                    "We are a software development company established by the end of 2016 and scaled up over the years specialized in mobile apps and business application. We are experts at what we do , software development is our game.",
+                                    about,
                                     style: GoogleFonts.poppins(
                                       textStyle: TextStyle(
                                         fontSize: 10.sp,
@@ -231,46 +235,49 @@ class CompanyProfileScreen extends StatelessWidget {
                                         ),
                                         child: Padding(
                                           padding: EdgeInsets.all(12.0.sp),
-                                          child: Row(
-                                            crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                            children: [
-                                              Image(
-                                                  image: AssetImage(
-                                                    "assets/images/smarttech.png",
-                                                  )),
-                                              SizedBox(
-                                                width: 11.w,
-                                              ),
-                                              Column(
-                                                crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    "UI/UX Designer Job",
-                                                    style: GoogleFonts.poppins(
-                                                      textStyle: TextStyle(
-                                                        fontSize: 11.sp,
-                                                        fontWeight: FontWeight.w600,
-                                                        color: AppColors.black,
+                                          child: SingleChildScrollView(
+                                            scrollDirection:Axis.horizontal ,
+                                            child: Row(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              children: [
+                                                Image(
+                                                    image: AssetImage(
+                                                      "assets/images/InnovaDigits.png",
+                                                    )),
+                                                SizedBox(
+                                                  width: 11.w,
+                                                ),
+                                                Column(
+                                                  crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      "UI/UX Designer Job",
+                                                      style: GoogleFonts.poppins(
+                                                        textStyle: TextStyle(
+                                                          fontSize: 11.sp,
+                                                          fontWeight: FontWeight.w600,
+                                                          color: AppColors.black,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                  Text(
-                                                    "Senior UI/UX designer - Part Time",
-                                                    style: GoogleFonts.poppins(
-                                                      textStyle: TextStyle(
-                                                        fontSize: 10.sp,
-                                                        fontWeight: FontWeight.w600,
-                                                        color: AppColors.gray8F,
+                                                    Text(
+                                                      "Senior UI/UX designer - Part Time",
+                                                      style: GoogleFonts.poppins(
+                                                        textStyle: TextStyle(
+                                                          fontSize: 10.sp,
+                                                          fontWeight: FontWeight.w600,
+                                                          color: AppColors.gray8F,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
-                                              ),
-                                              SizedBox(width:25.w),
-                                              Icon(Icons.arrow_forward_ios_sharp,size: 12.sp,)
-                                            ],
+                                                  ],
+                                                ),
+                                                SizedBox(width:25.w),
+                                                Icon(Icons.arrow_forward_ios_sharp,size: 12.sp,)
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
