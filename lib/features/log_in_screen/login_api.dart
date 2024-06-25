@@ -25,9 +25,9 @@ class LoginApiController {
           "password": password.text,
         },
       );
-      RouteUtils.pushAndRemoveAll(context: context, screen: HomeScreen());
     } on DioException catch (e) {
-      if (e.response?.data["message"] == "User Not Verified") {
+      if (e.response?.data["message"] == "User Not Verified" ||
+          e.response?.data["message"] == "") {
         RouteUtils.pushAndRemoveAll(context: context, screen: HomeScreen());
       } else {
         showSnackBar(context,
