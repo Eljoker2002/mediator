@@ -18,7 +18,7 @@ class OrganizationProfile extends StatefulWidget {
 }
 
 class _OrganizationProfileState extends State<OrganizationProfile> {
-  SignUpController controller = SignUpController();
+  CompanySignUpController controller = CompanySignUpController();
   String services = "Services";
   String fields = "Fields";
   @override

@@ -5,7 +5,7 @@ import 'package:mediator/widgets/snack_bar.dart';
 import '../../../core/navigator.dart';
 import '../../home_screen/screen.dart';
 
-class SignUpController {
+class CompanySignUpController {
   String ser1 = "";
   String ser2 = "";
   String fi1 = "";
@@ -91,16 +91,5 @@ class SignUpController {
     fi6 = field6;
     String field7 = response.data["data"]["field"][6]["name"];
     fi7 = field7;
-
-    // List<dynamic> services = response.data["data"]["service"];
-    // for (int i = 0; i <= services.length - 1; i++) {
-    //   // print(services[i]["id"]);
-    //   namE.add(services[i]["name"]);
-    //   print(namE);
-    // }
-    // List<dynamic> fields = response.data["data"]["field"];
-    // for (int i = 0; i <= fields.length - 1; i++) {
-    //   print(fields[i]);
-    // }
   }
 }

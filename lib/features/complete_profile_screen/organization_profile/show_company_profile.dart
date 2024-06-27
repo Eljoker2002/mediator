@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../core/app_colors.dart';
 
 class CompanyProfileScreen extends StatelessWidget {
-   CompanyProfileScreen({super.key,required this.name,required this.website,required this.about});
+  CompanyProfileScreen({super.key,required this.name,required this.website,required this.about});
   String name;
   String website;
   String about;
@@ -156,37 +156,37 @@ class CompanyProfileScreen extends StatelessWidget {
                           child: Padding(
                             padding: EdgeInsets.only(top: 10.h),
                             child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "About",
-                                    style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.w500,
-                                        color: AppColors.black,
-                                      ),
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "About",
+                                  style: GoogleFonts.poppins(
+                                    textStyle: TextStyle(
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColors.black,
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 3.h,
-                                  ),
-                                  Text(
-                                    about,
-                                    style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                        fontSize: 10.sp,
-                                        fontWeight: FontWeight.w500,
-                                        color: AppColors.gray8F,
-                                      ),
-                                    ),
-                                  ),
-
-                                    ],
                                   ),
                                 ),
+                                SizedBox(
+                                  height: 3.h,
+                                ),
+                                Text(
+                                  about,
+                                  style: GoogleFonts.poppins(
+                                    textStyle: TextStyle(
+                                      fontSize: 10.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColors.gray8F,
+                                    ),
+                                  ),
+                                ),
+
+                              ],
+                            ),
                           ),
                         ),
+                      ),
                       SizedBox(
                         height: 16.h,
                       ),
@@ -223,66 +223,66 @@ class CompanyProfileScreen extends StatelessWidget {
                                     padding: EdgeInsets.zero,
                                     itemCount: 2,
                                     itemBuilder: (context, index) {
-                                    return   Padding(
-                                      padding:EdgeInsets.only(bottom: 8.h),
-                                      child: Container(
-                                        width: 296.w,
-                                        height: 61.h,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(color: AppColors.grayC6),
-                                          borderRadius: BorderRadius.circular(8.sp),
-                                          color: AppColors.white,
-                                        ),
-                                        child: Padding(
-                                          padding: EdgeInsets.all(12.0.sp),
-                                          child: SingleChildScrollView(
-                                            scrollDirection:Axis.horizontal ,
-                                            child: Row(
-                                              crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                              children: [
-                                                Image(
-                                                    image: AssetImage(
-                                                      "assets/images/InnovaDigits.png",
-                                                    )),
-                                                SizedBox(
-                                                  width: 11.w,
-                                                ),
-                                                Column(
-                                                  crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      "UI/UX Designer Job",
-                                                      style: GoogleFonts.poppins(
-                                                        textStyle: TextStyle(
-                                                          fontSize: 11.sp,
-                                                          fontWeight: FontWeight.w600,
-                                                          color: AppColors.black,
+                                      return   Padding(
+                                        padding:EdgeInsets.only(bottom: 8.h),
+                                        child: Container(
+                                          width: 296.w,
+                                          height: 61.h,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: AppColors.grayC6),
+                                            borderRadius: BorderRadius.circular(8.sp),
+                                            color: AppColors.white,
+                                          ),
+                                          child: Padding(
+                                            padding: EdgeInsets.all(12.0.sp),
+                                            child: SingleChildScrollView(
+                                              scrollDirection:Axis.horizontal ,
+                                              child: Row(
+                                                crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                                children: [
+                                                  Image(
+                                                      image: AssetImage(
+                                                        "assets/images/InnovaDigits.png",
+                                                      )),
+                                                  SizedBox(
+                                                    width: 11.w,
+                                                  ),
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                    children: [
+                                                      Text(
+                                                        "UI/UX Designer Job",
+                                                        style: GoogleFonts.poppins(
+                                                          textStyle: TextStyle(
+                                                            fontSize: 11.sp,
+                                                            fontWeight: FontWeight.w600,
+                                                            color: AppColors.black,
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                                    Text(
-                                                      "Senior UI/UX designer - Part Time",
-                                                      style: GoogleFonts.poppins(
-                                                        textStyle: TextStyle(
-                                                          fontSize: 10.sp,
-                                                          fontWeight: FontWeight.w600,
-                                                          color: AppColors.gray8F,
+                                                      Text(
+                                                        "Senior UI/UX designer - Part Time",
+                                                        style: GoogleFonts.poppins(
+                                                          textStyle: TextStyle(
+                                                            fontSize: 10.sp,
+                                                            fontWeight: FontWeight.w600,
+                                                            color: AppColors.gray8F,
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                SizedBox(width:25.w),
-                                                Icon(Icons.arrow_forward_ios_sharp,size: 12.sp,)
-                                              ],
+                                                    ],
+                                                  ),
+                                                  SizedBox(width:25.w),
+                                                  Icon(Icons.arrow_forward_ios_sharp,size: 12.sp,)
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    );
-                                  },),
+                                      );
+                                    },),
                                 ),
                                 SizedBox(height: 8.h),
 

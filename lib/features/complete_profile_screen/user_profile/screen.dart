@@ -6,12 +6,13 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:mediator/core/navigator.dart';
 import 'package:mediator/features/complete_profile_screen/organization_profile/refactor_textformfield.dart';
 import 'package:mediator/features/complete_profile_screen/user_profile/controller.dart';
-import 'package:mediator/features/complete_profile_screen/organization_profile/OrganizationSignUpController.dart';
 import 'package:mediator/features/complete_profile_screen/user_profile/skills_controller_api.dart';
+import 'package:mediator/features/complete_profile_screen/user_profile/user_api_controller.dart';
 import 'package:mediator/features/home_screen/screen.dart';
 import 'package:mediator/widgets/app_button.dart';
 import 'package:mediator/widgets/person_icon.dart';
 import '../../../core/app_colors.dart';
+import '../../../core/validator_utils/validator_utils.dart';
 import '../../welcome_screens/widgets/welcome_text.dart';
 
 class CompleteUserProfileScreen extends StatefulWidget {
@@ -25,10 +26,11 @@ class CompleteUserProfileScreen extends StatefulWidget {
 class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
   final UserProfileController controller = UserProfileController();
 
-  final SignUpController signUpController = SignUpController();
   final SkillsControllerApi skillsControllerApi = SkillsControllerApi();
-
-  String character = "Character";
+  UserSignupController userSignupController = UserSignupController();
+  String character = "Gender";
+  String uni = "University";
+  String city = "City";
   String skills = "Skills";
 
   @override
@@ -37,222 +39,271 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
       backgroundColor: AppColors.whiteF6,
       body: Padding(
         padding: EdgeInsets.only(left: 18.w, right: 18.w, top: 44.h),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                InkWell(
-                  onTap: () => RouteUtils.pop(context: context),
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    size: 18.sp,
-                    color: AppColors.black,
+        child: Form(
+          key: userSignupController.formKey,
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  InkWell(
+                    onTap: () => RouteUtils.pop(context: context),
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      size: 18.sp,
+                      color: AppColors.black,
+                    ),
+                  ),
+                  SizedBox(width: 65.w),
+                  WelcomeText(
+                    title: "Fill Your Profile",
+                    height: 24.h,
+                    width: 162.w,
+                    fontSize: 18.sp,
+                  ),
+                ],
+              ),
+              SizedBox(height: 5.h),
+              InkWell(
+                onTap: () {},
+                child: Container(
+                  color: AppColors.whiteF6,
+                  child: Stack(
+                    alignment: Alignment.bottomRight,
+                    children: [
+                      PersonIcon(
+                        width: 80,
+                        height: 80,
+                        size: 60,
+                      ),
+                      Icon(
+                        size: 18.sp,
+                        FontAwesomeIcons.solidPenToSquare,
+                      ),
+                    ],
                   ),
                 ),
-                SizedBox(width: 65.w),
-                WelcomeText(
-                  title: "Fill Your Profile",
-                  height: 24.h,
-                  width: 162.w,
-                  fontSize: 18.sp,
-                ),
-              ],
-            ),
-            SizedBox(height: 5.h),
-            InkWell(
-              onTap: () {},
-              child: Container(
-                color: AppColors.whiteF6,
-                child: Stack(
-                  alignment: Alignment.bottomRight,
+              ),
+              SizedBox(height: 5.h),
+              Expanded(
+                child: ListView(
+                  padding: EdgeInsets.zero,
                   children: [
-                    PersonIcon(
-                      width: 80,
-                      height: 80,
-                      size: 60,
+                    RefactorTextFormField(
+                      text: "First Name",
+                      validator: ValidatorUtils.required,
+                      controller: userSignupController.fName,
                     ),
-                    Icon(
-                      size: 18.sp,
-                      FontAwesomeIcons.solidPenToSquare,
+                    RefactorTextFormField(
+                      text: "Last Name",
+                      validator: ValidatorUtils.required,
+                      controller: userSignupController.lName,
                     ),
+                    RefactorTextFormField(
+                      text: "Email",
+                      validator: ValidatorUtils.required,
+                      controller: userSignupController.email,
+                    ),
+                    RefactorTextFormField(
+                      text: "Password",
+                      validator: ValidatorUtils.required,
+                      controller: userSignupController.password,
+                    ),
+                    RefactorTextFormField(
+                      text: "Date of birth",
+                      validator: ValidatorUtils.required,
+                      controller: userSignupController.dOB,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8.0.h),
+                      child: InkWell(
+                        onTap: () {
+                          showAlertDialog();
+                        },
+                        child: Container(
+                          color: AppColors.white,
+                          width: double.infinity,
+                          height: 35.h,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 12.w, right: 12.w),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Row(
+                                children: [
+                                  Text(
+                                    character,
+                                    style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                        color: AppColors.grayB7,
+                                        fontSize: 15.sp,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Icon(
+                                    size: 20.sp,
+                                    FontAwesomeIcons.caretDown,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8.0.h),
+                      child: InkWell(
+                        onTap: () {
+                          showAlertDialogForUni();
+                        },
+                        child: Container(
+                          color: AppColors.white,
+                          width: double.infinity,
+                          height: 35.h,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 12.w, right: 12.w),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Row(
+                                children: [
+                                  Text(
+                                    uni,
+                                    style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                        color: AppColors.grayB7,
+                                        fontSize: 15.sp,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Icon(
+                                    size: 20.sp,
+                                    FontAwesomeIcons.caretDown,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    // RefactorTextFormField(
+                    //   text: "City",
+                    //   validator: ValidatorUtils.required,
+                    //   controller: userSignupController.city,
+                    // ),
+                    // RefactorTextFormField(
+                    //   text: "University",
+                    //   validator: ValidatorUtils.required,
+                    // ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8.0.h),
+                      child: InkWell(
+                        onTap: () {
+                          skillsControllerApi.allSkills = [];
+                          showAlertDialog2();
+                        },
+                        child: Container(
+                          color: AppColors.white,
+                          width: double.infinity,
+                          height: 35.h,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 12.w, right: 12.w),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Row(
+                                children: [
+                                  Text(
+                                    skills,
+                                    style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                        color: AppColors.grayB7,
+                                        fontSize: 15.sp,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Icon(
+                                    size: 20.sp,
+                                    FontAwesomeIcons.caretDown,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8.h),
+                      child: Container(
+                        height: 40.h,
+                        color: AppColors.white,
+                        child: IntlPhoneField(
+                          flagsButtonPadding:
+                              EdgeInsets.symmetric(horizontal: 15.w),
+                          showDropdownIcon: false,
+                          disableLengthCheck: true,
+                          style: GoogleFonts.poppins(
+                            textStyle: TextStyle(
+                              color: AppColors.grayB7,
+                              fontSize: 15.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.sp),
+                              borderSide: BorderSide(
+                                color: AppColors.white,
+                              ),
+                            ),
+                          ),
+                          initialCountryCode: 'EG',
+                          controller: userSignupController.phone,
+                          onChanged: (phone) {},
+                        ),
+                      ),
+                    ),
+                    RefactorTextFormField(
+                      text: "Bio (optional)",
+                      controller: userSignupController.bio,
+                    ),
+                    // RefactorTextFormField(
+                    //   text: "Your CV (optional)",
+                    //   controller: userSignupController.bio,
+                    // ),
+                    RefactorTextFormField(
+                      text: "Facebook link (optional)",
+                      controller: userSignupController.facebook,
+                    ),
+                    RefactorTextFormField(
+                      text: "Github link (optional)",
+                      controller: userSignupController.gitHub,
+                    ),
+                    // RefactorTextFormField(
+                    //   text: "Behance link (optional)",
+                    // ),
+                    SizedBox(height: 10.h),
+                    AppButton(
+                      title: "Continue",
+                      onTap: () async {
+                        await userSignupController.addUser(context);
+                        await skillsControllerApi.getSkills(context);
+
+                        // signUpController.signup(context);
+                      },
+                    ),
+                    SizedBox(height: 15.h),
                   ],
                 ),
               ),
-            ),
-            SizedBox(height: 5.h),
-            Expanded(
-              child: ListView(
-                padding: EdgeInsets.zero,
-                children: [
-                  RefactorTextFormField(
-                    text: "First Name",
-                  ),
-                  RefactorTextFormField(
-                    text: "Last Name",
-                  ),
-                  RefactorTextFormField(
-                    text: "Email",
-                  ),
-                  RefactorTextFormField(
-                    text: "Password",
-                  ),
-                  RefactorTextFormField(
-                    text: "Date of birth",
-                  ),
-                  RefactorTextFormField(
-                    text: "Gender",
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.0.h),
-                    child: InkWell(
-                      onTap: () {
-                        showAlertDialog();
-                      },
-                      child: Container(
-                        color: AppColors.white,
-                        width: double.infinity,
-                        height: 35.h,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 12.w, right: 12.w),
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Row(
-                              children: [
-                                Text(
-                                  character,
-                                  style: GoogleFonts.poppins(
-                                    textStyle: TextStyle(
-                                      color: AppColors.grayB7,
-                                      fontSize: 15.sp,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ),
-                                Spacer(),
-                                Icon(
-                                  size: 20.sp,
-                                  FontAwesomeIcons.caretDown,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  RefactorTextFormField(
-                    text: "Education",
-                  ),
-                  RefactorTextFormField(
-                    text: "City",
-                  ),
-                  RefactorTextFormField(
-                    text: "University",
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.0.h),
-                    child: InkWell(
-                      onTap: () {
-                        skillsControllerApi.allSkills = [];
-                        showAlertDialog2();
-                      },
-                      child: Container(
-                        color: AppColors.white,
-                        width: double.infinity,
-                        height: 35.h,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 12.w, right: 12.w),
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Row(
-                              children: [
-                                Text(
-                                  skills,
-                                  style: GoogleFonts.poppins(
-                                    textStyle: TextStyle(
-                                      color: AppColors.grayB7,
-                                      fontSize: 15.sp,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ),
-                                Spacer(),
-                                Icon(
-                                  size: 20.sp,
-                                  FontAwesomeIcons.caretDown,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  RefactorTextFormField(
-                    text: "Experiences",
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.h),
-                    child: Container(
-                      height: 40.h,
-                      color: AppColors.white,
-                      child: IntlPhoneField(
-                        flagsButtonPadding:
-                            EdgeInsets.symmetric(horizontal: 15.w),
-                        showDropdownIcon: false,
-                        disableLengthCheck: true,
-                        style: GoogleFonts.poppins(
-                          textStyle: TextStyle(
-                            color: AppColors.grayB7,
-                            fontSize: 15.sp,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.sp),
-                            borderSide: BorderSide(
-                              color: AppColors.white,
-                            ),
-                          ),
-                        ),
-                        initialCountryCode: 'EG',
-                        onChanged: (phone) {
-                          print(phone.completeNumber);
-                        },
-                      ),
-                    ),
-                  ),
-                  RefactorTextFormField(
-                    text: "Bio (optional)",
-                  ),
-                  RefactorTextFormField(
-                    text: "Your CV (optional)",
-                  ),
-                  RefactorTextFormField(
-                    text: "Facebook link (optional)",
-                  ),
-                  RefactorTextFormField(
-                    text: "Github link (optional)",
-                  ),
-                  RefactorTextFormField(
-                    text: "Behance link (optional)",
-                  ),
-                  SizedBox(height: 10.h),
-                  AppButton(
-                    title: "Continue",
-                    onTap: () {
-                      skillsControllerApi.getSkills(context);
-                      RouteUtils.pushAndRemoveAll(
-                          context: context, screen: HomeScreen());
-                      // signUpController.signup(context);
-                    },
-                  ),
-                  SizedBox(height: 15.h),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -270,10 +321,12 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
           _isChecked1 = !_isChecked1;
           _isChecked2 = false;
           character = skill1;
+          userSignupController.gender = character;
         } else if (index == 2) {
           _isChecked2 = !_isChecked2;
           _isChecked1 = false;
           character = skill2;
+          userSignupController.gender = character;
         }
         RouteUtils.pop(context: context);
       });
@@ -860,6 +913,7 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                         SizedBox(width: 10.w),
                         InkWell(
                           onTap: () {
+                            skills = "+${skillsControllerApi.allSkills.length}";
                             RouteUtils.pop(context: context);
                           },
                           child: Container(
@@ -882,6 +936,117 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                       ],
                     )
                   ],
+                ),
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  void showAlertDialogForUni() {
+    List<String> allUni = [
+      "Ain Shams University",
+      "Al-Azhar University",
+      "Alexandria University",
+      "Aswan University",
+      "Aswan University",
+      "Banha University",
+      "Beni-Suef University",
+      "Cairo University",
+      "Damanhour University",
+      "Damietta University",
+      "Egypt-Japan University of Science and Technology",
+      "Fayoum University",
+      "Helwan University",
+      "Kafrelsheikh University",
+      "Luxor University",
+      "Mansoura University",
+      "Minia University",
+      "Minufiya University",
+      "New Valley University",
+      "Port Said University",
+      "Sohag University",
+      "South Valley University",
+      "Suez Canal University",
+      "Suez University",
+      "Tanta University",
+      "University of Sadat City",
+      "Zagazig University",
+    ];
+    List<bool> _isCheckedAll = [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+    ];
+    void _updateCheckboxes(int index) {
+      setState(() {
+        if (index == _isCheckedAll[index]) {
+          _isCheckedAll[index] = true;
+        }
+      });
+    }
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: StatefulBuilder(
+            builder: (BuildContext context,
+                void Function(void Function()) setState) {
+              return Container(
+                width: 200.w,
+                height: 300.h,
+                child: ListView.builder(
+                  itemCount: allUni.length,
+                  itemBuilder: (context, index) {
+                    return CheckboxListTile(
+                      title: Text(allUni[index]),
+                      value: _isCheckedAll[index],
+                      onChanged: (bool? value) {
+                        _updateCheckboxes(1);
+                        setState(() {
+                          _isCheckedAll[index] = value!;
+                          var isChecked1 = "";
+                          if (_isCheckedAll[index] == true) {
+                            isChecked1 = "${allUni[index]}";
+                            userSignupController.university = isChecked1;
+                            print(userSignupController.university);
+                            uni = allUni[index];
+                            RouteUtils.pop(context: context);
+                          } else {
+                            isChecked1 = "";
+                          }
+                        });
+                      },
+                    );
+                    ;
+                  },
                 ),
               );
             },
