@@ -15,10 +15,10 @@ import '../features/saved_screen/saved_screen1.dart';
 class MyCompanyPage extends StatefulWidget {
   MyCompanyPage(
       {key,
-      required this.token,
-      required this.name,
-      required this.website,
-      required this.about})
+        required this.token,
+        required this.name,
+        required this.website,
+        required this.about})
       : super(key: key);
   String name;
   String website;
@@ -73,8 +73,11 @@ class MyUserPage extends StatefulWidget {
   MyUserPage({
     super.key,
     required this.name,
+    required this.token,
+
   });
   String name;
+  String token;
   @override
   State<MyUserPage> createState() => _MyUserPageState();
 }
@@ -85,7 +88,7 @@ class _MyUserPageState extends State<MyUserPage> {
   Widget build(BuildContext context) {
     List<Widget> screen2 = [
       HomeScreen(
-        name: widget.name,
+        name: widget.name, token:widget.token,
       ),
     ];
     return Scaffold(

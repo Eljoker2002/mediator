@@ -6,9 +6,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mediator/core/navigator.dart';
 import 'package:mediator/features/welcome_screens/first_screen.dart';
 
-class LogoScreen extends StatefulWidget {
-  const LogoScreen({Key? key}) : super(key: key);
+import '../post_screen/post_api.dart';
 
+class LogoScreen extends StatefulWidget {
+   LogoScreen({Key? key}) : super(key: key);
   @override
   State<LogoScreen> createState() => _LogoScreenState();
 }
@@ -16,6 +17,8 @@ class LogoScreen extends StatefulWidget {
 class _LogoScreenState extends State<LogoScreen> {
   @override
   void initState() {
+    Posts posts=Posts();
+    posts.GetPost;
     Timer(Duration(milliseconds: 1500), () {
       RouteUtils.push(
         context: context,

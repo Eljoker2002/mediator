@@ -37,4 +37,21 @@ class Posts {
       showSnackBar(context, title: e.response?.data["message"]);
     }
   }
+  Future<void> GetPost(BuildContext context) async{
+    final response = await Dio().post(
+        "https://mediator.hostek.xyz/api/com/company-posts",
+    options: Options(
+    headers: {
+    "Accept": "application/json",
+    },
+    ),);
+    List list=response.data["data"]["posts"];
+  for (int i=0;i<=list.length;i++){
+    List title2=list[i]["title"];
+    print("object");
+    print(title2);
+
+  }
+  }
+
 }

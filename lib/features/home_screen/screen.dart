@@ -15,9 +15,9 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../widgets/custom_click.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key? key, required this.name}) : super(key: key);
+  HomeScreen({Key? key, required this.name,required this.token}) : super(key: key);
   String name;
-
+  String token;
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }

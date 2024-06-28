@@ -43,6 +43,7 @@ class LoginApiForUser {
         context: context,
         screen: MyUserPage(
           name: name,
+          token: token,
         ),
       );
     } on DioException catch (e) {
