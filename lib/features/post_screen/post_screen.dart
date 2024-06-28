@@ -11,10 +11,16 @@ import '../../widgets/person_icon.dart';
 import '../complete_profile_screen/organization_profile/show_company_profile.dart';
 
 class PostScreen extends StatelessWidget {
-  PostScreen({super.key, required this.name,required this.website,required this.about});
+  PostScreen(
+      {super.key,
+      required this.token,
+      required this.name,
+      required this.website,
+      required this.about});
   String name;
   String website;
   String about;
+  String token;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,8 +34,14 @@ class PostScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 27.h),
                   child: InkWell(
-                      onTap: (){
-                        RouteUtils.pushAndRemoveAll(context: context, screen:CompanyProfileScreen(name: name,website: website,about: about,));
+                      onTap: () {
+                        RouteUtils.pushAndRemoveAll(
+                            context: context,
+                            screen: CompanyProfileScreen(
+                              name: name,
+                              website: website,
+                              about: about,
+                            ));
                       },
                       child: PersonIcon()),
                 ),
@@ -70,8 +82,8 @@ class PostScreen extends StatelessWidget {
                 ),
                 Image(
                     image: AssetImage(
-                      "assets/images/twemoji_waving-hand.png",
-                    )),
+                  "assets/images/twemoji_waving-hand.png",
+                )),
                 SizedBox(
                   width: 100.w,
                 ),
@@ -93,8 +105,11 @@ class PostScreen extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                RouteUtils.pushAndRemoveAll(
-                    context: context, screen: PostDetails());
+                RouteUtils.push(
+                    context: context,
+                    screen: PostDetails(
+                      token: token,
+                    ));
               },
               child: Container(
                 width: 302.w,
@@ -144,7 +159,7 @@ class PostScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding:
-                    EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
+                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
                     child: Container(
                       width: 302.w,
                       decoration: BoxDecoration(
@@ -168,7 +183,7 @@ class PostScreen extends StatelessWidget {
                                   padding: EdgeInsets.only(top: 4.h),
                                   child: Column(
                                     crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         "Company Name",
@@ -252,7 +267,7 @@ class PostScreen extends StatelessWidget {
                                       decoration: BoxDecoration(
                                           color: AppColors.gray71,
                                           borderRadius:
-                                          BorderRadius.circular(20.sp)),
+                                              BorderRadius.circular(20.sp)),
                                     ),
                                   )
                                 ],

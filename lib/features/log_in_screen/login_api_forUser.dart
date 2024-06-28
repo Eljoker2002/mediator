@@ -2,12 +2,16 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:mediator/core/navigator.dart';
 import 'package:mediator/features/home_screen/screen.dart';
+import 'package:mediator/widgets/navigation_bar.dart';
 import '../../widgets/snack_bar.dart';
 
 class LoginApiForUser {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+  String fName = '';
+  String lName = '';
   String name = '';
+  List<String> fullName = [];
   String photo = '';
   String token = '';
   final formKey = GlobalKey<FormState>();
@@ -21,7 +25,7 @@ class LoginApiForUser {
       final response = await Dio().post(
         "https://39ba-197-35-234-79.ngrok-free.app/api/login",
         options: Options(
-          headers: {"Accept": "application/json"},
+          headers: {"Content-Type": "application/json"},
         ),
         data: {
           "email": email.text,
@@ -29,12 +33,15 @@ class LoginApiForUser {
         },
       );
       var userDetails = response?.data;
-      name = userDetails["user"]["name"];
+      fName = userDetails["user"]["first_name"];
+      lName = userDetails["user"]["last_name"];
+      fullName = [fName, lName];
+      name = fullName.join(" ");
       photo = userDetails["user"]["photo"];
       token = userDetails["token"];
       RouteUtils.pushAndRemoveAll(
         context: context,
-        screen: HomeScreen(
+        screen: MyUserPage(
           name: name,
         ),
       );

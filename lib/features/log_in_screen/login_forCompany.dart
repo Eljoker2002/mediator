@@ -38,7 +38,7 @@ class _LoginScreenForCompanyState extends State<LoginScreenForCompany> {
             ),
             child: Column(
               children: [
-                SizedBox(height: 50.h),
+                SizedBox(height: 70.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -62,14 +62,14 @@ class _LoginScreenForCompanyState extends State<LoginScreenForCompany> {
                     ),
                   ],
                 ),
-                SizedBox(height: 25.h),
+                SizedBox(height: 60.h),
                 WelcomeText(
                   title: "Login",
                   height: 29.h,
                   width: 242.w,
                   fontSize: 25.sp,
                 ),
-                SizedBox(height: 25.h),
+                SizedBox(height: 30.h),
                 AppTextField(
                   controller: controller.email,
                   icon: Icons.email,
@@ -101,43 +101,6 @@ class _LoginScreenForCompanyState extends State<LoginScreenForCompany> {
                   ),
                 ),
                 SizedBox(height: 24.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 16.w,
-                      height: 16.h,
-                      child: Transform.scale(
-                        scale: .8.sp,
-                        child: Checkbox(
-                          activeColor: AppColors.blue0C,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(6.0),
-                            ),
-                          ),
-                          value: value,
-                          onChanged: (v) {
-                            setState(() {
-                              value = v!;
-                            });
-                          },
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 7.w),
-                    Text(
-                      "Remember me",
-                      style: GoogleFonts.inter(
-                        textStyle: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xFF0C002E),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
                 SizedBox(height: 24.h),
                 AppButton(
                   title: "Log in",
@@ -157,153 +120,6 @@ class _LoginScreenForCompanyState extends State<LoginScreenForCompany> {
                       color: AppColors.grayDE,
                     ),
                     SizedBox(width: 12.w),
-                    SizedBox(
-                      width: 100.w,
-                      child: Text(
-                        "or continue with",
-                        style: GoogleFonts.inter(
-                          textStyle: TextStyle(
-                            fontSize: 12.w,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.gray71,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 12.w),
-                    Container(
-                      width: 99.w,
-                      height: 1.h,
-                      color: AppColors.grayDE,
-                    ),
-                  ],
-                ),
-                SizedBox(height: 15.h),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 250.w,
-                      height: 42.h,
-                      decoration: BoxDecoration(
-                          color: AppColors.white,
-                          border: Border.all(
-                            width: 1.sp,
-                            color: AppColors.black,
-                          ),
-                          borderRadius: BorderRadius.circular(8),
-                          boxShadow: [
-                            BoxShadow(
-                              color: AppColors.white,
-                              spreadRadius: 1,
-                            ),
-                          ]),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            FontAwesomeIcons.facebook,
-                            color: Colors.blue,
-                            size: 20.sp,
-                          ),
-                          SizedBox(width: 10.w),
-                          Text(
-                            "Continue with Facebook",
-                            style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
-                                color: Colors.black,
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Container(
-                      width: 250.w,
-                      height: 42.h,
-                      decoration: BoxDecoration(
-                          color: AppColors.white,
-                          border: Border.all(
-                            width: 1.sp,
-                            color: AppColors.black,
-                          ),
-                          borderRadius: BorderRadius.circular(8),
-                          boxShadow: [
-                            BoxShadow(
-                              color: AppColors.white,
-                              spreadRadius: 1,
-                            ),
-                          ]),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image(
-                            image: AssetImage(
-                              "assets/images/google_logo.jpg",
-                            ),
-                            width: 22.sp,
-                            height: 22.sp,
-                          ),
-                          SizedBox(width: 10.w),
-                          Text(
-                            "Continue with Google",
-                            style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
-                                color: Colors.black,
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Container(
-                      width: 250.w,
-                      height: 42.h,
-                      decoration: BoxDecoration(
-                          color: AppColors.white,
-                          border: Border.all(
-                            width: 1.sp,
-                            color: AppColors.black,
-                          ),
-                          borderRadius: BorderRadius.circular(8),
-                          boxShadow: [
-                            BoxShadow(
-                              color: AppColors.white,
-                              spreadRadius: 1,
-                            ),
-                          ]),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            FontAwesomeIcons.apple,
-                            color: AppColors.black,
-                            size: 22.sp,
-                          ),
-                          SizedBox(width: 10.w),
-                          Text(
-                            "Continue with Apple",
-                            style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
-                                color: Colors.black,
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
                   ],
                 ),
                 SizedBox(

@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                       Text(
-                        "Name",
+                        widget.name,
                         style: GoogleFonts.poppins(
                           textStyle: TextStyle(
                             color: AppColors.black,
@@ -135,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 6.h),
-                        height: 450.h,
+                        height: 300.h,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: skillsControllerApi.data.length,
@@ -204,7 +204,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                       SizedBox(height: 10.h),
                                       Text(
-                                        maxLines: 16,
+                                        maxLines: 10,
                                         overflow: TextOverflow.ellipsis,
                                         skillsControllerApi
                                             .jobDescription[index],
@@ -268,172 +268,154 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         ),
                       ),
-                      // Container(
-                      //   margin: EdgeInsets.symmetric(vertical: 6.h),
-                      //   height: 135.h,
-                      //   child: ListView.builder(
-                      //     scrollDirection: Axis.horizontal,
-                      //     itemCount: 5,
-                      //     itemBuilder: (context, index) {
-                      //       return Padding(
-                      //         padding: EdgeInsets.only(right: 15.w),
-                      //         child: Container(
-                      //           child: Padding(
-                      //             padding: EdgeInsets.only(
-                      //                 left: 25.w, right: 20.w, top: 15.h),
-                      //             child: Column(
-                      //               crossAxisAlignment:
-                      //                   CrossAxisAlignment.start,
-                      //               children: [
-                      //                 Text(
-                      //                   "UI/UX Designer Job",
-                      //                   textAlign: TextAlign.start,
-                      //                   style: GoogleFonts.poppins(
-                      //                       color: AppColors.black,
-                      //                       textStyle: TextStyle(
-                      //                         fontWeight: FontWeight.w600,
-                      //                         fontSize: 17.sp,
-                      //                       )),
-                      //                 ),
-                      //                 SizedBox(height: 10.h),
-                      //                 Row(
-                      //                   children: [
-                      //                     Text(
-                      //                       "SmartTech",
-                      //                       textAlign: TextAlign.start,
-                      //                       style: GoogleFonts.poppins(
-                      //                           color: AppColors.gray83,
-                      //                           textStyle: TextStyle(
-                      //                             fontWeight: FontWeight.w600,
-                      //                             fontSize: 13.sp,
-                      //                           )),
-                      //                     ),
-                      //                     Spacer(),
-                      //                     Icon(
-                      //                       FontAwesomeIcons.solidBookmark,
-                      //                       size: 15.sp,
-                      //                     ),
-                      //                   ],
-                      //                 ),
-                      //                 Spacer(flex: 4),
-                      //                 Center(
-                      //                   child: Container(
-                      //                     width: 100.w,
-                      //                     height: 20.h,
-                      //                     child: AppButton(
-                      //                       color: AppColors.pink,
-                      //                       title: "View",
-                      //                       fontSize: 12,
-                      //                       onTap: () {},
-                      //                     ),
-                      //                   ),
-                      //                 ),
-                      //                 Spacer(
-                      //                   flex: 3,
-                      //                 ),
-                      //               ],
-                      //             ),
-                      //           ),
-                      //           width: 200.w,
-                      //           height: 150.h,
-                      //           decoration: BoxDecoration(
-                      //             color: AppColors.lGreen,
-                      //             borderRadius: BorderRadius.circular(
-                      //               12.sp,
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       );
-                      //     },
-                      //   ),
-                      // ),
-                      // Text(
-                      //   "All",
-                      //   style: TextStyle(
-                      //     fontSize: 17.sp,
-                      //     fontWeight: FontWeight.w700,
-                      //     color: AppColors.blue0C,
-                      //   ),
-                      // ),
-                      // Container(
-                      //   margin: EdgeInsets.symmetric(vertical: 6.h),
-                      //   height: 135.h,
-                      //   child: ListView.builder(
-                      //     scrollDirection: Axis.horizontal,
-                      //     itemCount: 5,
-                      //     itemBuilder: (context, index) {
-                      //       return Padding(
-                      //         padding: EdgeInsets.only(right: 15.w),
-                      //         child: Container(
-                      //           child: Padding(
-                      //             padding: EdgeInsets.only(
-                      //                 left: 25.w, right: 20.w, top: 15.h),
-                      //             child: Column(
-                      //               crossAxisAlignment:
-                      //                   CrossAxisAlignment.start,
-                      //               children: [
-                      //                 Text(
-                      //                   "UI/UX Designer Job",
-                      //                   textAlign: TextAlign.start,
-                      //                   style: GoogleFonts.poppins(
-                      //                       color: AppColors.black,
-                      //                       textStyle: TextStyle(
-                      //                         fontWeight: FontWeight.w600,
-                      //                         fontSize: 17.sp,
-                      //                       )),
-                      //                 ),
-                      //                 SizedBox(height: 10.h),
-                      //                 Row(
-                      //                   children: [
-                      //                     Text(
-                      //                       "SmartTech",
-                      //                       textAlign: TextAlign.start,
-                      //                       style: GoogleFonts.poppins(
-                      //                           color: AppColors.gray83,
-                      //                           textStyle: TextStyle(
-                      //                             fontWeight: FontWeight.w600,
-                      //                             fontSize: 13.sp,
-                      //                           )),
-                      //                     ),
-                      //                     Spacer(),
-                      //                     Icon(
-                      //                       FontAwesomeIcons.bookmark,
-                      //                       size: 15.sp,
-                      //                     ),
-                      //                   ],
-                      //                 ),
-                      //                 Spacer(flex: 4),
-                      //                 Center(
-                      //                   child: Container(
-                      //                     width: 100.w,
-                      //                     height: 20.h,
-                      //                     child: AppButton(
-                      //                       color: AppColors.pink,
-                      //                       title: "View",
-                      //                       fontSize: 12,
-                      //                       onTap: () {},
-                      //                     ),
-                      //                   ),
-                      //                 ),
-                      //                 Spacer(
-                      //                   flex: 3,
-                      //                 ),
-                      //               ],
-                      //             ),
-                      //           ),
-                      //           width: 200.w,
-                      //           height: 150.h,
-                      //           decoration: BoxDecoration(
-                      //             color: AppColors.lGreen,
-                      //             borderRadius: BorderRadius.circular(
-                      //               12.sp,
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       );
-                      //     },
-                      //   ),
-                      // ),
+                      Text(
+                        "All",
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.blue0C,
+                        ),
+                      ),
+                      // Use This
+                      //
+                      //
+                      //
+                      //
+                      Container(
+                        margin: EdgeInsets.symmetric(vertical: 6.h),
+                        height: 300.h,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: skillsControllerApi.data.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: EdgeInsets.only(right: 15.w),
+                              child: Container(
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                    left: 25.w,
+                                    right: 20.w,
+                                    top: 15.h,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        skillsControllerApi.jobTitle[index],
+                                        textAlign: TextAlign.start,
+                                        style: GoogleFonts.poppins(
+                                            color: AppColors.black,
+                                            textStyle: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 17.sp,
+                                            )),
+                                      ),
+                                      SizedBox(height: 2.h),
+                                      Text(
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        skillsControllerApi.jobStatus[index],
+                                        textAlign: TextAlign.start,
+                                        style: GoogleFonts.poppins(
+                                          color: AppColors.black,
+                                          textStyle: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 12.sp,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 2.h),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            skillsControllerApi
+                                                .companyList[index],
+                                            textAlign: TextAlign.start,
+                                            style: GoogleFonts.poppins(
+                                                color: AppColors.gray83,
+                                                textStyle: TextStyle(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 13.sp,
+                                                )),
+                                          ),
+                                          Spacer(),
+                                          Icon(
+                                            FontAwesomeIcons.solidBookmark,
+                                            size: 15.sp,
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 10.h),
+                                      Text(
+                                        maxLines: 10,
+                                        overflow: TextOverflow.ellipsis,
+                                        skillsControllerApi
+                                            .jobDescription[index],
+                                        textAlign: TextAlign.start,
+                                        style: GoogleFonts.poppins(
+                                            color: AppColors.gray4B,
+                                            textStyle: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 12.sp,
+                                            )),
+                                      ),
+                                      Spacer(flex: 4),
+                                      Center(
+                                        child: Container(
+                                          width: 100.w,
+                                          height: 20.h,
+                                          child: AppButton(
+                                            color: AppColors.pink,
+                                            title: "View",
+                                            fontSize: 12,
+                                            onTap: () {
+                                              RouteUtils.push(
+                                                context: context,
+                                                screen: UserJob(
+                                                  jobTitle: skillsControllerApi
+                                                      .jobTitle[index],
+                                                  jobStatus: skillsControllerApi
+                                                      .jobStatus[index],
+                                                  jobDescription:
+                                                      skillsControllerApi
+                                                              .jobDescription[
+                                                          index],
+                                                  companyList:
+                                                      skillsControllerApi
+                                                          .companyList[index],
+                                                  jobAddress:
+                                                      skillsControllerApi
+                                                          .jobAddress[index],
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                      Spacer(
+                                        flex: 3,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                width: 280.w,
+                                height: 150.h,
+                                decoration: BoxDecoration(
+                                  color: AppColors.lGreen,
+                                  borderRadius: BorderRadius.circular(
+                                    12.sp,
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
                     ],
                   ),
                 ),
