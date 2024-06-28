@@ -18,6 +18,7 @@ import 'features/job_view_screen/user_screen.dart';
 import 'features/post_screen/post_details.dart';
 import 'features/saved_screen/screen1.dart';
 import 'features/saved_screen/screen2.dart';
+import 'features/saved_screen/screen7.dart';
 import 'features/show_details/competition_details.dart';
 
 void main() {
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         return child!;
       },
       debugShowCheckedModeBanner: false,
-      home: CompleteUserProfileScreen(),
+      home: MyCV(),
     );
   }
 }
