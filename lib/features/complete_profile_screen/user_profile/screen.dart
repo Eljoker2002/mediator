@@ -189,16 +189,44 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                         ),
                       ),
                     ),
-
-                    // RefactorTextFormField(
-                    //   text: "City",
-                    //   validator: ValidatorUtils.required,
-                    //   controller: userSignupController.city,
-                    // ),
-                    // RefactorTextFormField(
-                    //   text: "University",
-                    //   validator: ValidatorUtils.required,
-                    // ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8.0.h),
+                      child: InkWell(
+                        onTap: () {
+                          showAlertDialogForCity();
+                        },
+                        child: Container(
+                          color: AppColors.white,
+                          width: double.infinity,
+                          height: 35.h,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 12.w, right: 12.w),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Row(
+                                children: [
+                                  Text(
+                                    city,
+                                    style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                        color: AppColors.grayB7,
+                                        fontSize: 15.sp,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Icon(
+                                    size: 20.sp,
+                                    FontAwesomeIcons.caretDown,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 8.0.h),
                       child: InkWell(
@@ -273,10 +301,6 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                       text: "Bio (optional)",
                       controller: userSignupController.bio,
                     ),
-                    // RefactorTextFormField(
-                    //   text: "Your CV (optional)",
-                    //   controller: userSignupController.bio,
-                    // ),
                     RefactorTextFormField(
                       text: "Facebook link (optional)",
                       controller: userSignupController.facebook,
@@ -1038,6 +1062,113 @@ class _CompleteUserProfileScreenState extends State<CompleteUserProfileScreen> {
                             userSignupController.university = isChecked1;
                             print(userSignupController.university);
                             uni = allUni[index];
+                            RouteUtils.pop(context: context);
+                          } else {
+                            isChecked1 = "";
+                          }
+                        });
+                      },
+                    );
+                    ;
+                  },
+                ),
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  void showAlertDialogForCity() {
+    List<String> allCity = [
+      "Cairo",
+      "Alexandria",
+      "Gizeh",
+      "Port Said",
+      "Suez",
+      "Luxor",
+      "Mansoura",
+      "El-Mahalla El-Kubra",
+      "Tanta",
+      "Asyut",
+      "Ismailia",
+      "Fayyum",
+      "Zagazig",
+      "Aswan",
+      "Damietta",
+      "Damanhur",
+      "Al-Minya",
+      "Beni Suef",
+      "Qena",
+      "Sohag",
+      "6th of October City",
+      "Banha",
+      "Kafr el-Sheikh",
+      "Arish",
+      "Marsa Matruh",
+    ];
+    List<bool> _isCheckedAll = [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+    ];
+    void _updateCheckboxes(int index) {
+      setState(() {
+        if (index == _isCheckedAll[index]) {
+          _isCheckedAll[index] = true;
+        }
+      });
+    }
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: StatefulBuilder(
+            builder: (BuildContext context,
+                void Function(void Function()) setState) {
+              return Container(
+                width: 200.w,
+                height: 300.h,
+                child: ListView.builder(
+                  itemCount: allCity.length,
+                  itemBuilder: (context, index) {
+                    return CheckboxListTile(
+                      title: Text(allCity[index]),
+                      value: _isCheckedAll[index],
+                      onChanged: (bool? value) {
+                        _updateCheckboxes(1);
+                        setState(() {
+                          _isCheckedAll[index] = value!;
+                          var isChecked1 = "";
+                          if (_isCheckedAll[index] == true) {
+                            isChecked1 = "${allCity[index]}";
+                            userSignupController.city = isChecked1;
+                            print(userSignupController.city);
+                            uni = allCity[index];
                             RouteUtils.pop(context: context);
                           } else {
                             isChecked1 = "";
