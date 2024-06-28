@@ -13,31 +13,30 @@ import '../features/home_screen/screen.dart';
 import '../features/post_screen/post_screen.dart';
 import '../features/saved_screen/saved_screen1.dart';
 
-class MyHomePage extends StatefulWidget {
+class MyCompanyPage extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyCompanyPageState createState() => _MyCompanyPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyCompanyPageState extends State<MyCompanyPage> {
   int selectedIndex = 0;
-  List<Widget> screen=[
-    HomeScreen(),
+  List<Widget> screen = [
+    PostScreen(name: '', website: '', about: ''),
     SavedScreen(),
-    PostScreen(name: '', website: '', about: '',),
     ApplicationScreen2(),
     UserProfile(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:screen[selectedIndex],
+      body: screen[selectedIndex],
       bottomNavigationBar: buildCurvedNavigationBar(),
     );
   }
 
   Widget buildCurvedNavigationBar() {
     return CurvedNavigationBar(
-      backgroundColor:AppColors.whiteF6 ,
+      backgroundColor: AppColors.whiteF6,
       animationDuration: Duration(milliseconds: 300),
       onTap: (index) {
         setState(() {
@@ -55,34 +54,43 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-
-
-class MyCompanyPadge extends StatefulWidget {
-  const MyCompanyPadge({super.key});
+class MyUserPage extends StatefulWidget {
+  const MyUserPage({super.key});
 
   @override
-  State<MyCompanyPadge> createState() => _MyCompanyPadgeState();
+  State<MyUserPage> createState() => _MyUserPageState();
 }
 
-class _MyCompanyPadgeState extends State<MyCompanyPadge> {
+class _MyUserPageState extends State<MyUserPage> {
   int selectedIndex2 = 0;
-  List<Widget> screen2=[
-    HomeScreen(),
+  List<Widget> screen2 = [
+    HomeScreen(
+      name: '',
+    ),
     OrganizationApplication(),
-    PostScreen(name: '', website: '', about: '',),
+    PostScreen(
+      name: '',
+      website: '',
+      about: '',
+    ),
     ChatsScreen(),
-    CompanyProfileScreen(name: '', website: '', about: '',)
+    CompanyProfileScreen(
+      name: '',
+      website: '',
+      about: '',
+    )
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:screen2[selectedIndex2],
+      body: screen2[selectedIndex2],
       bottomNavigationBar: buildCurvedNavigationBar2(),
     );
   }
+
   Widget buildCurvedNavigationBar2() {
     return CurvedNavigationBar(
-      backgroundColor:AppColors.whiteF6 ,
+      backgroundColor: AppColors.whiteF6,
       animationDuration: Duration(milliseconds: 300),
       onTap: (index) {
         setState(() {

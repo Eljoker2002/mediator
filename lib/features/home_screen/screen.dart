@@ -8,14 +8,15 @@ import 'package:mediator/core/navigator.dart';
 import 'package:mediator/features/complete_profile_screen/user_profile/skills_controller_api.dart';
 import 'package:mediator/features/home_screen/controller.dart';
 import 'package:mediator/features/job_view_screen/user_screen.dart';
-import 'package:mediator/features/log_in_screen/login_api.dart';
+import 'package:mediator/features/log_in_screen/login_api_forCompany.dart';
 import 'package:mediator/features/welcome_screens/widgets/welcome_text.dart';
 import 'package:mediator/widgets/app_button.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../widgets/custom_click.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key, required this.name}) : super(key: key);
+  String name;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

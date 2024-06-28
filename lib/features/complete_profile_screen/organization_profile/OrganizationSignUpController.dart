@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:mediator/core/app_colors.dart';
+import 'package:mediator/features/log_in_screen/login_forCompany.dart';
 import 'package:mediator/widgets/snack_bar.dart';
 import '../../../core/navigator.dart';
 import '../../home_screen/screen.dart';
@@ -56,8 +57,12 @@ class CompanySignUpController {
           "about": about.text,
         },
       );
-      RouteUtils.pushAndRemoveAll(context: context, screen: HomeScreen());
-      showSnackBar(context, title: "Welcome ${name.text} to Mediator",error: true,color: AppColors.black);
+      RouteUtils.pushAndRemoveAll(
+          context: context, screen: LoginScreenForCompany());
+      showSnackBar(context,
+          title: "Welcome ${name.text} to Mediator",
+          error: true,
+          color: AppColors.black);
     } on DioException catch (e) {
       showSnackBar(context,
           title: e.response?.data["message"] != "" &&

@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediator/core/navigator.dart';
-import 'package:mediator/features/log_in_screen/login_api.dart';
+import 'package:mediator/features/complete_profile_screen/user_profile/screen.dart';
+import 'package:mediator/features/log_in_screen/login_api_forCompany.dart';
+import 'package:mediator/features/log_in_screen/login_api_forUser.dart';
 import '../../core/app_colors.dart';
 import '../../core/validator_utils/validator_utils.dart';
 import '../../widgets/app_button.dart';
@@ -13,17 +15,17 @@ import '../character_screen/character.dart';
 import '../complete_profile_screen/organization_profile/OrganizationSignUpController.dart';
 import '../welcome_screens/widgets/welcome_text.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class LoginScreenForUser extends StatefulWidget {
+  const LoginScreenForUser({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<LoginScreenForUser> createState() => _LoginScreenForUserState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenForUserState extends State<LoginScreenForUser> {
   bool visible = true;
   bool value = false;
-  LoginApiController controller = LoginApiController();
+  LoginApiForUser controller = LoginApiForUser();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -327,7 +329,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     InkWell(
                       onTap: () => RouteUtils.push(
                         context: context,
-                        screen: CharacterScreen(),
+                        screen: CompleteUserProfileScreen(),
                       ),
                       child: Text(
                         "Sign up",

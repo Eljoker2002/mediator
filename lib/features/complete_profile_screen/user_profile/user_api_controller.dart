@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:mediator/features/log_in_screen/login_forUser.dart';
 import '../../../core/app_colors.dart';
 import '../../../core/navigator.dart';
 import '../../../widgets/snack_bar.dart';
@@ -51,7 +52,8 @@ class UserSignupController {
         },
       );
       print(response.data);
-      RouteUtils.pushAndRemoveAll(context: context, screen: HomeScreen());
+      RouteUtils.pushAndRemoveAll(
+          context: context, screen: LoginScreenForUser());
       showSnackBar(context,
           title: "Welcome ${fName.text} ${lName.text} to Mediator",
           error: true,

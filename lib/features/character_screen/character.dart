@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediator/core/navigator.dart';
+import 'package:mediator/features/log_in_screen/login_forCompany.dart';
+import 'package:mediator/features/log_in_screen/login_forUser.dart';
 import '../../core/app_colors.dart';
 import '../complete_profile_screen/organization_profile/organization_profile.dart';
 import '../complete_profile_screen/user_profile/screen.dart';
@@ -99,8 +101,7 @@ class CharacterScreen extends StatelessWidget {
                     highlightColor: AppColors.whiteF6,
                     onTap: () {
                       RouteUtils.push(
-                          context: context,
-                          screen: CompleteUserProfileScreen());
+                          context: context, screen: LoginScreenForUser());
                     },
                     child: Container(
                       width: 156.w,
@@ -140,7 +141,7 @@ class CharacterScreen extends StatelessWidget {
                     highlightColor: AppColors.whiteF6,
                     onTap: () {
                       RouteUtils.push(
-                          context: context, screen: OrganizationProfile());
+                          context: context, screen: LoginScreenForCompany());
                     },
                     child: Container(
                       width: 156.w,
@@ -167,40 +168,6 @@ class CharacterScreen extends StatelessWidget {
                             fontSize: 12.sp,
                           ),
                         ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 30.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Already have an account?",
-                    style: GoogleFonts.inter(
-                      textStyle: TextStyle(
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.gray71,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 3.w,
-                  ),
-                  InkWell(
-                    onTap: () => RouteUtils.pop(
-                      context: context,
-                    ),
-                    child: Text(
-                      "Login",
-                      style: GoogleFonts.inter(
-                        textStyle: TextStyle(
-                          fontSize: 13.sp,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.black,
-                        ),
                       ),
                     ),
                   ),

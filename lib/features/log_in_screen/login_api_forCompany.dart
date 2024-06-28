@@ -5,7 +5,7 @@ import 'package:mediator/features/home_screen/screen.dart';
 import '../../widgets/snack_bar.dart';
 import '../post_screen/post_screen.dart';
 
-class LoginApiController {
+class LoginApiForCompany {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   String name='';
