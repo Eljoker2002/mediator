@@ -9,16 +9,16 @@ import 'package:mediator/features/welcome_screens/first_screen.dart';
 import '../post_screen/post_api.dart';
 
 class LogoScreen extends StatefulWidget {
-   LogoScreen({Key? key}) : super(key: key);
+  LogoScreen({Key? key}) : super(key: key);
   @override
   State<LogoScreen> createState() => _LogoScreenState();
 }
 
 class _LogoScreenState extends State<LogoScreen> {
+  Posts posts = Posts();
   @override
   void initState() {
-    Posts posts=Posts();
-    posts.GetPost;
+    posts.GetPost(context);
     Timer(Duration(milliseconds: 1500), () {
       RouteUtils.push(
         context: context,
