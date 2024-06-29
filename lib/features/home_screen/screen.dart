@@ -15,9 +15,15 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../widgets/custom_click.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key? key, required this.name,required this.token}) : super(key: key);
+  HomeScreen({
+    Key? key,
+    required this.name,
+    required this.token,
+    required this.skills,
+  }) : super(key: key);
   String name;
   String token;
+  String skills;
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -28,7 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    skillsControllerApi.getSkills(context);
+    print(widget.skills);
+    skillsControllerApi.correctSkills = widget.skills;
+    skillsControllerApi.sendSkills(context);
     controller.selectedCategory = controller.home.first;
     super.initState();
   }
@@ -159,11 +167,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                         skillsControllerApi.jobTitle[index],
                                         textAlign: TextAlign.start,
                                         style: GoogleFonts.poppins(
-                                            color: AppColors.black,
-                                            textStyle: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 17.sp,
-                                            )),
+                                          color: AppColors.black,
+                                          textStyle: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 17.sp,
+                                          ),
+                                        ),
                                       ),
                                       SizedBox(height: 2.h),
                                       Text(

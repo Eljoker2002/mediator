@@ -1,8 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mediator/features/complete_profile_screen/user_profile/user_api_controller.dart';
+import 'package:mediator/features/log_in_screen/login_api_forUser.dart';
+import 'package:mediator/features/log_in_screen/login_forUser.dart';
 
 class SkillsControllerApi {
+  UserSignupController userSignupController = UserSignupController();
+  LoginApiForUser loginApiForUser = LoginApiForUser();
   List<String> allSkills = [];
   String correctSkills = "";
   List<dynamic> data = [];
@@ -13,7 +18,6 @@ class SkillsControllerApi {
   List<String> jobAddress = [];
 
   Future<void> sendSkills(BuildContext context) async {
-    correctSkills = allSkills.join(", ");
     final response = await Dio().post(
       "https://skills.seere.live/predict",
       options: Options(

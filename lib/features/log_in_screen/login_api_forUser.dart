@@ -14,6 +14,7 @@ class LoginApiForUser {
   List<String> fullName = [];
   String photo = '';
   String token = '';
+  String skills = '';
   final formKey = GlobalKey<FormState>();
 
   Future<void> getUser(BuildContext context) async {
@@ -39,11 +40,13 @@ class LoginApiForUser {
       name = fullName.join(" ");
       photo = userDetails["user"]["photo"];
       token = userDetails["token"];
+      skills = userDetails["user"]["skills"];
       RouteUtils.pushAndRemoveAll(
         context: context,
         screen: MyUserPage(
           name: name,
           token: token,
+          skills: skills,
         ),
       );
     } on DioException catch (e) {

@@ -7,6 +7,8 @@ import '../../../widgets/snack_bar.dart';
 import '../../home_screen/screen.dart';
 
 class UserSignupController {
+  List<String> allSkills = [];
+  String correctSkills = "";
   TextEditingController fName = TextEditingController();
   TextEditingController lName = TextEditingController();
   TextEditingController email = TextEditingController();
@@ -22,6 +24,7 @@ class UserSignupController {
   final formKey = GlobalKey<FormState>();
 
   Future<void> addUser(BuildContext context) async {
+    correctSkills = allSkills.join(", ");
     formKey.currentState!.save();
     if (!formKey.currentState!.validate()) {
       return;
@@ -49,17 +52,21 @@ class UserSignupController {
           "bio": bio.text,
           "university_id": university,
           "city_id": city,
+          "skills": correctSkills,
         },
       );
       print(response.data);
-      RouteUtils.pushAndRemoveAll(
-          context: context, screen: LoginScreenForUser());
-      showSnackBar(context,
-          title: "Welcome ${fName.text} ${lName.text} to Mediator",
-          error: true,
-          color: AppColors.black);
+      RouteUtils.pop(
+        context: context,
+      );
+      showSnackBar(
+        context,
+        title: "Your account added successfully",
+        error: true,
+        color: AppColors.black,
+      );
     } on DioException catch (e) {
-      print(e.response?.data["message"]);
+      print(e.response?.data);
       showSnackBar(
         context,
         title: "Something went wrong , Please check your data again",
