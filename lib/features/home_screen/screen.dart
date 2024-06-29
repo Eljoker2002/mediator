@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart';
 import 'package:mediator/core/app_colors.dart';
 import 'package:mediator/core/navigator.dart';
 import 'package:mediator/features/complete_profile_screen/user_profile/skills_controller_api.dart';
@@ -13,14 +14,12 @@ import 'package:mediator/features/welcome_screens/widgets/welcome_text.dart';
 import 'package:mediator/widgets/app_button.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../widgets/custom_click.dart';
+import '../post_screen/post_api.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({
-    Key? key,
-    required this.name,
-    required this.token,
-    required this.skills,
-  }) : super(key: key);
+  HomeScreen(
+      {Key? key, required this.name, required this.token, required this.skills})
+      : super(key: key);
   String name;
   String token;
   String skills;
@@ -31,11 +30,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   HomeController controller = HomeController();
   SkillsControllerApi skillsControllerApi = SkillsControllerApi();
-
+  Posts posts = Posts();
   @override
   void initState() {
-    print(widget.skills);
     skillsControllerApi.correctSkills = widget.skills;
+    posts.GetPost(context);
     skillsControllerApi.sendSkills(context);
     controller.selectedCategory = controller.home.first;
     super.initState();
@@ -128,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
               ),
-              if (controller.selectedCategory == controller.home[1])
+              if (controller.selectedCategory == controller.home[0])
                 Expanded(
                   child: ListView(
                     padding: EdgeInsets.only(top: 15.h),
@@ -141,155 +140,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: AppColors.blue0C,
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 6.h),
-                        height: 300.h,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: skillsControllerApi.data.length,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(right: 15.w),
-                              child: Container(
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                    left: 25.w,
-                                    right: 20.w,
-                                    top: 15.h,
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                        skillsControllerApi.jobTitle[index],
-                                        textAlign: TextAlign.start,
-                                        style: GoogleFonts.poppins(
-                                          color: AppColors.black,
-                                          textStyle: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 17.sp,
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(height: 2.h),
-                                      Text(
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        skillsControllerApi.jobStatus[index],
-                                        textAlign: TextAlign.start,
-                                        style: GoogleFonts.poppins(
-                                          color: AppColors.black,
-                                          textStyle: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 12.sp,
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(height: 2.h),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                            skillsControllerApi
-                                                .companyList[index],
-                                            textAlign: TextAlign.start,
-                                            style: GoogleFonts.poppins(
-                                                color: AppColors.gray83,
-                                                textStyle: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 13.sp,
-                                                )),
-                                          ),
-                                          Spacer(),
-                                          Icon(
-                                            FontAwesomeIcons.solidBookmark,
-                                            size: 15.sp,
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(height: 10.h),
-                                      Text(
-                                        maxLines: 10,
-                                        overflow: TextOverflow.ellipsis,
-                                        skillsControllerApi
-                                            .jobDescription[index],
-                                        textAlign: TextAlign.start,
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.gray4B,
-                                            textStyle: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 12.sp,
-                                            )),
-                                      ),
-                                      Spacer(flex: 4),
-                                      Center(
-                                        child: Container(
-                                          width: 100.w,
-                                          height: 20.h,
-                                          child: AppButton(
-                                            color: AppColors.pink,
-                                            title: "View",
-                                            fontSize: 12,
-                                            onTap: () {
-                                              RouteUtils.push(
-                                                context: context,
-                                                screen: UserJob(
-                                                  jobTitle: skillsControllerApi
-                                                      .jobTitle[index],
-                                                  jobStatus: skillsControllerApi
-                                                      .jobStatus[index],
-                                                  jobDescription:
-                                                      skillsControllerApi
-                                                              .jobDescription[
-                                                          index],
-                                                  companyList:
-                                                      skillsControllerApi
-                                                          .companyList[index],
-                                                  jobAddress:
-                                                      skillsControllerApi
-                                                          .jobAddress[index],
-                                                ),
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                      ),
-                                      Spacer(
-                                        flex: 3,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                width: 280.w,
-                                height: 150.h,
-                                decoration: BoxDecoration(
-                                  color: AppColors.lGreen,
-                                  borderRadius: BorderRadius.circular(
-                                    12.sp,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      Text(
-                        "All",
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.blue0C,
-                        ),
-                      ),
-                      // Use This
-                      //
-                      //
-                      //
-                      //
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 6.h),
                         height: 300.h,
@@ -416,6 +266,281 @@ class _HomeScreenState extends State<HomeScreen> {
                                 height: 150.h,
                                 decoration: BoxDecoration(
                                   color: AppColors.lGreen,
+                                  borderRadius: BorderRadius.circular(
+                                    12.sp,
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      Text(
+                        "All",
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.blue0C,
+                        ),
+                      ),
+// Use This
+//
+//
+//
+//
+                      Container(
+                        margin: EdgeInsets.symmetric(vertical: 6.h),
+                        height: 300.h,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: posts.allTitle.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: EdgeInsets.only(right: 15.w),
+                              child: Container(
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                    left: 25.w,
+                                    right: 20.w,
+                                    top: 15.h,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+//maxLines: 2,
+//overflow: TextOverflow.clip,
+                                        posts.allTitle[index],
+                                        textAlign: TextAlign.start,
+                                        style: GoogleFonts.poppins(
+                                            color: AppColors.black,
+                                            textStyle: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 17.sp,
+                                            )),
+                                      ),
+                                      SizedBox(height: 2.h),
+                                      Text(
+                                        posts.allStatus[index],
+                                        textAlign: TextAlign.start,
+                                        style: GoogleFonts.poppins(
+                                          color: AppColors.black,
+                                          textStyle: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 12.sp,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 2.h),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            posts.allNames[index],
+                                            textAlign: TextAlign.start,
+                                            style: GoogleFonts.poppins(
+                                                color: AppColors.gray83,
+                                                textStyle: TextStyle(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 13.sp,
+                                                )),
+                                          ),
+                                          Spacer(),
+                                          Icon(
+                                            FontAwesomeIcons.solidBookmark,
+                                            size: 15.sp,
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 10.h),
+                                      Text(
+                                        posts.allDescription[index],
+                                        textAlign: TextAlign.start,
+                                        style: GoogleFonts.poppins(
+                                            color: AppColors.gray4B,
+                                            textStyle: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 12.sp,
+                                            )),
+                                      ),
+                                      Spacer(flex: 10),
+                                      Center(
+                                        child: Container(
+                                          width: 100.w,
+                                          height: 20.h,
+                                          child: AppButton(
+                                            color: AppColors.pink,
+                                            title: "View",
+                                            fontSize: 12,
+                                            onTap: () {
+                                              RouteUtils.push(
+                                                context: context,
+                                                screen: UserJob(
+                                                  jobTitle:
+                                                      posts.allTitle[index],
+                                                  jobStatus:
+                                                      posts.allStatus[index],
+                                                  jobDescription: posts
+                                                      .allDescription[index],
+                                                  companyList:
+                                                      posts.allNames[index],
+                                                  jobAddress:
+                                                      posts.allLocation[index],
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                      Spacer(
+                                        flex: 1,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                width: 280.w,
+//height: 150.h,
+                                decoration: BoxDecoration(
+                                  color: AppColors.lGreen,
+                                  borderRadius: BorderRadius.circular(
+                                    12.sp,
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              if (controller.selectedCategory == controller.home[1])
+                Expanded(
+                  child: ListView(
+                    padding: EdgeInsets.only(top: 15.h),
+                    children: [
+                      Text(
+                        "Recommendation",
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.blue0C,
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(vertical: 6.h),
+                        height: 300.h,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: posts.allTitle.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: EdgeInsets.only(right: 15.w),
+                              child: Container(
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                    left: 25.w,
+                                    right: 20.w,
+                                    top: 15.h,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+//maxLines: 2,
+//overflow: TextOverflow.clip,
+                                        posts.allTitle[index],
+                                        textAlign: TextAlign.start,
+                                        style: GoogleFonts.poppins(
+                                            color: AppColors.black,
+                                            textStyle: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 17.sp,
+                                            )),
+                                      ),
+                                      SizedBox(height: 2.h),
+                                      Text(
+                                        posts.allStatus[index],
+                                        textAlign: TextAlign.start,
+                                        style: GoogleFonts.poppins(
+                                          color: AppColors.black,
+                                          textStyle: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 12.sp,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 2.h),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            posts.allNames[index],
+                                            textAlign: TextAlign.start,
+                                            style: GoogleFonts.poppins(
+                                                color: AppColors.gray83,
+                                                textStyle: TextStyle(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 13.sp,
+                                                )),
+                                          ),
+                                          Spacer(),
+                                          Icon(
+                                            FontAwesomeIcons.solidBookmark,
+                                            size: 15.sp,
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 10.h),
+                                      Text(
+                                        posts.allDescription[index],
+                                        textAlign: TextAlign.start,
+                                        style: GoogleFonts.poppins(
+                                            color: AppColors.gray4B,
+                                            textStyle: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 12.sp,
+                                            )),
+                                      ),
+                                      Spacer(flex: 10),
+                                      Center(
+                                        child: Container(
+                                          width: 100.w,
+                                          height: 20.h,
+                                          child: AppButton(
+                                            color: AppColors.pink,
+                                            title: "View",
+                                            fontSize: 12,
+                                            onTap: () {
+                                              RouteUtils.push(
+                                                context: context,
+                                                screen: UserJob(
+                                                  jobTitle:
+                                                      posts.allTitle[index],
+                                                  jobStatus:
+                                                      posts.allStatus[index],
+                                                  jobDescription: posts
+                                                      .allDescription[index],
+                                                  companyList:
+                                                      posts.allNames[index],
+                                                  jobAddress:
+                                                      posts.allLocation[index],
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                      Spacer(
+                                        flex: 1,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                width: 280.w,
+//height: 150.h,
+                                decoration: BoxDecoration(
+                                  color: AppColors.lPink,
                                   borderRadius: BorderRadius.circular(
                                     12.sp,
                                   ),
@@ -443,23 +568,28 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 6.h),
-                        height: 135.h,
+                        height: 300.h,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: 5,
+                          itemCount: posts.allTitle.length,
                           itemBuilder: (context, index) {
                             return Padding(
                               padding: EdgeInsets.only(right: 15.w),
                               child: Container(
                                 child: Padding(
                                   padding: EdgeInsets.only(
-                                      left: 25.w, right: 20.w, top: 15.h),
+                                    left: 25.w,
+                                    right: 20.w,
+                                    top: 15.h,
+                                  ),
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "UI/UX Design Internship",
+//maxLines: 2,
+//overflow: TextOverflow.clip,
+                                        posts.allTitle[index],
                                         textAlign: TextAlign.start,
                                         style: GoogleFonts.poppins(
                                             color: AppColors.black,
@@ -468,11 +598,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                               fontSize: 17.sp,
                                             )),
                                       ),
-                                      SizedBox(height: 10.h),
+                                      SizedBox(height: 2.h),
+                                      Text(
+                                        posts.allStatus[index],
+                                        textAlign: TextAlign.start,
+                                        style: GoogleFonts.poppins(
+                                          color: AppColors.black,
+                                          textStyle: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 12.sp,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 2.h),
                                       Row(
                                         children: [
                                           Text(
-                                            "SmartTech",
+                                            posts.allNames[index],
                                             textAlign: TextAlign.start,
                                             style: GoogleFonts.poppins(
                                                 color: AppColors.gray83,
@@ -488,86 +630,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                         ],
                                       ),
-                                      Spacer(flex: 4),
-                                      Center(
-                                        child: Container(
-                                          width: 100.w,
-                                          height: 20.h,
-                                          child: AppButton(
-                                            color: AppColors.pink,
-                                            title: "View",
-                                            fontSize: 12,
-                                            onTap: () {},
-                                          ),
-                                        ),
-                                      ),
-                                      Spacer(
-                                        flex: 3,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                width: 200.w,
-                                height: 150.h,
-                                decoration: BoxDecoration(
-                                  color: AppColors.lPink,
-                                  borderRadius: BorderRadius.circular(
-                                    12.sp,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 6.h),
-                        height: 135.h,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 5,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(right: 15.w),
-                              child: Container(
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 25.w, right: 20.w, top: 15.h),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
+                                      SizedBox(height: 10.h),
                                       Text(
-                                        "UI/UX Design Internship",
+                                        posts.allDescription[index],
                                         textAlign: TextAlign.start,
                                         style: GoogleFonts.poppins(
-                                            color: AppColors.black,
+                                            color: AppColors.gray4B,
                                             textStyle: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 17.sp,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 12.sp,
                                             )),
                                       ),
-                                      SizedBox(height: 10.h),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "SmartTech",
-                                            textAlign: TextAlign.start,
-                                            style: GoogleFonts.poppins(
-                                                color: AppColors.gray83,
-                                                textStyle: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 13.sp,
-                                                )),
-                                          ),
-                                          Spacer(),
-                                          Icon(
-                                            FontAwesomeIcons.solidBookmark,
-                                            size: 15.sp,
-                                          ),
-                                        ],
-                                      ),
-                                      Spacer(flex: 4),
+                                      Spacer(flex: 10),
                                       Center(
                                         child: Container(
                                           width: 100.w,
@@ -576,107 +650,36 @@ class _HomeScreenState extends State<HomeScreen> {
                                             color: AppColors.pink,
                                             title: "View",
                                             fontSize: 12,
-                                            onTap: () {},
+                                            onTap: () {
+                                              RouteUtils.push(
+                                                context: context,
+                                                screen: UserJob(
+                                                  jobTitle:
+                                                  posts.allTitle[index],
+                                                  jobStatus:
+                                                  posts.allStatus[index],
+                                                  jobDescription: posts
+                                                      .allDescription[index],
+                                                  companyList:
+                                                  posts.allNames[index],
+                                                  jobAddress:
+                                                  posts.allLocation[index],
+                                                ),
+                                              );
+                                            },
                                           ),
                                         ),
                                       ),
                                       Spacer(
-                                        flex: 3,
+                                        flex: 1,
                                       ),
                                     ],
                                   ),
                                 ),
-                                width: 200.w,
-                                height: 150.h,
+                                width: 280.w,
+//height: 150.h,
                                 decoration: BoxDecoration(
-                                  color: AppColors.lPink,
-                                  borderRadius: BorderRadius.circular(
-                                    12.sp,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      Text(
-                        "All",
-                        style: TextStyle(
-                          fontSize: 17.sp,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.blue0C,
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 6.h),
-                        height: 135.h,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 5,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(right: 15.w),
-                              child: Container(
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 25.w, right: 20.w, top: 15.h),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "UI/UX Design Internship",
-                                        textAlign: TextAlign.start,
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.black,
-                                            textStyle: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 17.sp,
-                                            )),
-                                      ),
-                                      SizedBox(height: 10.h),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "SmartTech",
-                                            textAlign: TextAlign.start,
-                                            style: GoogleFonts.poppins(
-                                                color: AppColors.gray83,
-                                                textStyle: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 13.sp,
-                                                )),
-                                          ),
-                                          Spacer(),
-                                          Icon(
-                                            FontAwesomeIcons.bookmark,
-                                            size: 15.sp,
-                                          ),
-                                        ],
-                                      ),
-                                      Spacer(flex: 4),
-                                      Center(
-                                        child: Container(
-                                          width: 100.w,
-                                          height: 20.h,
-                                          child: AppButton(
-                                            color: AppColors.pink,
-                                            title: "View",
-                                            fontSize: 12,
-                                            onTap: () {},
-                                          ),
-                                        ),
-                                      ),
-                                      Spacer(
-                                        flex: 3,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                width: 200.w,
-                                height: 150.h,
-                                decoration: BoxDecoration(
-                                  color: AppColors.lPink,
+                                  color: AppColors.blueC9,
                                   borderRadius: BorderRadius.circular(
                                     12.sp,
                                   ),
@@ -704,23 +707,28 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 6.h),
-                        height: 135.h,
+                        height: 300.h,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: 5,
+                          itemCount: posts.allTitle.length,
                           itemBuilder: (context, index) {
                             return Padding(
                               padding: EdgeInsets.only(right: 15.w),
                               child: Container(
                                 child: Padding(
                                   padding: EdgeInsets.only(
-                                      left: 25.w, right: 20.w, top: 15.h),
+                                    left: 25.w,
+                                    right: 20.w,
+                                    top: 15.h,
+                                  ),
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "UI/UX Design Task",
+//maxLines: 2,
+//overflow: TextOverflow.clip,
+                                        posts.allTitle[index],
                                         textAlign: TextAlign.start,
                                         style: GoogleFonts.poppins(
                                             color: AppColors.black,
@@ -729,11 +737,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                               fontSize: 17.sp,
                                             )),
                                       ),
-                                      SizedBox(height: 10.h),
+                                      SizedBox(height: 2.h),
+                                      Text(
+                                        posts.allStatus[index],
+                                        textAlign: TextAlign.start,
+                                        style: GoogleFonts.poppins(
+                                          color: AppColors.black,
+                                          textStyle: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 12.sp,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 2.h),
                                       Row(
                                         children: [
                                           Text(
-                                            "SmartTech",
+                                            posts.allNames[index],
                                             textAlign: TextAlign.start,
                                             style: GoogleFonts.poppins(
                                                 color: AppColors.gray83,
@@ -749,86 +769,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                         ],
                                       ),
-                                      Spacer(flex: 4),
-                                      Center(
-                                        child: Container(
-                                          width: 100.w,
-                                          height: 20.h,
-                                          child: AppButton(
-                                            color: AppColors.pink,
-                                            title: "View",
-                                            fontSize: 12,
-                                            onTap: () {},
-                                          ),
-                                        ),
-                                      ),
-                                      Spacer(
-                                        flex: 3,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                width: 200.w,
-                                height: 150.h,
-                                decoration: BoxDecoration(
-                                  color: AppColors.blueC9,
-                                  borderRadius: BorderRadius.circular(
-                                    12.sp,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 6.h),
-                        height: 135.h,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 5,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(right: 15.w),
-                              child: Container(
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 25.w, right: 20.w, top: 15.h),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
+                                      SizedBox(height: 10.h),
                                       Text(
-                                        "UI/UX Design Task",
+                                        posts.allDescription[index],
                                         textAlign: TextAlign.start,
                                         style: GoogleFonts.poppins(
-                                            color: AppColors.black,
+                                            color: AppColors.gray4B,
                                             textStyle: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 17.sp,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 12.sp,
                                             )),
                                       ),
-                                      SizedBox(height: 10.h),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "SmartTech",
-                                            textAlign: TextAlign.start,
-                                            style: GoogleFonts.poppins(
-                                                color: AppColors.gray83,
-                                                textStyle: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 13.sp,
-                                                )),
-                                          ),
-                                          Spacer(),
-                                          Icon(
-                                            FontAwesomeIcons.solidBookmark,
-                                            size: 15.sp,
-                                          ),
-                                        ],
-                                      ),
-                                      Spacer(flex: 4),
+                                      Spacer(flex: 10),
                                       Center(
                                         child: Container(
                                           width: 100.w,
@@ -837,629 +789,36 @@ class _HomeScreenState extends State<HomeScreen> {
                                             color: AppColors.pink,
                                             title: "View",
                                             fontSize: 12,
-                                            onTap: () {},
+                                            onTap: () {
+                                              RouteUtils.push(
+                                                context: context,
+                                                screen: UserJob(
+                                                  jobTitle:
+                                                  posts.allTitle[index],
+                                                  jobStatus:
+                                                  posts.allStatus[index],
+                                                  jobDescription: posts
+                                                      .allDescription[index],
+                                                  companyList:
+                                                  posts.allNames[index],
+                                                  jobAddress:
+                                                  posts.allLocation[index],
+                                                ),
+                                              );
+                                            },
                                           ),
                                         ),
                                       ),
                                       Spacer(
-                                        flex: 3,
+                                        flex: 1,
                                       ),
                                     ],
                                   ),
                                 ),
-                                width: 200.w,
-                                height: 150.h,
-                                decoration: BoxDecoration(
-                                  color: AppColors.blueC9,
-                                  borderRadius: BorderRadius.circular(
-                                    12.sp,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      Text(
-                        "All",
-                        style: TextStyle(
-                          fontSize: 17.sp,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.blue0C,
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 6.h),
-                        height: 135.h,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 5,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(right: 15.w),
-                              child: Container(
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 25.w, right: 20.w, top: 15.h),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "UI/UX Design Task",
-                                        textAlign: TextAlign.start,
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.black,
-                                            textStyle: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 17.sp,
-                                            )),
-                                      ),
-                                      SizedBox(height: 10.h),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "SmartTech",
-                                            textAlign: TextAlign.start,
-                                            style: GoogleFonts.poppins(
-                                                color: AppColors.gray83,
-                                                textStyle: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 13.sp,
-                                                )),
-                                          ),
-                                          Spacer(),
-                                          Icon(
-                                            FontAwesomeIcons.bookmark,
-                                            size: 15.sp,
-                                          ),
-                                        ],
-                                      ),
-                                      Spacer(flex: 4),
-                                      Center(
-                                        child: Container(
-                                          width: 100.w,
-                                          height: 20.h,
-                                          child: AppButton(
-                                            color: AppColors.pink,
-                                            title: "View",
-                                            fontSize: 12,
-                                            onTap: () {},
-                                          ),
-                                        ),
-                                      ),
-                                      Spacer(
-                                        flex: 3,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                width: 200.w,
-                                height: 150.h,
-                                decoration: BoxDecoration(
-                                  color: AppColors.blueC9,
-                                  borderRadius: BorderRadius.circular(
-                                    12.sp,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              if (controller.selectedCategory == controller.home[4])
-                Expanded(
-                  child: ListView(
-                    padding: EdgeInsets.only(top: 15.h),
-                    children: [
-                      Text(
-                        "Recommendation",
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.blue0C,
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 6.h),
-                        height: 135.h,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 5,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(right: 15.w),
-                              child: Container(
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 25.w, right: 20.w, top: 15.h),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "UI/UX Design Competition",
-                                        textAlign: TextAlign.start,
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.black,
-                                            textStyle: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 17.sp,
-                                            )),
-                                      ),
-                                      SizedBox(height: 10.h),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "SmartTech",
-                                            textAlign: TextAlign.start,
-                                            style: GoogleFonts.poppins(
-                                                color: AppColors.gray83,
-                                                textStyle: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 13.sp,
-                                                )),
-                                          ),
-                                          Spacer(),
-                                          Icon(
-                                            FontAwesomeIcons.solidBookmark,
-                                            size: 15.sp,
-                                          ),
-                                        ],
-                                      ),
-                                      Spacer(flex: 4),
-                                      Center(
-                                        child: Container(
-                                          width: 100.w,
-                                          height: 20.h,
-                                          child: AppButton(
-                                            color: AppColors.pink,
-                                            title: "View",
-                                            fontSize: 12,
-                                            onTap: () {},
-                                          ),
-                                        ),
-                                      ),
-                                      Spacer(
-                                        flex: 3,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                width: 200.w,
-                                height: 150.h,
+                                width: 280.w,
+//height: 150.h,
                                 decoration: BoxDecoration(
                                   color: AppColors.greenC9,
-                                  borderRadius: BorderRadius.circular(
-                                    12.sp,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 6.h),
-                        height: 135.h,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 5,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(right: 15.w),
-                              child: Container(
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 25.w, right: 20.w, top: 15.h),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "UI/UX Design Competition",
-                                        textAlign: TextAlign.start,
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.black,
-                                            textStyle: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 17.sp,
-                                            )),
-                                      ),
-                                      SizedBox(height: 10.h),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "SmartTech",
-                                            textAlign: TextAlign.start,
-                                            style: GoogleFonts.poppins(
-                                                color: AppColors.gray83,
-                                                textStyle: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 13.sp,
-                                                )),
-                                          ),
-                                          Spacer(),
-                                          Icon(
-                                            FontAwesomeIcons.solidBookmark,
-                                            size: 15.sp,
-                                          ),
-                                        ],
-                                      ),
-                                      Spacer(flex: 4),
-                                      Center(
-                                        child: Container(
-                                          width: 100.w,
-                                          height: 20.h,
-                                          child: AppButton(
-                                            color: AppColors.pink,
-                                            title: "View",
-                                            fontSize: 12,
-                                            onTap: () {},
-                                          ),
-                                        ),
-                                      ),
-                                      Spacer(
-                                        flex: 3,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                width: 200.w,
-                                height: 150.h,
-                                decoration: BoxDecoration(
-                                  color: AppColors.greenC9,
-                                  borderRadius: BorderRadius.circular(
-                                    12.sp,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      Text(
-                        "All",
-                        style: TextStyle(
-                          fontSize: 17.sp,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.blue0C,
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 6.h),
-                        height: 135.h,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 5,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(right: 15.w),
-                              child: Container(
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 25.w, right: 20.w, top: 15.h),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "UI/UX Design Competition",
-                                        textAlign: TextAlign.start,
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.black,
-                                            textStyle: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 17.sp,
-                                            )),
-                                      ),
-                                      SizedBox(height: 10.h),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "SmartTech",
-                                            textAlign: TextAlign.start,
-                                            style: GoogleFonts.poppins(
-                                                color: AppColors.gray83,
-                                                textStyle: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 13.sp,
-                                                )),
-                                          ),
-                                          Spacer(),
-                                          Icon(
-                                            FontAwesomeIcons.bookmark,
-                                            size: 15.sp,
-                                          ),
-                                        ],
-                                      ),
-                                      Spacer(flex: 4),
-                                      Center(
-                                        child: Container(
-                                          width: 100.w,
-                                          height: 20.h,
-                                          child: AppButton(
-                                            color: AppColors.pink,
-                                            title: "View",
-                                            fontSize: 12,
-                                            onTap: () {},
-                                          ),
-                                        ),
-                                      ),
-                                      Spacer(
-                                        flex: 3,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                width: 200.w,
-                                height: 150.h,
-                                decoration: BoxDecoration(
-                                  color: AppColors.greenC9,
-                                  borderRadius: BorderRadius.circular(
-                                    12.sp,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              if (controller.selectedCategory == controller.home[5])
-                Expanded(
-                  child: ListView(
-                    padding: EdgeInsets.only(top: 15.h),
-                    children: [
-                      Text(
-                        "Recommendation",
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.blue0C,
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 6.h),
-                        height: 135.h,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 5,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(right: 15.w),
-                              child: Container(
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 25.w, right: 20.w, top: 15.h),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "UI/UX Design Course",
-                                        textAlign: TextAlign.start,
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.black,
-                                            textStyle: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 17.sp,
-                                            )),
-                                      ),
-                                      SizedBox(height: 10.h),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "SmartTech",
-                                            textAlign: TextAlign.start,
-                                            style: GoogleFonts.poppins(
-                                                color: AppColors.gray83,
-                                                textStyle: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 13.sp,
-                                                )),
-                                          ),
-                                          Spacer(),
-                                          Icon(
-                                            FontAwesomeIcons.solidBookmark,
-                                            size: 15.sp,
-                                          ),
-                                        ],
-                                      ),
-                                      Spacer(flex: 4),
-                                      Center(
-                                        child: Container(
-                                          width: 100.w,
-                                          height: 20.h,
-                                          child: AppButton(
-                                            color: AppColors.pink,
-                                            title: "View",
-                                            fontSize: 12,
-                                            onTap: () {},
-                                          ),
-                                        ),
-                                      ),
-                                      Spacer(
-                                        flex: 3,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                width: 200.w,
-                                height: 150.h,
-                                decoration: BoxDecoration(
-                                  color: AppColors.blueC2,
-                                  borderRadius: BorderRadius.circular(
-                                    12.sp,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 6.h),
-                        height: 135.h,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 5,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(right: 15.w),
-                              child: Container(
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 25.w, right: 20.w, top: 15.h),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "UI/UX Design Roadmap",
-                                        textAlign: TextAlign.start,
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.black,
-                                            textStyle: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 17.sp,
-                                            )),
-                                      ),
-                                      SizedBox(height: 10.h),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "SmartTech",
-                                            textAlign: TextAlign.start,
-                                            style: GoogleFonts.poppins(
-                                                color: AppColors.gray83,
-                                                textStyle: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 13.sp,
-                                                )),
-                                          ),
-                                          Spacer(),
-                                          Icon(
-                                            FontAwesomeIcons.solidBookmark,
-                                            size: 15.sp,
-                                          ),
-                                        ],
-                                      ),
-                                      Spacer(flex: 4),
-                                      Center(
-                                        child: Container(
-                                          width: 100.w,
-                                          height: 20.h,
-                                          child: AppButton(
-                                            color: AppColors.pink,
-                                            title: "View",
-                                            fontSize: 12,
-                                            onTap: () {},
-                                          ),
-                                        ),
-                                      ),
-                                      Spacer(
-                                        flex: 3,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                width: 200.w,
-                                height: 150.h,
-                                decoration: BoxDecoration(
-                                  color: AppColors.blueC2,
-                                  borderRadius: BorderRadius.circular(
-                                    12.sp,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      Text(
-                        "All",
-                        style: TextStyle(
-                          fontSize: 17.sp,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.blue0C,
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 6.h),
-                        height: 135.h,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 5,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(right: 15.w),
-                              child: Container(
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 25.w, right: 20.w, top: 15.h),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "UI/UX Design Roadmap",
-                                        textAlign: TextAlign.start,
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.black,
-                                            textStyle: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 17.sp,
-                                            )),
-                                      ),
-                                      SizedBox(height: 10.h),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "SmartTech",
-                                            textAlign: TextAlign.start,
-                                            style: GoogleFonts.poppins(
-                                                color: AppColors.gray83,
-                                                textStyle: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 13.sp,
-                                                )),
-                                          ),
-                                          Spacer(),
-                                          Icon(
-                                            FontAwesomeIcons.bookmark,
-                                            size: 15.sp,
-                                          ),
-                                        ],
-                                      ),
-                                      Spacer(flex: 4),
-                                      Center(
-                                        child: Container(
-                                          width: 100.w,
-                                          height: 20.h,
-                                          child: AppButton(
-                                            color: AppColors.pink,
-                                            title: "View",
-                                            fontSize: 12,
-                                            onTap: () {},
-                                          ),
-                                        ),
-                                      ),
-                                      Spacer(
-                                        flex: 3,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                width: 200.w,
-                                height: 150.h,
-                                decoration: BoxDecoration(
-                                  color: AppColors.blueC2,
                                   borderRadius: BorderRadius.circular(
                                     12.sp,
                                   ),

@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         return child!;
       },
       debugShowCheckedModeBanner: false,
-      home: LogoScreen(),
+      home: HomeScreen(name: '', token: '', skills: '',),
     );
   }
 }
