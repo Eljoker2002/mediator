@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart';
 import 'package:mediator/core/app_colors.dart';
 import 'package:mediator/core/navigator.dart';
 import 'package:mediator/features/complete_profile_screen/user_profile/skills_controller_api.dart';
@@ -13,14 +14,10 @@ import 'package:mediator/features/welcome_screens/widgets/welcome_text.dart';
 import 'package:mediator/widgets/app_button.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../widgets/custom_click.dart';
+import '../post_screen/post_api.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({
-    Key? key,
-    required this.name,
-    required this.token,
-    required this.skills,
-  }) : super(key: key);
+  HomeScreen({Key? key, required this.name,required this.token,required this.skills}) : super(key: key);
   String name;
   String token;
   String skills;
@@ -31,11 +28,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   HomeController controller = HomeController();
   SkillsControllerApi skillsControllerApi = SkillsControllerApi();
-
+  Posts posts=Posts();
   @override
   void initState() {
-    print(widget.skills);
-    skillsControllerApi.correctSkills = widget.skills;
+    skillsControllerApi.correctSkills=widget.skills;
+    posts.GetPost(context);
     skillsControllerApi.sendSkills(context);
     controller.selectedCategory = controller.home.first;
     super.initState();
@@ -167,12 +164,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                         skillsControllerApi.jobTitle[index],
                                         textAlign: TextAlign.start,
                                         style: GoogleFonts.poppins(
-                                          color: AppColors.black,
-                                          textStyle: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 17.sp,
-                                          ),
-                                        ),
+                                            color: AppColors.black,
+                                            textStyle: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 17.sp,
+                                            )),
                                       ),
                                       SizedBox(height: 2.h),
                                       Text(
@@ -295,7 +291,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 300.h,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: skillsControllerApi.data.length,
+                          itemCount: posts.allTitle.length,
                           itemBuilder: (context, index) {
                             return Padding(
                               padding: EdgeInsets.only(right: 15.w),
@@ -311,9 +307,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                        skillsControllerApi.jobTitle[index],
+                                         //maxLines: 2,
+                                        //overflow: TextOverflow.clip,
+                                      posts.allTitle[index],
                                         textAlign: TextAlign.start,
                                         style: GoogleFonts.poppins(
                                             color: AppColors.black,
@@ -324,9 +320,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                       SizedBox(height: 2.h),
                                       Text(
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        skillsControllerApi.jobStatus[index],
+                                        posts.allStatus[index],
                                         textAlign: TextAlign.start,
                                         style: GoogleFonts.poppins(
                                           color: AppColors.black,
@@ -340,10 +334,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       Row(
                                         children: [
                                           Text(
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                            skillsControllerApi
-                                                .companyList[index],
+                                           posts.allNames[index],
                                             textAlign: TextAlign.start,
                                             style: GoogleFonts.poppins(
                                                 color: AppColors.gray83,
@@ -361,10 +352,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                       SizedBox(height: 10.h),
                                       Text(
-                                        maxLines: 10,
-                                        overflow: TextOverflow.ellipsis,
-                                        skillsControllerApi
-                                            .jobDescription[index],
+
+                                        posts.allDescription[index],
                                         textAlign: TextAlign.start,
                                         style: GoogleFonts.poppins(
                                             color: AppColors.gray4B,
@@ -373,7 +362,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               fontSize: 12.sp,
                                             )),
                                       ),
-                                      Spacer(flex: 4),
+                                      Spacer(flex: 1),
                                       Center(
                                         child: Container(
                                           width: 100.w,
@@ -386,20 +375,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                               RouteUtils.push(
                                                 context: context,
                                                 screen: UserJob(
-                                                  jobTitle: skillsControllerApi
-                                                      .jobTitle[index],
-                                                  jobStatus: skillsControllerApi
-                                                      .jobStatus[index],
+                                                  jobTitle: posts.allTitle[index],
+                                                  jobStatus: posts.allStatus[index],
                                                   jobDescription:
-                                                      skillsControllerApi
-                                                              .jobDescription[
+                                                      posts.allDescription[
                                                           index],
                                                   companyList:
-                                                      skillsControllerApi
-                                                          .companyList[index],
+                                                      posts.allNames[index],
                                                   jobAddress:
-                                                      skillsControllerApi
-                                                          .jobAddress[index],
+                                                      posts.allLocation[index],
                                                 ),
                                               );
                                             },
@@ -407,13 +391,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                       ),
                                       Spacer(
-                                        flex: 3,
+                                        flex: 1,
                                       ),
                                     ],
                                   ),
                                 ),
                                 width: 280.w,
-                                height: 150.h,
+                                //height: 150.h,
                                 decoration: BoxDecoration(
                                   color: AppColors.lGreen,
                                   borderRadius: BorderRadius.circular(

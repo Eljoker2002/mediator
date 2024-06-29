@@ -9,6 +9,11 @@ class Posts {
   TextEditingController location = TextEditingController();
   TextEditingController status = TextEditingController();
   String authorization = "a";
+  List allTitle=[];
+  List allDescription=[];
+  List allLocation=[];
+  List allStatus=[];
+  List allNames=[];
   final formKey = GlobalKey<FormState>();
 
   Future<void> SendPost(BuildContext context) async {
@@ -44,10 +49,12 @@ class Posts {
     );
     print(response.data);
     List list = response.data["data"]["posts"];
-    // for (int i = 0; i <= list.length; i++) {
-    //   List title2 = list[i]["title"];
-    //   print("object");
-    //   print(title2);
-    // }
+    for (int i = 0; i < list.length; i++) {
+       allTitle.add(list[i]["title"]) ;
+       allDescription.add(list[i]["description"]);
+       allLocation.add(list[i]["location"]) ;
+       allStatus.add(list[i]["status"]) ;
+       allNames.add(list[i]["company"]["name"]);
+    }
   }
 }
